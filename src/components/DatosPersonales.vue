@@ -1,83 +1,206 @@
-<script setup>
-import linkedin from '/src/assets/linkedin_icon.svg';
-import instagram from '/src/assets/instagram_icon.svg';
-import github from '/src/assets/github_icon.svg';
-import cv from '/src/assets/cv_resume_icon.svg';
-
-const title = 'Gustavo Ariel Rodriguez';
-const descripcion = 'Técnico Universitario en Programación - UTN';
-const residencia = 'San Rafael, Mendoza, Argentina';
-const presentacion = 'Hola, Bienvenido a mi portafolio de proyectos. Soy un desarrollador web con experiencia en el desarrollo de aplicaciones web y móviles.';
-const redesSociales = [
-  { id: 1, name: 'linkedin', src: linkedin, url: 'https://www.linkedin.com/in/gustavo-ariel-rodr%C3%ADguez-fornes-36a899370/' },
-  { id: 2, name: 'Instagram', src: instagram, url: 'https://www.instagram.com/garodrifornes79/' },
-  { id: 3, name: 'github', src: github, url: 'https://github.com/GustavoRodriguez79' },
-  { id: 4, name: 'curriculum', src: cv, url: '' },
-];
-const telefono = '+54 9 2622 655607';
-</script>
-
 <template>
-  <section class="datos-personales">
-    <div class="card">
-      <h1>{{ title }}</h1>
-      <h2>{{ descripcion }}</h2>
-      <p>{{ presentacion }}</p>
-      <ul class="container-lista">
-        <li v-for="red in redesSociales" :key="red.id">
-          <a :href="red.url"><img class="icon-redsocial" :src="red.src" width="35rem" :alt="red.name"></a>
-        </li>
-      </ul>
-      <h3>☎ Mi Teléfono personal: {{ telefono }}</h3>
-      <h4>{{ residencia }}</h4>
+  <section id="sobremi" class="sobre-mi">
+    <div class="contenedor">
+      <div class="foto-container">
+        <img :src="`/src/assets/${datos.foto}`" :alt="datos.nombre" class="foto-perfil" />
+      </div>
+      <div class="texto-contenedor">
+        <h2>Sobre mí</h2>
+        <p class="intro">
+          {{ datos.resumen }}
+        </p>
+
+        <div class="tecnologias">
+          <h3>Tecnologías que manejo:</h3>
+          <div class="tech-grid">
+            <div v-for="tech in techs" :key="tech.id" class="tech-item">
+              <span class="tech-icon">{{ tech.icon }}</span>
+              <span class="tech-name">{{ tech.nombre }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div v-for="stat in datos.estadisticas" :key="stat.label" class="stat-item">
+            <span class="stat-number">{{ stat.numero }}</span>
+            <span class="stat-label">{{ stat.label }}</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
 
+<script setup>
+import { ref } from 'vue'
+import { datosPersonales, tecnologias } from '@/data/datos'
+
+const datos = ref(datosPersonales)
+const techs = ref(tecnologias)
+</script>
+
 <style scoped>
-h1 {
-  font-size: 2.5rem;
+:root {
+  --primary: #7c3aed;
+  --primary-light: #a78bfa;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --bg-light: #f9fafb;
+  --border: #e5e7eb;
 }
 
-p {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+.sobre-mi {
+  margin-top: 0;
+  padding-top: 0;
 }
 
-.card {
-  background-color: rgb(28, 41, 52);
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
-  text-align: center;
+.contenedor {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  align-items: center;
 }
 
-.container-lista {
+.foto-container {
   display: flex;
   justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+}
+
+.foto-perfil {
+  width: 280px;
+  height: 280px;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 10px 40px rgba(124, 58, 237, 0.2);
+  border: 4px solid var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.foto-perfil:hover {
+  transform: scale(1.05);
+}
+
+.texto-contenedor h2 {
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.intro {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.tecnologias {
+  margin: 2.5rem 0;
+}
+
+.tecnologias h3 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f3e8ff 0%, #faf5ff 100%);
+  border-radius: 12px;
+  border: 2px solid var(--primary-light);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.2);
+  border-color: var(--primary);
+}
+
+.tech-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tech-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f3e8ff 0%, #faf5ff 100%);
+  border-radius: 12px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-.icon-redsocial {
-  align-items: center;
-  background-color: aliceblue;
-  border-radius: 50%;
-  padding: 2px;
-  margin: 5px;
-  box-shadow: 0 0 5px rgba(95, 124, 205, 0.934);
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary);
 }
 
-.icon-redsocial:hover {
-  background-color: rgb(28, 41, 52);
-  box-shadow: 0 0 5px rgba(251, 249, 249, 0.934);
+.stat-label {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
 }
 
-h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
+@media (max-width: 968px) {
+  .contenedor {
+    grid-template-columns: 1fr;
+  }
+
+  .foto-perfil {
+    width: 240px;
+    height: 240px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .texto-contenedor h2 {
+    font-size: 1.8rem;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+  }
 }
 </style>

@@ -1,70 +1,151 @@
 <template>
-    <nav class="navbar">
-        <div class="navbar-menu">
-            <ul>
-               <a v-for="nav in navegacion" :key="nav.nombre" :href="nav.enlace" class="nav-item" >{{nav.nombre}}</a> 
-            </ul>
-        </div>
-    </nav>  
-
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <h3>GAR Portfolio</h3>
+      </div>
+      <div class="navbar-menu">
+        <ul class="nav-list">
+          <li v-for="nav in navegacion" :key="nav.id">
+            <a :href="nav.enlace" class="nav-item">{{ nav.nombre }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar-actions">
+        <a href="cv.pdf" class="btn-cv" download="CV_GustavoRodriguez.pdf" title="Descargar CV">
+          📥 CV
+        </a>
+      </div>
+    </div>
+  </nav>
 </template>
 
-
 <script setup>
-import { ref }  from 'veu';
-const navegacion= ref([
-    {id:1, nombre:'Educación', enlace:'#educacion'},
-    {id:2, nombre:'Experiencia', enlace:'#experiencia'},
-    {id:3, nombre:'Proyectos', enlace:'#proyectos'},
-    {id:4, nombre:'Habilidades', enlace:'#habilidades'},
-    {id:5, nombre:'Intereses', enlace:'#intereses'}
-]);
+import { ref } from 'vue'
+
+const navegacion = ref([
+  { id: 1, nombre: 'Educación', enlace: '#educacion' },
+  { id: 2, nombre: 'Experiencia', enlace: '#experiencia' },
+  { id: 3, nombre: 'Proyectos', enlace: '#proyectos' },
+  { id: 4, nombre: 'Habilidades', enlace: '#habilidades' },
+  { id: 5, nombre: 'Intereses', enlace: '#intereses' }
+])
 </script>
 
-
-
 <style scoped>
-.navbar {
-    background-color: var(--vt-c-indigo); /* Establece el color de fondo usando una variable CSS */
-    color: #fff; /* Establece el color del texto en blanco */
-    padding: 0.5rem 1rem; /* Añade un padding de 0.5rem arriba y abajo, y 1rem a los lados */
-    align-items: center; /* Centra verticalmente los elementos dentro de la navbar */
+:root {
+  --primary: #7c3aed;
+  --primary-dark: #6d28d9;
+  --text-primary: #1f2937;
+  --bg-white: #ffffff;
 }
 
-.navbar-item {
-    color: #fff; /* Establece el color del texto en blanco */
-    text-decoration: none; /* Elimina el subrayado de los enlaces */
-    margin-right: 1rem; /* Añade un margen derecho de 1rem entre los elementos */
+.navbar {
+  background: white;
+  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand h3 {
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 800;
 }
 
 .navbar-menu {
-    display: flex; /* Organiza los elementos en línea usando flexbox */
-    justify-content: flex-end; /* Alinea los elementos al final de la navbar */
+  flex: 1;
+  margin: 0 2rem;
 }
 
 .nav-list {
-    list-style: none; /* Elimina los puntos o números de las listas */
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
-a {
-    border: 1px solid; /* Añade un borde sólido de 1px */
-    border-color: hsla(160, 100%, 37%, 0.2); /* Define el color del borde usando hsla */
-    border-radius: 5px; /* Redondea las esquinas del borde */
-    text-decoration: none; /* Elimina el subrayado de los enlaces */
-    transition: 0.4s; /* Añade una transición suave de 0.4s para los cambios de estilo */
-    padding: 5px; /* Añade un padding de 5px alrededor del contenido */
+.nav-item {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 5px;
 }
 
-a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2); /* Cambia el color de fondo al pasar el mouse sobre un enlace */
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
 }
 
+.nav-item:hover {
+  color: var(--primary);
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+.btn-cv {
+  background: linear-gradient(135deg, var(--primary) 0%, #a78bfa 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-cv:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
+  .navbar-container {
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+
+  .navbar-brand h3 {
+    font-size: 1.2rem;
+  }
+
   .navbar-menu {
-    display: flex; /* Organiza los elementos en línea usando flexbox */
-    justify-content: flex-end; /* Alinea los elementos al final de la navbar */
-    width: 100%; /* Asegura que la navbar ocupe el 100% del ancho en pantallas pequeñas */
+    order: 3;
+    width: 100%;
+    margin: 1rem 0 0;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn-cv {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }
-
 </style>
