@@ -5,16 +5,16 @@
         <img :src="`/src/assets/${datos.foto}`" :alt="datos.nombre" class="foto-perfil" />
       </div>
       <div class="texto-contenedor">
-        <h2>Sobre mí</h2>
+        <h2>Sobre mi</h2>
         <p class="intro">
           {{ datos.resumen }}
         </p>
 
         <div class="tecnologias">
-          <h3>Tecnologías que manejo:</h3>
+          <h3>Tecnologias que manejo:</h3>
           <div class="tech-grid">
-            <div v-for="tech in techs" :key="tech.id" class="tech-item">
-              <span class="tech-icon">{{ tech.icon }}</span>
+            <div class="tech-item" v-for="tech in tecnologiasConIconos" :key="tech.id">
+              <img :src="tech.iconUrl" :alt="tech.nombre" class="tech-icon-img" />
               <span class="tech-name">{{ tech.nombre }}</span>
             </div>
           </div>
@@ -32,11 +32,49 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { datosPersonales, tecnologias } from '@/data/datos'
+import { ref, computed } from 'vue'
+import { datosPersonales } from '@/data/datos'
 
 const datos = ref(datosPersonales)
-const techs = ref(tecnologias)
+
+// Mapeo de tecnologías con URLs de íconos reales desde CDN
+const tecnologiasConIconos = computed(() => [
+  { 
+    id: 1, 
+    nombre: 'Python', 
+    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
+  },
+  { 
+    id: 2, 
+    nombre: 'JavaScript', 
+    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'
+  },
+  { 
+    id: 3, 
+    nombre: 'Java', 
+    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'
+  },
+  { 
+    id: 4, 
+    nombre: 'HTML5', 
+    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'
+  },
+  { 
+    id: 5, 
+    nombre: 'CSS3', 
+    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'
+  },
+  { 
+    id: 6, 
+    nombre: 'Git', 
+    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg'
+  },
+  { 
+    id: 7, 
+    nombre: 'Vue.js', 
+    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg'
+  }
+])
 </script>
 
 <style scoped>
@@ -129,9 +167,15 @@ const techs = ref(tecnologias)
   border-color: var(--primary);
 }
 
-.tech-icon {
-  font-size: 2.5rem;
+.tech-icon-img {
+  width: 50px;
+  height: 50px;
   margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.tech-item:hover .tech-icon-img {
+  transform: scale(1.1);
 }
 
 .tech-name {
@@ -201,6 +245,11 @@ const techs = ref(tecnologias)
 
   .stat-number {
     font-size: 1.8rem;
+  }
+  
+  .tech-icon-img {
+    width: 40px;
+    height: 40px;
   }
 }
 </style>

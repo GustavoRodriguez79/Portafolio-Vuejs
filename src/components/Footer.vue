@@ -1,27 +1,19 @@
 <template>
   <footer class="footer">
     <div class="footer-content">
-      <!-- Sección de Contacto Rápido -->
       <div class="footer-section">
         <h4>Contacto</h4>
         <div class="contact-links">
-          <a :href="`mailto:${contactoData.email}`" class="contact-link">
-            📧 Email
-          </a>
-          <a :href="contactoData.linkedin" target="_blank" rel="noopener noreferrer" class="contact-link">
-            💼 LinkedIn
-          </a>
-          <a :href="contactoData.github" target="_blank" rel="noopener noreferrer" class="contact-link">
-            🐙 GitHub
-          </a>
+          <a :href="`mailto:${contactoData.email}`" class="contact-link">Email</a>
+          <a :href="contactoData.linkedin" target="_blank" rel="noopener noreferrer" class="contact-link">LinkedIn</a>
+          <a :href="contactoData.github" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub</a>
         </div>
       </div>
 
-      <!-- Sección de Enlaces Rápidos -->
       <div class="footer-section">
-        <h4>Enlaces Rápidos</h4>
+        <h4>Enlaces Rapidos</h4>
         <div class="quick-links">
-          <a href="#educacion" class="quick-link">Educación</a>
+          <a href="#educacion" class="quick-link">Educacion</a>
           <a href="#experiencia" class="quick-link">Experiencia</a>
           <a href="#proyectos" class="quick-link">Proyectos</a>
           <a href="#habilidades" class="quick-link">Habilidades</a>
@@ -29,30 +21,21 @@
         </div>
       </div>
 
-      <!-- Sección de Redes Sociales -->
       <div class="footer-section">
-        <h4>Sígueme</h4>
+        <h4>Sigueme</h4>
         <div class="social-icons">
-          <a :href="contactoData.instagram" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram">
-            📱
-          </a>
-          <a :href="contactoData.facebook" target="_blank" rel="noopener noreferrer" class="social-icon" title="Facebook">
-            👥
-          </a>
-          <a href="#" class="social-icon" title="Volver al inicio">
-            ⬆️
-          </a>
+          <a :href="contactoData.instagram" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram">IG</a>
+          <a :href="contactoData.facebook" target="_blank" rel="noopener noreferrer" class="social-icon" title="Facebook">FB</a>
+          <a href="#" class="social-icon" title="Volver al inicio">UP</a>
         </div>
       </div>
     </div>
 
-    <!-- Línea Divisoria -->
     <div class="footer-divider"></div>
 
-    <!-- Copyright -->
     <div class="footer-bottom">
-      <p>&copy; {{ currentYear }} Gustavo Ariel Rodriguez. Todos los derechos reservados.</p>
-      <p class="footer-credit">Desarrollado con <span class="heart">💜</span> usando Vue.js</p>
+      <p>{{ currentYear }} Gustavo Ariel Rodriguez. Todos los derechos reservados.</p>
+      <p class="footer-credit">Desarrollado con Vue.js</p>
     </div>
   </footer>
 </template>
@@ -70,18 +53,8 @@ onMounted(() => {
 </script>
 
 <style scoped>
-:root {
-  --primary: #7c3aed;
-  --primary-light: #a78bfa;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --bg-dark: #111827;
-  --bg-darker: #0f172a;
-  --border: #e5e7eb;
-}
-
 .footer {
-  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+  background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
   color: #e5e7eb;
   padding: 4rem 2rem 2rem;
   margin-top: 5rem;
@@ -97,7 +70,7 @@ onMounted(() => {
 }
 
 .footer-section h4 {
-  color: var(--primary-light);
+  color: #a78bfa;
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
   font-weight: 700;
@@ -117,10 +90,20 @@ onMounted(() => {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.contact-link::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: #a78bfa;
+  font-weight: bold;
 }
 
 .contact-link:hover {
-  color: var(--primary-light);
+  color: #a78bfa;
   transform: translateX(5px);
 }
 
@@ -140,8 +123,8 @@ onMounted(() => {
 }
 
 .quick-link:hover {
-  color: var(--primary-light);
-  border-left-color: var(--primary-light);
+  color: #a78bfa;
+  border-left-color: #a78bfa;
 }
 
 .social-icons {
@@ -157,16 +140,19 @@ onMounted(() => {
   height: 45px;
   background: rgba(124, 58, 237, 0.1);
   border-radius: 50%;
-  font-size: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
   transition: all 0.3s ease;
   text-decoration: none;
   border: 2px solid transparent;
+  color: #a78bfa;
 }
 
 .social-icon:hover {
   background: rgba(124, 58, 237, 0.3);
-  border-color: var(--primary-light);
+  border-color: #a78bfa;
   transform: translateY(-3px);
+  color: white;
 }
 
 .footer-divider {
@@ -195,23 +181,6 @@ onMounted(() => {
   gap: 0.5rem;
 }
 
-.heart {
-  display: inline-block;
-  animation: heartbeat 1.5s ease-in-out infinite;
-}
-
-@keyframes heartbeat {
-  0%, 100% {
-    transform: scale(1);
-  }
-  25% {
-    transform: scale(1.2);
-  }
-  50% {
-    transform: scale(1);
-  }
-}
-
 @media (max-width: 768px) {
   .footer {
     padding: 3rem 1.5rem 1.5rem;
@@ -224,9 +193,12 @@ onMounted(() => {
     text-align: center;
   }
 
-  .contact-link,
-  .quick-link {
+  .contact-link {
     justify-content: center;
+  }
+
+  .contact-link::before {
+    left: calc(50% - 3rem);
   }
 
   .quick-link {
@@ -234,11 +206,12 @@ onMounted(() => {
     border-left: none;
     border-bottom: 2px solid transparent;
     padding-bottom: 0.5rem;
+    text-align: center;
   }
 
   .quick-link:hover {
     border-left: none;
-    border-bottom-color: var(--primary-light);
+    border-bottom-color: #a78bfa;
   }
 
   .social-icons {
@@ -249,3 +222,4 @@ onMounted(() => {
     font-size: 0.85rem;
   }
 }
+</style>

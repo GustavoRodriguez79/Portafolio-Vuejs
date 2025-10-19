@@ -9,7 +9,7 @@
       <p class="descripcion">{{ exp.descripcion }}</p>
       <ul class="logros">
         <li v-for="logro in exp.logros" :key="logro">
-          <span class="check">✓</span> {{ logro }}
+          <span class="check">✔</span> {{ logro }}
         </li>
       </ul>
       <div v-if="exp.tecnologias" class="tech-list">
@@ -168,3 +168,4 @@ const experienciaData = ref(experiencia)
     font-size: 1.2rem;
   }
 }
+</style>
