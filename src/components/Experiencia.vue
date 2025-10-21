@@ -9,7 +9,7 @@
       <p class="descripcion">{{ exp.descripcion }}</p>
       <ul class="logros">
         <li v-for="logro in exp.logros" :key="logro">
-          <span class="check">✔</span> {{ logro }}
+          <span class="check">✓</span> {{ logro }}
         </li>
       </ul>
       <div v-if="exp.tecnologias" class="tech-list">
@@ -28,13 +28,13 @@ const experienciaData = ref(experiencia)
 
 <style scoped>
 :root {
-  --primary: #7c3aed;
-  --primary-light: #a78bfa;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --bg-light: #f9fafb;
-  --border: #e5e7eb;
-  --success: #10b981;
+  --primary: #00ffff;
+  --primary-claro: #93dede;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --bg-secondary: #2a2a2a;
+  --border: #333;
+  --success: #00ff88;
 }
 
 .experiencia-grid {
@@ -44,10 +44,10 @@ const experienciaData = ref(experiencia)
 }
 
 .exp-card {
-  background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+  background: var(--bg-secondary);
   padding: 2.5rem;
   border-radius: 15px;
-  border: 2px solid var(--border);
+  border: 2px solid var(--primary);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -60,12 +60,12 @@ const experienciaData = ref(experiencia)
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-claro) 100%);
 }
 
 .exp-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15);
+  border-color: var(--primary-claro);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
   transform: translateY(-5px);
 }
 
@@ -82,11 +82,12 @@ const experienciaData = ref(experiencia)
   font-size: 1.4rem;
   margin: 0;
   flex: 1;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
 }
 
 .periodo {
-  background: var(--primary);
-  color: white;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
+  color: #000;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -138,8 +139,8 @@ const experienciaData = ref(experiencia)
 }
 
 .tech-badge {
-  background: var(--primary-light);
-  color: white;
+  background: var(--primary-claro);
+  color: #000;
   padding: 0.35rem 0.75rem;
   border-radius: 15px;
   font-size: 0.8rem;

@@ -11,7 +11,6 @@
       </div>
     </div>
 
-    <!-- Sección adicional: Objetivos -->
     <div class="objetivos-section">
       <h3>Objetivos Profesionales</h3>
       <div class="objetivos-list">
@@ -37,12 +36,12 @@ const objetivosData = ref(objetivos)
 
 <style scoped>
 :root {
-  --primary: #7c3aed;
-  --primary-light: #a78bfa;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --bg-light: #f9fafb;
-  --border: #e5e7eb;
+  --primary: #00ffff;
+  --primary-claro: #93dede;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --bg-secondary: #2a2a2a;
+  --border: #333;
 }
 
 .intereses-container {
@@ -58,10 +57,10 @@ const objetivosData = ref(objetivos)
 }
 
 .interes-card {
-  background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+  background: var(--bg-secondary);
   padding: 2rem;
   border-radius: 15px;
-  border: 2px solid var(--border);
+  border: 2px solid var(--primary);
   text-align: center;
   transition: all 0.3s ease;
   display: flex;
@@ -70,9 +69,9 @@ const objetivosData = ref(objetivos)
 }
 
 .interes-card:hover {
-  border-color: var(--primary);
+  border-color: var(--primary-claro);
   transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.15);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
 }
 
 .interes-icon {
@@ -97,6 +96,7 @@ const objetivosData = ref(objetivos)
   color: var(--primary);
   font-size: 1.3rem;
   margin: 0 0 0.75rem;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
 }
 
 .interes-card p {
@@ -114,21 +114,20 @@ const objetivosData = ref(objetivos)
 }
 
 .tag {
-  background: var(--primary-light);
-  color: white;
+  background: var(--primary-claro);
+  color: #000;
   padding: 0.35rem 0.75rem;
   border-radius: 15px;
   font-size: 0.75rem;
   font-weight: 700;
 }
 
-/* SECCIÓN OBJETIVOS */
 .objetivos-section {
-  background: white;
+  background: var(--bg-secondary);
   padding: 2.5rem;
   border-radius: 15px;
-  border: 2px solid var(--border);
-  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.08);
+  border: 2px solid var(--primary);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .objetivos-section h3 {
@@ -136,6 +135,7 @@ const objetivosData = ref(objetivos)
   font-size: 1.5rem;
   margin-bottom: 2rem;
   text-align: center;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
 }
 
 .objetivos-list {
@@ -148,7 +148,7 @@ const objetivosData = ref(objetivos)
   display: flex;
   gap: 1.5rem;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #f9fafb 0%, #f3e8ff 100%);
+  background: #1a1a1a;
   border-radius: 12px;
   border-left: 4px solid var(--primary);
   transition: all 0.3s ease;
@@ -156,7 +156,7 @@ const objetivosData = ref(objetivos)
 
 .objetivo-item:hover {
   transform: translateX(5px);
-  box-shadow: 0 6px 15px rgba(124, 58, 237, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
 }
 
 .objetivo-number {
@@ -165,8 +165,8 @@ const objetivosData = ref(objetivos)
   justify-content: center;
   width: 45px;
   height: 45px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
+  color: #000;
   border-radius: 50%;
   font-weight: 800;
   font-size: 1.2rem;

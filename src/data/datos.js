@@ -1,14 +1,14 @@
 // src/data/datos.js
 // Archivo centralizado con toda la información del portafolio
-// Actualiza aquí tu información personal
+// Paleta: CYAN #00ffff, TURQUESA #93dede, FONDO OSCURO
 
 export const datosPersonales = {
   nombre: 'Gustavo Ariel Rodriguez',
   titulo: 'Técnico en Programación',
   subtitulo: 'Apasionado por la programación y la creatividad digital',
   email: 'garodrifornes79@gmail.com',
-  telefono: '+54 9 261 XXXXXXX',
-  ubicacion: 'Mendoza, Argentina',
+  telefono: '+54 9 2622655607',
+  ubicacion: 'Tunuyán, Mendoza, Argentina',
   foto: 'fotoGustavo.jpg',
   resumen: 'Soy Técnico Universitario en Programación, egresado de la Universidad Tecnológica Nacional (UTN) - FRSR, Argentina. Me apasiona programar y desarrollar soluciones de aplicaciones web originales y personalizadas.',
   estadisticas: [
@@ -19,12 +19,12 @@ export const datosPersonales = {
 }
 
 export const tecnologias = [
-  { id: 1, nombre: 'Python', icon: '🐍', nivel: 'Avanzado' },
-  { id: 2, nombre: 'JavaScript', icon: '⚙️', nivel: 'Avanzado' },
+  { id: 1, nombre: 'Python', icon: '🐍', nivel: 'Intermedio' },
+  { id: 2, nombre: 'JavaScript', icon: '⚙️', nivel: 'Intermedio' },
   { id: 3, nombre: 'Java', icon: '☕', nivel: 'Intermedio' },
-  { id: 4, nombre: 'HTML5', icon: '🏗️', nivel: 'Avanzado' },
-  { id: 5, nombre: 'CSS3', icon: '🎨', nivel: 'Avanzado' },
-  { id: 6, nombre: 'Git', icon: '📦', nivel: 'Avanzado' },
+  { id: 4, nombre: 'HTML5', icon: '🏗️', nivel: 'Intermedio' },
+  { id: 5, nombre: 'CSS3', icon: '🎨', nivel: 'Intermedio' },
+  { id: 6, nombre: 'Git', icon: '📦', nivel: 'Intermedio' },
   { id: 7, nombre: 'Vue.js', icon: '💚', nivel: 'Intermedio' }
 ]
 
@@ -40,7 +40,7 @@ export const educacion = [
   },
   {
     id: 2,
-    fecha: '2022 - 2024',
+    fecha: '2025 - Presente',
     titulo: 'Técnico Universitario en Programación',
     institucion: 'Universidad Tecnológica Nacional (UTN-FRSR)',
     descripcion: 'Formación integral en desarrollo de software, programación orientada a objetos, bases de datos y metodologías ágiles. Desarrollo de proyectos prácticos con tecnologías modernas.',
@@ -49,7 +49,7 @@ export const educacion = [
   },
   {
     id: 3,
-    fecha: '2024 - Presente',
+    fecha: '2025 - Presente',
     titulo: 'Especialización en Desarrollo Web',
     institucion: 'Formación Continua',
     descripcion: 'Aprendizaje continuo en frameworks modernos como Vue.js, React y herramientas de desarrollo web avanzado. Enfoque en crear aplicaciones responsivas y de alto rendimiento.',
@@ -62,13 +62,13 @@ export const experiencia = [
   {
     id: 1,
     titulo: 'Proyectos Académicos',
-    periodo: '2022 - 2024',
+    periodo: '2025 - Presente',
     empresa: 'Universidad Tecnológica Nacional',
     descripcion: 'Desarrollo de múltiples aplicaciones web como parte de la formación académica, aplicando metodologías ágiles y buenas prácticas de programación.',
     logros: [
       'Desarrollo de aplicaciones web con HTML, CSS y JavaScript',
       'Implementación de algoritmos en Python, JavaScript y Java',
-      'Manejo de control de versiones con Git y GitHub',
+      'Manejo de control de versiones con Git, GitHub y GitHub Desktop',
       'Aplicación de metodología Scrum en trabajo colaborativo'
     ],
     tecnologias: ['HTML5', 'CSS3', 'JavaScript', 'Python', 'Java', 'Git']
@@ -90,8 +90,8 @@ export const experiencia = [
   {
     id: 3,
     titulo: 'Colaboración en Proyectos',
-    periodo: '2023 - 2024',
-    empresa: 'Equipo UTN',
+    periodo: '2025 - Presente',
+    empresa: 'Equipo ByteNine FRSR UTN',
     descripcion: 'Trabajo en equipo desarrollando soluciones integrales, participando en todas las fases del proyecto desde planificación hasta implementación.',
     logros: [
       'Colaboración efectiva con compañeros de equipo',
@@ -112,7 +112,7 @@ export const proyectos = [
     tecnologias: ['HTML5', 'CSS3', 'Responsive'],
     enlace: '#',
     estado: 'Completado',
-    fecha: '2024',
+    fecha: '2025',
     imagen: ''
   },
   {
@@ -122,8 +122,8 @@ export const proyectos = [
     emoji: '📊',
     tecnologias: ['Python', 'SQL', 'Tkinter'],
     enlace: '#',
-    estado: 'Completado',
-    fecha: '2023',
+    estado: 'En Progreso',
+    fecha: '2025',
     imagen: ''
   },
   {
@@ -133,8 +133,8 @@ export const proyectos = [
     emoji: '⚙️',
     tecnologias: ['Java', 'Algoritmos', 'Git'],
     enlace: '#',
-    estado: 'Completado',
-    fecha: '2023',
+    estado: 'En Progreso',
+    fecha: '2025',
     imagen: ''
   },
   {
@@ -145,7 +145,7 @@ export const proyectos = [
     tecnologias: ['Vue.js', 'JavaScript', 'API REST'],
     enlace: '#',
     estado: 'En Progreso',
-    fecha: '2024',
+    fecha: '2025',
     imagen: ''
   },
   {
@@ -155,8 +155,8 @@ export const proyectos = [
     emoji: '📝',
     tecnologias: ['JavaScript', 'CSS Grid', 'Local Storage'],
     enlace: '#',
-    estado: 'Completado',
-    fecha: '2024',
+    estado: 'En Progreso',
+    fecha: '2025',
     imagen: ''
   },
   {
@@ -167,7 +167,31 @@ export const proyectos = [
     tecnologias: ['Node.js', 'Express', 'MongoDB'],
     enlace: '#',
     estado: 'En Progreso',
-    fecha: '2024',
+    fecha: '2025',
+    imagen: ''
+  }
+]
+
+export const testimonios = [
+  {
+    id: 1,
+    nombre: 'Profesor Ariel Betancud',
+    cargo: 'Docente de Programación - UTN',
+    testimonio: 'Gustavo demostró excelentes habilidades de programación durante su formación. Su dedicación y capacidad para resolver problemas complejos lo destacan como un programador prometedor.',
+    imagen: ''
+  },
+  {
+    id: 2,
+    nombre: 'Gabriel Santarena',
+    cargo: 'Compañero de estudios - UTN',
+    testimonio: 'Trabajar en equipo con Gustavo fue una experiencia enriquecedora. Su conocimiento técnico y colaboración fueron fundamentales para el éxito de nuestros proyectos académicos.',
+    imagen: ''
+  },
+  {
+    id: 3,
+    nombre: 'Dante Nicolás Martinez',
+    cargo: 'Tutor portafolio - UTN',
+    testimonio: 'Su pasión por aprender nuevas tecnologías y su metodología de trabajo ordenada lo convierten en un desarrollador con gran potencial profesional.',
     imagen: ''
   }
 ]
@@ -179,11 +203,11 @@ export const habilidades = {
       nombre: 'Lenguajes de Programación',
       icon: '💻',
       skills: [
-        { id: 1, nombre: 'Python', nivel: 'Avanzado', porcentaje: 85 },
-        { id: 2, nombre: 'JavaScript', nivel: 'Avanzado', porcentaje: 80 },
+        { id: 1, nombre: 'Python', nivel: 'Intermedio', porcentaje: 65 },
+        { id: 2, nombre: 'JavaScript', nivel: 'Intermedio', porcentaje: 75 },
         { id: 3, nombre: 'Java', nivel: 'Intermedio', porcentaje: 75 },
-        { id: 4, nombre: 'HTML5', nivel: 'Avanzado', porcentaje: 90 },
-        { id: 5, nombre: 'CSS3', nivel: 'Avanzado', porcentaje: 88 }
+        { id: 4, nombre: 'HTML5', nivel: 'Intermedio', porcentaje: 70 },
+        { id: 5, nombre: 'CSS3', nivel: 'Intermedio', porcentaje: 75 }
       ]
     },
     {
@@ -191,10 +215,10 @@ export const habilidades = {
       nombre: 'Frameworks & Librerías',
       icon: '🚀',
       skills: [
-        { id: 1, nombre: 'Vue.js', nivel: 'Intermedio', porcentaje: 78 },
+        { id: 1, nombre: 'Vue.js', nivel: 'Intermedio', porcentaje: 75 },
         { id: 2, nombre: 'React', nivel: 'Básico', porcentaje: 60 },
-        { id: 3, nombre: 'Node.js', nivel: 'Intermedio', porcentaje: 70 },
-        { id: 4, nombre: 'Express', nivel: 'Intermedio', porcentaje: 72 }
+        { id: 3, nombre: 'Node.js', nivel: 'Básico', porcentaje: 50 },
+        { id: 4, nombre: 'Express', nivel: 'Básico', porcentaje: 45 }
       ]
     },
     {
@@ -202,8 +226,8 @@ export const habilidades = {
       nombre: 'Bases de Datos',
       icon: '🗄️',
       skills: [
-        { id: 1, nombre: 'SQL', nivel: 'Avanzado', porcentaje: 82 },
-        { id: 2, nombre: 'MongoDB', nivel: 'Intermedio', porcentaje: 68 },
+        { id: 1, nombre: 'SQL', nivel: 'Intermedio', porcentaje: 70 },
+        { id: 2, nombre: 'MongoDB', nivel: 'Básico', porcentaje: 45 },
         { id: 3, nombre: 'MySQL', nivel: 'Avanzado', porcentaje: 80 }
       ]
     },
@@ -214,17 +238,17 @@ export const habilidades = {
       skills: [
         { id: 1, nombre: 'Git/GitHub', nivel: 'Avanzado', porcentaje: 85 },
         { id: 2, nombre: 'VSCode', nivel: 'Avanzado', porcentaje: 90 },
-        { id: 3, nombre: 'Linux', nivel: 'Intermedio', porcentaje: 75 },
+        { id: 3, nombre: 'Linux', nivel: 'Intermedio', porcentaje: 70 },
         { id: 4, nombre: 'Docker', nivel: 'Básico', porcentaje: 55 }
       ]
     }
   ],
   
   competencias: [
-    { id: 1, tecnologia: 'Python', icon: '🐍', nivel: 'Avanzado', experiencia: '2 años', proyectos: '5+' },
-    { id: 2, tecnologia: 'JavaScript', icon: '⚙️', nivel: 'Avanzado', experiencia: '2 años', proyectos: '7+' },
-    { id: 3, tecnologia: 'Vue.js', icon: '💚', nivel: 'Intermedio', experiencia: '1 año', proyectos: '3+' },
-    { id: 4, tecnologia: 'SQL', icon: '🗄️', nivel: 'Avanzado', experiencia: '2 años', proyectos: '6+' },
+    { id: 1, tecnologia: 'Python', icon: '🐍', nivel: 'Intermedio', experiencia: '1 años', proyectos: '5+' },
+    { id: 2, tecnologia: 'JavaScript', icon: '⚙️', nivel: 'Intermedio', experiencia: '2 años', proyectos: '5+' },
+    { id: 3, tecnologia: 'Vue.js', icon: '💚', nivel: 'Intermedio', experiencia: '1 año', proyectos: '2+' },
+    { id: 4, tecnologia: 'MySQL', icon: '🗄️', nivel: 'Avanzado', experiencia: '1 años', proyectos: '4+' },
     { id: 5, tecnologia: 'Git', icon: '📦', nivel: 'Avanzado', experiencia: '2 años', proyectos: '10+' },
     { id: 6, tecnologia: 'HTML/CSS', icon: '🏗️', nivel: 'Avanzado', experiencia: '2+ años', proyectos: '8+' }
   ]
@@ -294,14 +318,17 @@ export const contacto = {
 }
 
 export const tematico = {
-  primario: '#7c3aed',
-  primarioOscuro: '#6d28d9',
-  primarioClaro: '#a78bfa',
-  secundario: '#6366f1',
-  acento: '#c4b5fd',
-  textoBase: '#1f2937',
-  textoSecundario: '#6b7280',
-  bgLight: '#f9fafb',
-  bgBlanco: '#ffffff',
-  borde: '#e5e7eb'
+  // COLORES 
+  primario: '#00ffff',        // CYAN brillante
+  primarioOscuro: '#00cccc',  // CYAN más oscuro
+  primarioClaro: '#93dede',   // TURQUESA/CYAN claro
+  secundario: '#00ffff',
+  acento: '#93dede',
+  textoBase: '#ffffff',       // Blanco para fondo oscuro
+  textoSecundario: '#cccccc', // Gris claro
+  bgPrimario: '#1a1a1a',      // Fondo oscuro
+  bgSecundario: '#2a2a2a',    // Fondo un poco más claro
+  bgLight: '#111111',
+  bgBlanco: '#0a0a0a',
+  borde: '#333'
 }

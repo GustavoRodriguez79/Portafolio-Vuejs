@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="app-oscuro">
     <NavBar />
     <main>
       <header class="hero">
@@ -37,6 +37,12 @@
         <Habilidades />
       </section>
 
+      <!-- SECCIÓN TESTIMONIOS -->
+      <section id="testimonios" class="seccion">
+        <h2><i class="icon">💬</i> Testimonios</h2>
+        <Testimonios />
+      </section>
+
       <!-- SECCIÓN INTERESES -->
       <section id="intereses" class="seccion">
         <h2><i class="icon">🎯</i> Intereses</h2>
@@ -55,22 +61,20 @@ import Educacion from './components/Educacion.vue'
 import Experiencia from './components/Experiencia.vue'
 import Proyectos from './components/Proyectos.vue'
 import Habilidades from './components/Habilidades.vue'
+import Testimonios from './components/Testimonios.vue'
 import Intereses from './components/Intereses.vue'
 import Footer from './components/Footer.vue'
 </script>
 
 <style scoped>
 :root {
-  --primary: #7c3aed;
-  --primary-dark: #6d28d9;
-  --primary-light: #a78bfa;
-  --secondary: #6366f1;
-  --accent: #c4b5fd;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --bg-light: #f9fafb;
-  --bg-white: #ffffff;
-  --border: #e5e7eb;
+  --primary: #00ffff;
+  --primary-claro: #93dede;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  --border: #333;
 }
 
 * {
@@ -83,15 +87,10 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--text-primary);
-  line-height: 1.6;
-}
-
-#app {
+.app-oscuro {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
   min-height: 100vh;
-  background: linear-gradient(135deg, #f9fafb 0%, #faf5ff 100%);
+  color: var(--text-primary);
 }
 
 main {
@@ -106,11 +105,12 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
   color: white;
   text-align: center;
   position: relative;
   overflow: hidden;
+  border-bottom: 3px solid var(--primary);
 }
 
 .hero::before {
@@ -118,7 +118,7 @@ main {
   position: absolute;
   width: 400px;
   height: 400px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 255, 255, 0.05);
   border-radius: 50%;
   top: -200px;
   right: -200px;
@@ -130,7 +130,7 @@ main {
   position: absolute;
   width: 300px;
   height: 300px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 255, 255, 0.03);
   border-radius: 50%;
   bottom: -150px;
   left: -150px;
@@ -149,6 +149,8 @@ main {
   font-weight: 800;
   margin-bottom: 1rem;
   animation: slideDown 0.8s ease-out;
+  color: var(--primary-claro);
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
 
 .subtitle {
@@ -156,33 +158,36 @@ main {
   margin-bottom: 2rem;
   opacity: 0.95;
   animation: slideUp 0.8s ease-out 0.2s both;
+  color: var(--text-secondary);
 }
 
 .btn-hero {
   display: inline-block;
-  background: white;
-  color: #7c3aed;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
+  color: #000;
   padding: 1rem 2.5rem;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 700;
   transition: all 0.3s ease;
   animation: slideUp 0.8s ease-out 0.4s both;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
 
 .btn-hero:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
 }
 
 /* SECCIONES */
 .seccion {
-  background: white;
-  border-radius: 15px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
   padding: 4rem 2rem;
   margin: 3rem auto;
-  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   border-left: 5px solid var(--primary);
+  border-top: 2px solid var(--primary-claro);
 }
 
 .seccion h2 {
@@ -192,6 +197,7 @@ main {
   display: flex;
   align-items: center;
   gap: 1rem;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
 .icon {

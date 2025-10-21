@@ -35,13 +35,13 @@ const proyectosData = ref(proyectos)
 
 <style scoped>
 :root {
-  --primary: #7c3aed;
-  --primary-light: #a78bfa;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --bg-light: #f9fafb;
-  --border: #e5e7eb;
-  --success: #10b981;
+  --primary: #00ffff;
+  --primary-claro: #93dede;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --bg-secondary: #2a2a2a;
+  --border: #333;
+  --success: #00ff88;
 }
 
 .proyectos-container {
@@ -55,27 +55,27 @@ const proyectosData = ref(proyectos)
 }
 
 .proyecto-card {
-  background: white;
+  background: var(--bg-secondary);
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
-  border: 1px solid var(--border);
+  border: 2px solid var(--primary);
 }
 
 .proyecto-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.15);
-  border-color: var(--primary-light);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  border-color: var(--primary-claro);
 }
 
 .proyecto-imagen {
   position: relative;
   height: 200px;
-  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+  background: linear-gradient(135deg, #00ffff 0%, #93dede 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,8 +106,8 @@ const proyectosData = ref(proyectos)
 }
 
 .btn-ver {
-  background: white;
-  color: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
+  color: #000;
   padding: 0.75rem 1.5rem;
   border-radius: 25px;
   text-decoration: none;
@@ -117,7 +117,7 @@ const proyectosData = ref(proyectos)
 
 .btn-ver:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
 }
 
 .proyecto-contenido {
@@ -131,6 +131,7 @@ const proyectosData = ref(proyectos)
   color: var(--primary);
   font-size: 1.3rem;
   margin: 0 0 0.75rem;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
 }
 
 .descripcion {
@@ -149,13 +150,13 @@ const proyectosData = ref(proyectos)
 }
 
 .tech-chip {
-  background: linear-gradient(135deg, #f3e8ff 0%, #faf5ff 100%);
+  background: var(--bg-secondary);
   color: var(--primary);
   padding: 0.35rem 0.75rem;
   border-radius: 15px;
   font-size: 0.8rem;
   font-weight: 600;
-  border: 1px solid var(--primary-light);
+  border: 1px solid var(--primary);
 }
 
 .proyecto-meta {
@@ -174,13 +175,13 @@ const proyectosData = ref(proyectos)
 }
 
 .estado.completado {
-  background: rgba(16, 185, 129, 0.2);
-  color: #10b981;
+  background: rgba(0, 255, 136, 0.2);
+  color: var(--success);
 }
 
 .estado.en\ progreso {
-  background: rgba(245, 158, 11, 0.2);
-  color: #f59e0b;
+  background: rgba(0, 255, 255, 0.2);
+  color: var(--primary);
 }
 
 .fecha {

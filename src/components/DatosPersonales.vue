@@ -37,54 +37,25 @@ import { datosPersonales } from '@/data/datos'
 
 const datos = ref(datosPersonales)
 
-// Mapeo de tecnologías con URLs de íconos reales desde CDN
 const tecnologiasConIconos = computed(() => [
-  { 
-    id: 1, 
-    nombre: 'Python', 
-    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
-  },
-  { 
-    id: 2, 
-    nombre: 'JavaScript', 
-    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'
-  },
-  { 
-    id: 3, 
-    nombre: 'Java', 
-    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'
-  },
-  { 
-    id: 4, 
-    nombre: 'HTML5', 
-    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'
-  },
-  { 
-    id: 5, 
-    nombre: 'CSS3', 
-    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'
-  },
-  { 
-    id: 6, 
-    nombre: 'Git', 
-    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg'
-  },
-  { 
-    id: 7, 
-    nombre: 'Vue.js', 
-    iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg'
-  }
+  { id: 1, nombre: 'Python', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  { id: 2, nombre: 'JavaScript', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+  { id: 3, nombre: 'Java', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+  { id: 4, nombre: 'HTML5', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { id: 5, nombre: 'CSS3', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  { id: 6, nombre: 'Git', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+  { id: 7, nombre: 'Vue.js', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' }
 ])
 </script>
 
 <style scoped>
 :root {
-  --primary: #7c3aed;
-  --primary-light: #a78bfa;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --bg-light: #f9fafb;
-  --border: #e5e7eb;
+  --primary: #00ffff;
+  --primary-claro: #93dede;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --bg-secondary: #2a2a2a;
+  --border: #333;
 }
 
 .sobre-mi {
@@ -109,19 +80,21 @@ const tecnologiasConIconos = computed(() => [
   height: 280px;
   border-radius: 15px;
   object-fit: cover;
-  box-shadow: 0 10px 40px rgba(124, 58, 237, 0.2);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
   border: 4px solid var(--primary);
   transition: transform 0.3s ease;
 }
 
 .foto-perfil:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 50px rgba(0, 255, 255, 0.5);
 }
 
 .texto-contenedor h2 {
   font-size: 2.2rem;
   color: var(--primary);
   margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
 .intro {
@@ -140,6 +113,7 @@ const tecnologiasConIconos = computed(() => [
   color: var(--primary);
   margin-bottom: 1.5rem;
   font-size: 1.3rem;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
 }
 
 .tech-grid {
@@ -154,17 +128,17 @@ const tecnologiasConIconos = computed(() => [
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #f3e8ff 0%, #faf5ff 100%);
+  background: var(--bg-secondary);
   border-radius: 12px;
-  border: 2px solid var(--primary-light);
+  border: 2px solid var(--primary);
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .tech-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.2);
-  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  border-color: var(--primary-claro);
 }
 
 .tech-icon-img {
@@ -190,8 +164,9 @@ const tecnologiasConIconos = computed(() => [
   gap: 1.5rem;
   margin-top: 2.5rem;
   padding: 2rem;
-  background: linear-gradient(135deg, #f3e8ff 0%, #faf5ff 100%);
+  background: var(--bg-secondary);
   border-radius: 12px;
+  border: 2px solid var(--primary);
 }
 
 .stat-item {
@@ -205,6 +180,7 @@ const tecnologiasConIconos = computed(() => [
   font-size: 2.2rem;
   font-weight: 800;
   color: var(--primary);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
 .stat-label {
@@ -246,7 +222,7 @@ const tecnologiasConIconos = computed(() => [
   .stat-number {
     font-size: 1.8rem;
   }
-  
+
   .tech-icon-img {
     width: 40px;
     height: 40px;

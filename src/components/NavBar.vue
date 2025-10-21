@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="navbar-container">
       <div class="navbar-brand">
-        <h3>GAR Portfolio</h3>
+        <h3>GAR Portafolio</h3>
       </div>
       <div class="navbar-menu">
         <ul class="nav-list">
@@ -28,24 +28,27 @@ const navegacion = ref([
   { id: 2, nombre: 'Experiencia', enlace: '#experiencia' },
   { id: 3, nombre: 'Proyectos', enlace: '#proyectos' },
   { id: 4, nombre: 'Habilidades', enlace: '#habilidades' },
-  { id: 5, nombre: 'Intereses', enlace: '#intereses' }
+  { id: 5, nombre: 'Testimonios', enlace: '#testimonios' },
+  { id: 6, nombre: 'Intereses', enlace: '#intereses' }
 ])
 </script>
 
 <style scoped>
 :root {
-  --primary: #7c3aed;
-  --primary-dark: #6d28d9;
-  --text-primary: #1f2937;
-  --bg-white: #ffffff;
+  --primary: #00ffff;
+  --primary-claro: #93dede;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --bg-secondary: #1a1a1a;
 }
 
 .navbar {
-  background: white;
-  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.1);
+  background: var(--bg-secondary);
+  box-shadow: 0 2px 10px rgba(0, 255, 255, 0.2);
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 2px solid var(--primary);
 }
 
 .navbar-container {
@@ -62,6 +65,7 @@ const navegacion = ref([
   font-size: 1.5rem;
   margin: 0;
   font-weight: 800;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
 .navbar-menu {
@@ -78,12 +82,13 @@ const navegacion = ref([
 }
 
 .nav-item {
-  color: var(--text-primary);
+  color: var(--primary);
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
   position: relative;
   padding-bottom: 5px;
+  font-size: 1rem;
 }
 
 .nav-item::after {
@@ -93,12 +98,13 @@ const navegacion = ref([
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--primary);
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-claro) 100%);
   transition: width 0.3s ease;
 }
 
 .nav-item:hover {
-  color: var(--primary);
+  color: var(--primary-claro);
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
 }
 
 .nav-item:hover::after {
@@ -106,19 +112,20 @@ const navegacion = ref([
 }
 
 .btn-cv {
-  background: linear-gradient(135deg, var(--primary) 0%, #a78bfa 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
+  color: #000;
   padding: 0.75rem 1.5rem;
   border-radius: 25px;
   text-decoration: none;
   font-weight: 700;
   transition: all 0.3s ease;
   display: inline-block;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
 }
 
 .btn-cv:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
 }
 
 /* RESPONSIVE */

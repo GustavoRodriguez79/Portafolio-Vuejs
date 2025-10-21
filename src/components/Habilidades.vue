@@ -20,7 +20,6 @@
       </div>
     </div>
 
-    <!-- Tabla de Competencias Técnicas -->
     <div class="competencias-tabla">
       <h3>Matriz de Competencias Técnicas</h3>
       <div class="tabla-scroll">
@@ -63,13 +62,13 @@ const habilidadesData = ref(habilidades)
 
 <style scoped>
 :root {
-  --primary: #7c3aed;
-  --primary-light: #a78bfa;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --bg-light: #f9fafb;
-  --border: #e5e7eb;
-  --success: #10b981;
+  --primary: #00ffff;
+  --primary-claro: #93dede;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --bg-secondary: #2a2a2a;
+  --border: #333;
+  --success: #00ff88;
 }
 
 .habilidades-container {
@@ -85,16 +84,16 @@ const habilidadesData = ref(habilidades)
 }
 
 .categoria-card {
-  background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+  background: var(--bg-secondary);
   padding: 2rem;
   border-radius: 15px;
-  border: 2px solid var(--border);
+  border: 2px solid var(--primary);
   transition: all 0.3s ease;
 }
 
 .categoria-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.12);
+  border-color: var(--primary-claro);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
   transform: translateY(-3px);
 }
 
@@ -113,6 +112,7 @@ const habilidadesData = ref(habilidades)
   color: var(--primary);
   margin: 0;
   font-size: 1.3rem;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
 }
 
 .skills-list {
@@ -139,8 +139,8 @@ const habilidadesData = ref(habilidades)
 }
 
 .skill-level {
-  background: var(--primary-light);
-  color: white;
+  background: var(--primary-claro);
+  color: #000;
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
   font-size: 0.75rem;
@@ -156,10 +156,11 @@ const habilidadesData = ref(habilidades)
 
 .skill-progress {
   height: 100%;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-claro) 100%);
   border-radius: 10px;
   transition: width 0.8s ease;
   animation: expandWidth 1s ease-out;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
 @keyframes expandWidth {
@@ -168,19 +169,19 @@ const habilidadesData = ref(habilidades)
   }
 }
 
-/* TABLA DE COMPETENCIAS */
 .competencias-tabla {
-  background: white;
+  background: var(--bg-secondary);
   padding: 2.5rem;
   border-radius: 15px;
-  border: 2px solid var(--border);
-  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.08);
+  border: 2px solid var(--primary);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .competencias-tabla h3 {
   color: var(--primary);
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
 }
 
 .tabla-scroll {
@@ -193,8 +194,8 @@ table {
 }
 
 thead {
-  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
+  color: #000;
 }
 
 th {
@@ -214,7 +215,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.05));
+  background: rgba(0, 255, 255, 0.1);
 }
 
 .tech-name {
@@ -238,18 +239,18 @@ tbody tr:hover {
 }
 
 .nivel-badge.avanzado {
-  background: rgba(16, 185, 129, 0.2);
-  color: #10b981;
+  background: rgba(0, 255, 136, 0.2);
+  color: var(--success);
 }
 
 .nivel-badge.intermedio {
-  background: rgba(59, 130, 246, 0.2);
-  color: #3b82f6;
+  background: rgba(0, 255, 255, 0.2);
+  color: var(--primary);
 }
 
 .nivel-badge.basico {
-  background: rgba(245, 158, 11, 0.2);
-  color: #f59e0b;
+  background: rgba(147, 222, 222, 0.2);
+  color: var(--primary-claro);
 }
 
 @media (max-width: 768px) {

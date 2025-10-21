@@ -26,12 +26,12 @@ const educacionData = ref(educacion)
 
 <style scoped>
 :root {
-  --primary: #7c3aed;
-  --primary-light: #a78bfa;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --bg-light: #f9fafb;
-  --border: #e5e7eb;
+  --primary: #00ffff;
+  --primary-claro: #93dede;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --bg-secondary: #2a2a2a;
+  --border: #333;
 }
 
 .educacion-container {
@@ -50,8 +50,9 @@ const educacionData = ref(educacion)
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-claro) 100%);
   border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
 .timeline-item {
@@ -78,36 +79,37 @@ const educacionData = ref(educacion)
   top: 0;
   width: 18px;
   height: 18px;
-  background: white;
+  background: var(--bg-secondary);
   border: 4px solid var(--primary);
   border-radius: 50%;
   transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
 }
 
 .timeline-item:hover .timeline-marker {
   transform: scale(1.3);
-  box-shadow: 0 0 0 8px rgba(124, 58, 237, 0.1);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
 }
 
 .timeline-content {
-  background: linear-gradient(135deg, #f9fafb 0%, #f3e8ff 100%);
+  background: var(--bg-secondary);
   padding: 2rem;
   border-radius: 12px;
-  border: 2px solid var(--border);
+  border: 2px solid var(--primary);
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .timeline-item:hover .timeline-content {
-  border-color: var(--primary);
-  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.15);
+  border-color: var(--primary-claro);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
   transform: translateX(10px);
 }
 
 .fecha-badge {
   display: inline-block;
-  background: var(--primary);
-  color: white;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
+  color: #000;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -119,6 +121,7 @@ const educacionData = ref(educacion)
   color: var(--primary);
   font-size: 1.4rem;
   margin: 0.5rem 0;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
 }
 
 .institucion {
@@ -142,8 +145,8 @@ const educacionData = ref(educacion)
 }
 
 .hab-tag {
-  background: var(--primary-light);
-  color: white;
+  background: var(--primary-claro);
+  color: #000;
   padding: 0.35rem 0.75rem;
   border-radius: 15px;
   font-size: 0.8rem;

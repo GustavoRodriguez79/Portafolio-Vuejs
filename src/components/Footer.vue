@@ -17,6 +17,7 @@
           <a href="#experiencia" class="quick-link">Experiencia</a>
           <a href="#proyectos" class="quick-link">Proyectos</a>
           <a href="#habilidades" class="quick-link">Habilidades</a>
+          <a href="#testimonios" class="quick-link">Testimonios</a>
           <a href="#intereses" class="quick-link">Intereses</a>
         </div>
       </div>
@@ -53,11 +54,22 @@ onMounted(() => {
 </script>
 
 <style scoped>
+:root {
+  --primary: #00ffff;
+  --primary-claro: #93dede;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --bg-primary: #1a1a1a;
+  --bg-darker: #0f0f0f;
+  --border: #333;
+}
+
 .footer {
-  background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
-  color: #e5e7eb;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-darker) 100%);
+  color: var(--text-secondary);
   padding: 4rem 2rem 2rem;
   margin-top: 5rem;
+  border-top: 2px solid var(--primary);
 }
 
 .footer-content {
@@ -70,10 +82,11 @@ onMounted(() => {
 }
 
 .footer-section h4 {
-  color: #a78bfa;
+  color: var(--primary);
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
   font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
 }
 
 .contact-links {
@@ -83,7 +96,7 @@ onMounted(() => {
 }
 
 .contact-link {
-  color: #d1d5db;
+  color: var(--text-secondary);
   text-decoration: none;
   transition: all 0.3s ease;
   padding: 0.5rem 0;
@@ -98,12 +111,12 @@ onMounted(() => {
   content: '>';
   position: absolute;
   left: 0;
-  color: #a78bfa;
+  color: var(--primary);
   font-weight: bold;
 }
 
 .contact-link:hover {
-  color: #a78bfa;
+  color: var(--primary);
   transform: translateX(5px);
 }
 
@@ -114,7 +127,7 @@ onMounted(() => {
 }
 
 .quick-link {
-  color: #d1d5db;
+  color: var(--text-secondary);
   text-decoration: none;
   transition: all 0.3s ease;
   padding: 0.5rem 0;
@@ -123,8 +136,8 @@ onMounted(() => {
 }
 
 .quick-link:hover {
-  color: #a78bfa;
-  border-left-color: #a78bfa;
+  color: var(--primary);
+  border-left-color: var(--primary);
 }
 
 .social-icons {
@@ -138,28 +151,30 @@ onMounted(() => {
   justify-content: center;
   width: 45px;
   height: 45px;
-  background: rgba(124, 58, 237, 0.1);
+  background: rgba(0, 255, 255, 0.1);
   border-radius: 50%;
   font-size: 0.8rem;
   font-weight: 700;
   transition: all 0.3s ease;
   text-decoration: none;
   border: 2px solid transparent;
-  color: #a78bfa;
+  color: var(--primary);
 }
 
 .social-icon:hover {
-  background: rgba(124, 58, 237, 0.3);
-  border-color: #a78bfa;
+  background: rgba(0, 255, 255, 0.2);
+  border-color: var(--primary);
   transform: translateY(-3px);
-  color: white;
+  color: var(--primary-claro);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
 }
 
 .footer-divider {
   max-width: 1200px;
   margin: 0 auto 2rem;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
 }
 
 .footer-bottom {
@@ -169,7 +184,7 @@ onMounted(() => {
 }
 
 .footer-bottom p {
-  color: #9ca3af;
+  color: var(--text-secondary);
   margin: 0.5rem 0;
   font-size: 0.9rem;
 }
@@ -211,7 +226,7 @@ onMounted(() => {
 
   .quick-link:hover {
     border-left: none;
-    border-bottom-color: #a78bfa;
+    border-bottom-color: var(--primary);
   }
 
   .social-icons {
