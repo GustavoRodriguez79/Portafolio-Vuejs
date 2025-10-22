@@ -67,7 +67,7 @@ import Footer from './components/Footer.vue'
 </script>
 
 <style>
-/* VARIABLES DE TEMA - IGUAL AL ORIGINAL */
+/* VARIABLES DE TEMA - PALETA UNIFORME */
 :root {
   --bg-primary: #111111;
   --bg-secondary: #1a1a1a;
@@ -110,7 +110,7 @@ main {
   padding: 2rem 1rem;
 }
 
-/* HERO SECTION - IGUAL AL ORIGINAL */
+/* HERO SECTION */
 .hero {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%),
     url('https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
@@ -135,7 +135,7 @@ main {
 .titulo {
   font-size: 3rem;
   margin: 0;
-  color: #93dede;
+  color: var(--accent-secondary);
   animation: fadeIn 2s ease-in-out;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
@@ -151,38 +151,39 @@ main {
 
 /* BOTONES */
 .btn {
-  background: #11cccc;
+  background: var(--accent-primary);
   color: #000;
   padding: 1rem 2rem;
   font-weight: bold;
   text-decoration: none;
-  border: 2px solid #015050;
+  border: 2px solid var(--accent-primary);
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(17, 204, 204, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 255, 255, 0.3);
   transition: 0.3s;
   display: inline-block;
   font-size: 1.1rem;
 }
 
 .btn:hover {
-  background: #009999;
-  box-shadow: 0 6px 20px rgba(17, 204, 204, 0.4);
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+  box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
   transform: translateY(-2px);
 }
 
-/* SECCIONES - EXACTAS AL ORIGINAL */
+/* SECCIONES */
 .seccion {
   background: var(--bg-secondary);
   margin: 2rem auto;
   max-width: 1000px;
   padding: 4rem 2rem;
-  border-left: 5px solid #00ffff;
+  border-left: 5px solid var(--accent-primary);
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .seccion h2 {
-  color: #00ffff;
+  color: var(--accent-primary);
   font-size: 2.5rem;
   margin-bottom: 2rem;
   display: flex;

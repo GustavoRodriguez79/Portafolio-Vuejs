@@ -55,6 +55,7 @@ const tecnologiasConIconos = computed(() => [
   --text-primary: #ffffff;
   --text-secondary: #cccccc;
   --bg-secondary: #2a2a2a;
+  --bg-primary: #1a1a1a;
   --border: #333;
 }
 

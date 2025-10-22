@@ -4,30 +4,48 @@
       <div class="footer-section">
         <h4>Contacto</h4>
         <div class="contact-links">
-          <a :href="`mailto:${contactoData.email}`" class="contact-link">Email</a>
-          <a :href="contactoData.linkedin" target="_blank" rel="noopener noreferrer" class="contact-link">LinkedIn</a>
-          <a :href="contactoData.github" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub</a>
+          <a :href="`mailto:${contactoData.email}`" class="contact-link">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+          <a :href="contactoData.linkedin" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a :href="contactoData.github" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
         </div>
       </div>
 
       <div class="footer-section">
-        <h4>Enlaces Rapidos</h4>
+        <h4>Enlaces Rápidos</h4>
         <div class="quick-links">
-          <a href="#educacion" class="quick-link">Educacion</a>
+          <a href="#sobremi" class="quick-link">Sobre mí</a>
+          <a href="#educacion" class="quick-link">Educación</a>
           <a href="#experiencia" class="quick-link">Experiencia</a>
           <a href="#proyectos" class="quick-link">Proyectos</a>
           <a href="#habilidades" class="quick-link">Habilidades</a>
           <a href="#testimonios" class="quick-link">Testimonios</a>
-          <a href="#intereses" class="quick-link">Intereses</a>
         </div>
       </div>
 
       <div class="footer-section">
-        <h4>Sigueme</h4>
+        <h4>Sígueme</h4>
         <div class="social-icons">
-          <a :href="contactoData.instagram" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram">IG</a>
-          <a :href="contactoData.facebook" target="_blank" rel="noopener noreferrer" class="social-icon" title="Facebook">FB</a>
-          <a href="#" class="social-icon" title="Volver al inicio">UP</a>
+          <a :href="contactoData.instagram" target="_blank" rel="noopener noreferrer" class="social-icon instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a :href="contactoData.facebook" target="_blank" rel="noopener noreferrer" class="social-icon facebook" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a :href="contactoData.linkedin" target="_blank" rel="noopener noreferrer" class="social-icon linkedin" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a :href="contactoData.github" target="_blank" rel="noopener noreferrer" class="social-icon github" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a :href="`mailto:${contactoData.email}`" class="social-icon gmail" title="Gmail">
+            <i class="fas fa-envelope"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -35,8 +53,8 @@
     <div class="footer-divider"></div>
 
     <div class="footer-bottom">
-      <p>{{ currentYear }} Gustavo Ariel Rodriguez. Todos los derechos reservados.</p>
-      <p class="footer-credit">Desarrollado con Vue.js</p>
+      <p>© {{ currentYear }} Gustavo Ariel Rodriguez. Todos los derechos reservados.</p>
+      <p class="footer-credit">Desarrollado con <i class="fab fa-vuejs"></i> Vue.js</p>
     </div>
   </footer>
 </template>
@@ -102,22 +120,22 @@ onMounted(() => {
   padding: 0.5rem 0;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  position: relative;
-  padding-left: 1.5rem;
+  gap: 0.75rem;
+  font-size: 0.95rem;
 }
 
-.contact-link::before {
-  content: '>';
-  position: absolute;
-  left: 0;
+.contact-link i {
   color: var(--primary);
-  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .contact-link:hover {
   color: var(--primary);
   transform: translateX(5px);
+}
+
+.contact-link:hover i {
+  color: var(--primary-claro);
 }
 
 .quick-links {
@@ -133,6 +151,7 @@ onMounted(() => {
   padding: 0.5rem 0;
   border-left: 2px solid transparent;
   padding-left: 0.75rem;
+  font-size: 0.95rem;
 }
 
 .quick-link:hover {
@@ -143,30 +162,85 @@ onMounted(() => {
 .social-icons {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .social-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
-  background: rgba(0, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 1.3rem;
   transition: all 0.3s ease;
   text-decoration: none;
-  border: 2px solid transparent;
-  color: var(--primary);
+  border: 2px solid;
+  color: #fff;
+}
+
+.social-icon.instagram {
+  border-color: #E4405F;
+  background: rgba(228, 64, 95, 0.1);
+  color: #E4405F;
+}
+
+.social-icon.instagram:hover {
+  background: #E4405F;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(228, 64, 95, 0.5);
+}
+
+.social-icon.facebook {
+  border-color: #1877F2;
+  background: rgba(24, 119, 242, 0.1);
+  color: #1877F2;
+}
+
+.social-icon.facebook:hover {
+  background: #1877F2;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(24, 119, 242, 0.5);
+}
+
+.social-icon.linkedin {
+  border-color: #0077B5;
+  background: rgba(0, 119, 181, 0.1);
+  color: #0077B5;
+}
+
+.social-icon.linkedin:hover {
+  background: #0077B5;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0, 119, 181, 0.5);
+}
+
+.social-icon.github {
+  border-color: #333;
+  background: rgba(51, 51, 51, 0.1);
+  color: #fff;
+}
+
+.social-icon.github:hover {
+  background: #333;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.social-icon.gmail {
+  border-color: #EA4335;
+  background: rgba(234, 67, 53, 0.1);
+  color: #EA4335;
+}
+
+.social-icon.gmail:hover {
+  background: #EA4335;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(234, 67, 53, 0.5);
 }
 
 .social-icon:hover {
-  background: rgba(0, 255, 255, 0.2);
-  border-color: var(--primary);
   transform: translateY(-3px);
-  color: var(--primary-claro);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
 }
 
 .footer-divider {
@@ -196,6 +270,11 @@ onMounted(() => {
   gap: 0.5rem;
 }
 
+.footer-credit i {
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
 @media (max-width: 768px) {
   .footer {
     padding: 3rem 1.5rem 1.5rem;
@@ -208,19 +287,19 @@ onMounted(() => {
     text-align: center;
   }
 
-  .contact-link {
-    justify-content: center;
+  .contact-links {
+    align-items: center;
   }
 
-  .contact-link::before {
-    left: calc(50% - 3rem);
+  .quick-links {
+    align-items: center;
   }
 
   .quick-link {
-    padding-left: 0;
     border-left: none;
     border-bottom: 2px solid transparent;
     padding-bottom: 0.5rem;
+    padding-left: 0;
     text-align: center;
   }
 

@@ -1,6 +1,23 @@
 // src/data/datos.js
-// Archivo centralizado con toda la información del portafolio
-// Paleta: CYAN #00ffff, TURQUESA #93dede, FONDO OSCURO
+// Paleta de colores 
+export const tematico = {
+  // COLORES PRINCIPALES
+  primario: '#00ffff',           // CYAN brillante
+  primarioOscuro: '#00cccc',     // CYAN más oscuro
+  primarioClaro: '#93dede',      // TURQUESA/CYAN claro
+  secundario: '#00ffff',
+  acento: '#93dede',
+  
+  // TEXTOS
+  textoBase: '#ffffff',          // Blanco para fondo oscuro
+  textoSecundario: '#cccccc',    // Gris claro
+  
+  // FONDOS
+  bgPrimario: '#111111',         // Fondo muy oscuro
+  bgSecundario: '#1a1a1a',       // Fondo oscuro
+  bgTerciario: '#2a2a2a',        // Fondo ligeramente más claro
+  borde: '#333333'
+}
 
 export const datosPersonales = {
   nombre: 'Gustavo Ariel Rodriguez',
@@ -315,20 +332,4 @@ export const contacto = {
   instagram: 'https://instagram.com/garodrifornes79',
   facebook: 'https://facebook.com/profile.php?id=61577538662727',
   cvPDF: 'cv.pdf'
-}
-
-export const tematico = {
-  // COLORES 
-  primario: '#00ffff',        // CYAN brillante
-  primarioOscuro: '#00cccc',  // CYAN más oscuro
-  primarioClaro: '#93dede',   // TURQUESA/CYAN claro
-  secundario: '#00ffff',
-  acento: '#93dede',
-  textoBase: '#ffffff',       // Blanco para fondo oscuro
-  textoSecundario: '#cccccc', // Gris claro
-  bgPrimario: '#1a1a1a',      // Fondo oscuro
-  bgSecundario: '#2a2a2a',    // Fondo un poco más claro
-  bgLight: '#111111',
-  bgBlanco: '#0a0a0a',
-  borde: '#333'
 }

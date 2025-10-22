@@ -13,7 +13,7 @@
       </div>
       <div class="navbar-actions">
         <a href="cv.pdf" class="btn-cv" download="CV_GustavoRodriguez.pdf" title="Descargar CV">
-          📥 CV
+          <i class="fas fa-download"></i> CV
         </a>
       </div>
     </div>
@@ -119,7 +119,9 @@ const navegacion = ref([
   text-decoration: none;
   font-weight: 700;
   transition: all 0.3s ease;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
 }
 

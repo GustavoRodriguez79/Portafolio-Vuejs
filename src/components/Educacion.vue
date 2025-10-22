@@ -31,6 +31,7 @@ const educacionData = ref(educacion)
   --text-primary: #ffffff;
   --text-secondary: #cccccc;
   --bg-secondary: #2a2a2a;
+  --bg-primary: #1a1a1a;
   --border: #333;
 }
 
@@ -79,7 +80,7 @@ const educacionData = ref(educacion)
   top: 0;
   width: 18px;
   height: 18px;
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
   border: 4px solid var(--primary);
   border-radius: 50%;
   transition: all 0.3s ease;
