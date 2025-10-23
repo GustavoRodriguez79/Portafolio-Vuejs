@@ -37,6 +37,9 @@ import { datosPersonales } from '@/data/datos'
 
 const datos = ref(datosPersonales)
 
+// Se utiliza CDN de devicons para obtener logos profesionales en formato SVG
+// Esto mantiene la consistencia visual con las tecnologías existentes
+// Todas las herramientas están ordenadas de forma coherente en el grid
 const tecnologiasConIconos = computed(() => [
   { id: 1, nombre: 'Python', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
   { id: 2, nombre: 'JavaScript', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
@@ -44,7 +47,12 @@ const tecnologiasConIconos = computed(() => [
   { id: 4, nombre: 'HTML5', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
   { id: 5, nombre: 'CSS3', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
   { id: 6, nombre: 'Git', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-  { id: 7, nombre: 'Vue.js', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' }
+  { id: 7, nombre: 'Vue.js', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
+  { id: 8, nombre: 'MySQL', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+  { id: 9, nombre: 'VSCode', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
+  { id: 10, nombre: 'PyCharm', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg' },
+  { id: 11, nombre: 'Apache NetBeans', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg' },
+  { id: 12, nombre: 'GitHub', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' }
 ])
 </script>
 

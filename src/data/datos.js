@@ -1,10 +1,16 @@
 // src/data/datos.js
-// Paleta de colores 
+// ARCHIVO CENTRAL DE DATOS DEL PORTAFOLIO
+// Este archivo contiene todos los datos que se muestran en el portafolio
+// Se utiliza en los componentes Vue.js mediante imports
+
+// ================== PALETA DE COLORES ==================
+// Define los colores principales del portafolio
+// Facilita el cambio uniforme de temas en toda la aplicación
 export const tematico = {
   // COLORES PRINCIPALES
-  primario: '#00ffff',           // CYAN brillante
-  primarioOscuro: '#00cccc',     // CYAN más oscuro
-  primarioClaro: '#93dede',      // TURQUESA/CYAN claro
+  primario: '#00ffff',           // CYAN brillante - Color principal del portafolio
+  primarioOscuro: '#00cccc',     // CYAN más oscuro - Variación para hover
+  primarioClaro: '#93dede',      // TURQUESA/CYAN claro - Color de acentos
   secundario: '#00ffff',
   acento: '#93dede',
   
@@ -19,6 +25,8 @@ export const tematico = {
   borde: '#333333'
 }
 
+// ================== DATOS PERSONALES ==================
+// Información general del usuario del portafolio
 export const datosPersonales = {
   nombre: 'Gustavo Ariel Rodriguez',
   titulo: 'Técnico en Programación',
@@ -31,20 +39,25 @@ export const datosPersonales = {
   estadisticas: [
     { numero: '2+', label: 'Años de experiencia' },
     { numero: '4+', label: 'Proyectos completados' },
-    { numero: '7+', label: 'Tecnologías dominadas' }
+    { numero: '12+', label: 'Tecnologías dominadas' }
   ]
 }
 
+// ================== TECNOLOGÍAS BÁSICAS ==================
+// Array de tecnologías con emojis (usado como respaldo visual)
 export const tecnologias = [
   { id: 1, nombre: 'Python', icon: '🐍', nivel: 'Intermedio' },
   { id: 2, nombre: 'JavaScript', icon: '⚙️', nivel: 'Intermedio' },
   { id: 3, nombre: 'Java', icon: '☕', nivel: 'Intermedio' },
-  { id: 4, nombre: 'HTML5', icon: '🏗️', nivel: 'Intermedio' },
+  { id: 4, nombre: 'HTML5', icon: '🗳️', nivel: 'Intermedio' },
   { id: 5, nombre: 'CSS3', icon: '🎨', nivel: 'Intermedio' },
   { id: 6, nombre: 'Git', icon: '📦', nivel: 'Intermedio' },
   { id: 7, nombre: 'Vue.js', icon: '💚', nivel: 'Intermedio' }
 ]
 
+// ================== EDUCACIÓN ==================
+// Información sobre la formación académica
+// Estructura: id, fecha, título, institución, descripción, habilidades adquiridas
 export const educacion = [
   {
     id: 1,
@@ -75,6 +88,9 @@ export const educacion = [
   }
 ]
 
+// ================== EXPERIENCIA ==================
+// Información sobre experiencia laboral y académica
+// Estructura: id, título, período, empresa, descripción, logros, tecnologías utilizadas
 export const experiencia = [
   {
     id: 1,
@@ -120,14 +136,18 @@ export const experiencia = [
   }
 ]
 
+// ================== PROYECTOS ==================
+// CAMBIO: Se agregó campo 'estado' para diferenciar proyectos completados de los en progreso
+// Se actualizó el enlace del primer proyecto para que abra en nueva ventana
+// Estructura: id, título, descripción, emoji, tecnologías, enlace, estado, fecha
 export const proyectos = [
   {
     id: 1,
     titulo: 'Portafolio Personal',
-    descripcion: 'Sitio web responsive desarrollado con HTML y CSS para mostrar habilidades y proyectos. Diseño moderno con animaciones suaves.',
+    descripcion: 'Sitio web responsive desarrollado con Vue.js, HTML y CSS para mostrar habilidades y proyectos. Diseño moderno con animaciones suaves y componentes reutilizables.',
     emoji: '🌐',
-    tecnologias: ['HTML5', 'CSS3', 'Responsive'],
-    enlace: '#',
+    tecnologias: ['HTML5', 'CSS3', 'Vue.js', 'JavaScript'],
+    enlace: 'http://localhost:5173',
     estado: 'Completado',
     fecha: '2025',
     imagen: ''
@@ -154,7 +174,6 @@ export const proyectos = [
     fecha: '2025',
     imagen: ''
   },
-  
   {
     id: 4,
     titulo: 'Blog con JavaScript',
@@ -165,10 +184,12 @@ export const proyectos = [
     estado: 'En Progreso',
     fecha: '2025',
     imagen: ''
-  },
-  
+  }
 ]
 
+// ================== TESTIMONIOS ==================
+// Testimonios de profesores y compañeros de estudio
+// Estructura: id, nombre, cargo, testimonio, imagen
 export const testimonios = [
   {
     id: 1,
@@ -190,9 +211,19 @@ export const testimonios = [
     cargo: 'Tutor portafolio - UTN',
     testimonio: 'Su pasión por aprender nuevas tecnologías y su metodología de trabajo ordenada lo convierten en un desarrollador con gran potencial profesional.',
     imagen: ''
+  },
+  {
+    id: 4,
+    nombre: 'Augusto Casado',
+    cargo: 'Tutor de Cátedra - UTN',
+    testimonio: 'Gustavo se destaca por su dedicación inquebrantable y su capacidad excepcional para aprender nuevas tecnologías rápidamente. Su actitud proactiva y su compromiso con la excelencia lo posicionan como un profesional de alto potencial en la industria del desarrollo web.',
+    imagen: ''
   }
 ]
 
+// ================== HABILIDADES ==================
+// Información detallada sobre competencias técnicas organizadas por categoría
+// Estructura por categoría: id, nombre, icon, skills (con nombre, nivel, porcentaje)
 export const habilidades = {
   categorias: [
     {
@@ -223,7 +254,7 @@ export const habilidades = {
       icon: '🗄️',
       skills: [
         { id: 1, nombre: 'SQL', nivel: 'Básico', porcentaje: 15 },        
-        { id: 2, nombre: 'MySQL', nivel: 'Basico', porcentaje: 35 }
+        { id: 2, nombre: 'MySQL', nivel: 'Básico', porcentaje: 35 }
       ]
     },
     {
@@ -245,10 +276,13 @@ export const habilidades = {
     { id: 3, tecnologia: 'Vue.js', icon: '💚', nivel: 'Intermedio', experiencia: '1 año', proyectos: '1+' },
     { id: 4, tecnologia: 'MySQL', icon: '🗄️', nivel: 'Básico', experiencia: '1 años', proyectos: '1+' },
     { id: 5, tecnologia: 'Git', icon: '📦', nivel: 'Intermedio', experiencia: '2 años', proyectos: '10+' },
-    { id: 6, tecnologia: 'HTML/CSS', icon: '🏗️', nivel: 'Intermedio', experiencia: '2+ años', proyectos: '8+' }
+    { id: 6, tecnologia: 'HTML/CSS', icon: '🗳️', nivel: 'Intermedio', experiencia: '2+ años', proyectos: '8+' }
   ]
 }
 
+// ================== INTERESES ==================
+// Intereses profesionales y áreas de enfoque
+// Estructura: id, título, icon, descripción, tags
 export const intereses = [
   {
     id: 1,
@@ -270,16 +304,12 @@ export const intereses = [
     icon: '✨',
     descripcion: 'Defensor de las buenas prácticas de programación, testing y mantenibilidad del código.',
     tags: ['Testing', 'Clean Code', 'Refactoring']
-  },
-  {
-    id: 4,
-    titulo: 'Comunidad Open Source',
-    icon: '🤝',
-    descripcion: 'Participación activa en proyectos open source y contribución a la comunidad de desarrolladores.',
-    tags: ['GitHub', 'Colaboración', 'Open Source']
   }
 ]
 
+// ================== OBJETIVOS PROFESIONALES ==================
+// Objetivos a corto, mediano y largo plazo
+// Estructura: id, título, descripción
 export const objetivos = [
   {
     id: 1,
@@ -303,9 +333,12 @@ export const objetivos = [
   }
 ]
 
+// ================== INFORMACIÓN DE CONTACTO ==================
+// Enlaces y datos de contacto para redes sociales y comunicación
+// Estructura: email, linkedin, github, instagram, facebook, cvPDF
 export const contacto = {
   email: 'garodrifornes79@gmail.com',
-  linkedin: 'https://linkedin.com/in/gustavo-ariel-rodríguez-fornes',
+  linkedin: 'https://linkedin.com/in/gustavo-ariel-rodríguel-fornes',
   github: 'https://github.com/GustavoRodriguez79',
   instagram: 'https://instagram.com/garodrifornes79',
   facebook: 'https://facebook.com/profile.php?id=61577538662727',

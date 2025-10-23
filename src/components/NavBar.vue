@@ -23,6 +23,7 @@
 <script setup>
 import { ref } from 'vue'
 
+// El enlace se posiciona automáticamente en el menú de navegación horizontal
 const navegacion = ref([
   { id: 1, nombre: 'Educación', enlace: '#educacion' },
   { id: 2, nombre: 'Experiencia', enlace: '#experiencia' },

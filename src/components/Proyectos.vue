@@ -5,7 +5,30 @@
         <div class="proyecto-imagen">
           <div class="imagen-placeholder">{{ proyecto.emoji }}</div>
           <div class="overlay">
-            <a v-if="proyecto.enlace" :href="proyecto.enlace" target="_blank" rel="noopener noreferrer" class="btn-ver">
+            <!-- Si es Completado Y tiene un enlace válido (no es '#'), abre en nueva ventana -->
+            <a 
+              v-if="proyecto.estado === 'Completado' && proyecto.enlace && proyecto.enlace !== '#'" 
+              :href="proyecto.enlace" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn-ver"
+            >
+              Ver Proyecto
+            </a>
+            <!-- Si es Completado pero el enlace es '#', muestra alert -->
+            <a 
+              v-else-if="proyecto.estado === 'Completado' && (!proyecto.enlace || proyecto.enlace === '#')"
+              @click.prevent="mostrarEnProgreso(proyecto.titulo)"
+              class="btn-ver"
+            >
+              Ver Proyecto
+            </a>
+            <!-- Si está En Progreso, muestra el alert -->
+            <a 
+              v-else
+              @click.prevent="mostrarEnProgreso(proyecto.titulo)"
+              class="btn-ver"
+            >
               Ver Proyecto
             </a>
           </div>
@@ -31,6 +54,10 @@ import { ref } from 'vue'
 import { proyectos } from '@/data/datos'
 
 const proyectosData = ref(proyectos)
+
+const mostrarEnProgreso = (titulo) => {
+  alert(`"${titulo}" - Proyecto en progreso. ¡Vuelve pronto!`)
+}
 </script>
 
 <style scoped>
@@ -113,6 +140,9 @@ const proyectosData = ref(proyectos)
   text-decoration: none;
   font-weight: 700;
   transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
 }
 
 .btn-ver:hover {

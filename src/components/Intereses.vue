@@ -1,6 +1,7 @@
 <template>
   <div class="intereses-container">
     <div class="intereses-grid">
+      <!--Las tarjetas se distribuyen de forma equilibrada en el diseño responsivo -->
       <div v-for="interes in interesesData" :key="interes.id" class="interes-card">
         <div class="interes-icon">{{ interes.icon }}</div>
         <h3>{{ interes.titulo }}</h3>
@@ -80,16 +81,16 @@ const objetivosData = ref(objetivos)
   animation: bounce 2s ease-in-out infinite;
 }
 
+.interes-card:nth-child(1) .interes-icon {
+  animation-delay: 0s;
+}
+
 .interes-card:nth-child(2) .interes-icon {
   animation-delay: 0.2s;
 }
 
 .interes-card:nth-child(3) .interes-icon {
   animation-delay: 0.4s;
-}
-
-.interes-card:nth-child(4) .interes-icon {
-  animation-delay: 0.6s;
 }
 
 .interes-card h3 {
@@ -166,7 +167,7 @@ const objetivosData = ref(objetivos)
   width: 45px;
   height: 45px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
-  color:#93dede;
+  color: #93dede;
   border-radius: 50%;
   font-weight: 800;
   font-size: 1.2rem;

@@ -131,7 +131,7 @@ main {
   align-items: center;
   text-align: center;
   padding: 4rem;
-  padding-bottom: 4rem;
+  padding-bottom: 1.5rem;
 }
 
 .titulo {

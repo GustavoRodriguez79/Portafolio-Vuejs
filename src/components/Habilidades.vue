@@ -38,6 +38,7 @@
                 <span class="tech-icon">{{ comp.icon }}</span>
                 {{ comp.tecnologia }}
               </td>
+              
               <td>
                 <span class="nivel-badge" :class="comp.nivel.toLowerCase()">
                   {{ comp.nivel }}
