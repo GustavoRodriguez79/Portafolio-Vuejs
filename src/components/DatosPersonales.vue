@@ -131,7 +131,7 @@ const tecnologiasConIconos = computed(() => [
   padding: 1.5rem;
   background: var(--bg-secondary);
   border-radius: 12px;
-  border: 2px solid var(--primary);
+  border: 2px solid #00ffff;
   transition: all 0.3s ease;
   cursor: pointer;
 }

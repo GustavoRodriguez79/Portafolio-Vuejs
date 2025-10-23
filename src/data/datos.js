@@ -30,7 +30,7 @@ export const datosPersonales = {
   resumen: 'Soy Técnico Universitario en Programación, egresado de la Universidad Tecnológica Nacional (UTN) - FRSR, Argentina. Me apasiona programar y desarrollar soluciones de aplicaciones web originales y personalizadas.',
   estadisticas: [
     { numero: '2+', label: 'Años de experiencia' },
-    { numero: '5+', label: 'Proyectos completados' },
+    { numero: '4+', label: 'Proyectos completados' },
     { numero: '7+', label: 'Tecnologías dominadas' }
   ]
 }
@@ -137,7 +137,7 @@ export const proyectos = [
     titulo: 'Sistema de Gestión',
     descripcion: 'Aplicación desarrollada en Python para gestión de datos con interfaz amigable. Integración con base de datos SQL para manejo persistente de información.',
     emoji: '📊',
-    tecnologias: ['Python', 'SQL', 'Tkinter'],
+    tecnologias: ['Python', 'MySQL', 'Tkinter'],
     enlace: '#',
     estado: 'En Progreso',
     fecha: '2025',
@@ -154,19 +154,9 @@ export const proyectos = [
     fecha: '2025',
     imagen: ''
   },
+  
   {
     id: 4,
-    titulo: 'Aplicación Web Interactiva',
-    descripcion: 'Proyecto SPA desarrollado con Vue.js. Incluye componentes reutilizables, gestión de estado y API REST para comunicación con backend.',
-    emoji: '💻',
-    tecnologias: ['Vue.js', 'JavaScript', 'API REST'],
-    enlace: '#',
-    estado: 'En Progreso',
-    fecha: '2025',
-    imagen: ''
-  },
-  {
-    id: 5,
     titulo: 'Blog con JavaScript',
     descripcion: 'Plataforma de blog interactiva con JavaScript vanilla. Características incluyen filtrado de artículos, búsqueda y almacenamiento local.',
     emoji: '📝',
@@ -176,17 +166,7 @@ export const proyectos = [
     fecha: '2025',
     imagen: ''
   },
-  {
-    id: 6,
-    titulo: 'API REST con Node.js',
-    descripcion: 'Backend API desarrollado con Node.js y Express. Implementación de autenticación, validación de datos y manejo de errores.',
-    emoji: '🔌',
-    tecnologias: ['Node.js', 'Express', 'MongoDB'],
-    enlace: '#',
-    estado: 'En Progreso',
-    fecha: '2025',
-    imagen: ''
-  }
+  
 ]
 
 export const testimonios = [
@@ -222,7 +202,7 @@ export const habilidades = {
       skills: [
         { id: 1, nombre: 'Python', nivel: 'Intermedio', porcentaje: 65 },
         { id: 2, nombre: 'JavaScript', nivel: 'Intermedio', porcentaje: 75 },
-        { id: 3, nombre: 'Java', nivel: 'Intermedio', porcentaje: 75 },
+        { id: 3, nombre: 'Java', nivel: 'Básico', porcentaje: 50 },
         { id: 4, nombre: 'HTML5', nivel: 'Intermedio', porcentaje: 70 },
         { id: 5, nombre: 'CSS3', nivel: 'Intermedio', porcentaje: 75 }
       ]
@@ -233,9 +213,8 @@ export const habilidades = {
       icon: '🚀',
       skills: [
         { id: 1, nombre: 'Vue.js', nivel: 'Intermedio', porcentaje: 75 },
-        { id: 2, nombre: 'React', nivel: 'Básico', porcentaje: 60 },
-        { id: 3, nombre: 'Node.js', nivel: 'Básico', porcentaje: 50 },
-        { id: 4, nombre: 'Express', nivel: 'Básico', porcentaje: 45 }
+        { id: 2, nombre: 'React', nivel: 'Básico', porcentaje: 45 },
+        { id: 3, nombre: 'Node.js', nivel: 'Básico', porcentaje: 50 }        
       ]
     },
     {
@@ -243,9 +222,8 @@ export const habilidades = {
       nombre: 'Bases de Datos',
       icon: '🗄️',
       skills: [
-        { id: 1, nombre: 'SQL', nivel: 'Intermedio', porcentaje: 70 },
-        { id: 2, nombre: 'MongoDB', nivel: 'Básico', porcentaje: 45 },
-        { id: 3, nombre: 'MySQL', nivel: 'Avanzado', porcentaje: 80 }
+        { id: 1, nombre: 'SQL', nivel: 'Básico', porcentaje: 15 },        
+        { id: 2, nombre: 'MySQL', nivel: 'Basico', porcentaje: 35 }
       ]
     },
     {
@@ -253,21 +231,21 @@ export const habilidades = {
       nombre: 'Herramientas & DevOps',
       icon: '⚙️',
       skills: [
-        { id: 1, nombre: 'Git/GitHub', nivel: 'Avanzado', porcentaje: 85 },
-        { id: 2, nombre: 'VSCode', nivel: 'Avanzado', porcentaje: 90 },
-        { id: 3, nombre: 'Linux', nivel: 'Intermedio', porcentaje: 70 },
-        { id: 4, nombre: 'Docker', nivel: 'Básico', porcentaje: 55 }
+        { id: 1, nombre: 'Git/GitHub', nivel: 'Intermedio', porcentaje: 65 },
+        { id: 2, nombre: 'VSCode', nivel: 'Intermedio', porcentaje: 70 },
+        { id: 3, nombre: 'PyCharm', nivel: 'Intermedio', porcentaje: 55 },
+        { id: 4, nombre: 'Apache NetBeans', nivel: 'Básico', porcentaje: 50 }
       ]
     }
   ],
   
   competencias: [
-    { id: 1, tecnologia: 'Python', icon: '🐍', nivel: 'Intermedio', experiencia: '1 años', proyectos: '5+' },
-    { id: 2, tecnologia: 'JavaScript', icon: '⚙️', nivel: 'Intermedio', experiencia: '2 años', proyectos: '5+' },
-    { id: 3, tecnologia: 'Vue.js', icon: '💚', nivel: 'Intermedio', experiencia: '1 año', proyectos: '2+' },
-    { id: 4, tecnologia: 'MySQL', icon: '🗄️', nivel: 'Avanzado', experiencia: '1 años', proyectos: '4+' },
-    { id: 5, tecnologia: 'Git', icon: '📦', nivel: 'Avanzado', experiencia: '2 años', proyectos: '10+' },
-    { id: 6, tecnologia: 'HTML/CSS', icon: '🏗️', nivel: 'Avanzado', experiencia: '2+ años', proyectos: '8+' }
+    { id: 1, tecnologia: 'Python', icon: '🐍', nivel: 'Intermedio', experiencia: '1 años', proyectos: '2+' },
+    { id: 2, tecnologia: 'JavaScript', icon: '⚙️', nivel: 'Intermedio', experiencia: '2 años', proyectos: '3+' },
+    { id: 3, tecnologia: 'Vue.js', icon: '💚', nivel: 'Intermedio', experiencia: '1 año', proyectos: '1+' },
+    { id: 4, tecnologia: 'MySQL', icon: '🗄️', nivel: 'Básico', experiencia: '1 años', proyectos: '1+' },
+    { id: 5, tecnologia: 'Git', icon: '📦', nivel: 'Intermedio', experiencia: '2 años', proyectos: '10+' },
+    { id: 6, tecnologia: 'HTML/CSS', icon: '🏗️', nivel: 'Intermedio', experiencia: '2+ años', proyectos: '8+' }
   ]
 }
 

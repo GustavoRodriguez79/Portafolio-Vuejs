@@ -93,7 +93,7 @@ const educacionData = ref(educacion)
 }
 
 .timeline-content {
-  background: var(--bg-secondary);
+  background: #2a2a2a;
   padding: 2rem;
   border-radius: 12px;
   border: 2px solid var(--primary);
@@ -110,7 +110,7 @@ const educacionData = ref(educacion)
 .fecha-badge {
   display: inline-block;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
-  color: #000;
+  color: #ffffff;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -126,14 +126,14 @@ const educacionData = ref(educacion)
 }
 
 .institucion {
-  color: var(--text-secondary);
+  color: #ffffff;
   font-weight: 600;
   margin: 0.5rem 0;
   font-size: 0.95rem;
 }
 
 .descripcion {
-  color: var(--text-secondary);
+  color: #cccccc;
   margin: 1rem 0;
   line-height: 1.7;
 }
@@ -146,8 +146,8 @@ const educacionData = ref(educacion)
 }
 
 .hab-tag {
-  background: var(--primary-claro);
-  color: #000;
+  background: #93dede;
+  color: #000000;
   padding: 0.35rem 0.75rem;
   border-radius: 15px;
   font-size: 0.8rem;

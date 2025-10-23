@@ -44,7 +44,7 @@ const experienciaData = ref(experiencia)
 }
 
 .exp-card {
-  background: var(--bg-secondary);
+  background: #2a2a2a;
   padding: 2.5rem;
   border-radius: 15px;
   border: 2px solid var(--primary);
@@ -87,7 +87,7 @@ const experienciaData = ref(experiencia)
 
 .periodo {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
-  color: #000;
+  color:#ffffff;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -139,8 +139,8 @@ const experienciaData = ref(experiencia)
 }
 
 .tech-badge {
-  background: var(--primary-claro);
-  color: #000;
+  background: #93dede;;
+  color: #000000;
   padding: 0.35rem 0.75rem;
   border-radius: 15px;
   font-size: 0.8rem;

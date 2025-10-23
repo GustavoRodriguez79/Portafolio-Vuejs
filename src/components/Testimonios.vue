@@ -43,7 +43,7 @@ const testimoniosData = ref(testimonios)
 }
 
 .testimonio-card {
-  background: var(--bg-secondary);
+  background: #2a2a2a;
   padding: 2rem;
   border-radius: 12px;
   border-left: 4px solid var(--primary);

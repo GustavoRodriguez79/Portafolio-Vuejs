@@ -113,7 +113,7 @@ main {
 /* HERO SECTION */
 .hero {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%),
-    url('https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+    url('https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070') center/cover no-repeat;
   background-blend-mode: overlay;
   height: 100vh;
   display: flex;
@@ -127,13 +127,15 @@ main {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
   text-align: center;
-  padding: 2rem;
+  padding: 4rem;
+  padding-bottom: 4rem;
 }
 
 .titulo {
-  font-size: 3rem;
+  font-size: 4rem;
   margin: 0;
   color: var(--accent-secondary);
   animation: fadeIn 2s ease-in-out;
@@ -145,23 +147,25 @@ main {
   font-size: 1.2rem;
   color: #eee;
   margin: 0 0 2rem;
-  max-width: 600px;
+  max-width: 700px;
   margin-inline: auto;
 }
 
 /* BOTONES */
 .btn {
   background: var(--accent-primary);
-  color: #000;
-  padding: 1rem 2rem;
+  color: #000000;
+  padding: 1rem 8rem;
   font-weight: bold;
   text-decoration: none;
-  border: 2px solid var(--accent-primary);
-  border-radius: 8px;
+  border: 5px solid var(--accent-primary);
+  border-radius: 35px;
   box-shadow: 0 4px 8px rgba(0, 255, 255, 0.3);
   transition: 0.3s;
   display: inline-block;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
+  min-width: 90%;  
+  text-align: center;
 }
 
 .btn:hover {

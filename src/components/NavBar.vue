@@ -113,12 +113,12 @@ const navegacion = ref([
 
 .btn-cv {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
-  color: #000;
+  color: var(--primary);
   padding: 0.75rem 1.5rem;
   border-radius: 25px;
   text-decoration: none;
   font-weight: 700;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;

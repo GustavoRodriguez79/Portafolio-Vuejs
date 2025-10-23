@@ -57,7 +57,7 @@ const objetivosData = ref(objetivos)
 }
 
 .interes-card {
-  background: var(--bg-secondary);
+  background: #2a2a2a;
   padding: 2rem;
   border-radius: 15px;
   border: 2px solid var(--primary);
@@ -114,8 +114,8 @@ const objetivosData = ref(objetivos)
 }
 
 .tag {
-  background: var(--primary-claro);
-  color: #000;
+  background: #93dede;
+  color: #000000;
   padding: 0.35rem 0.75rem;
   border-radius: 15px;
   font-size: 0.75rem;
@@ -148,8 +148,8 @@ const objetivosData = ref(objetivos)
   display: flex;
   gap: 1.5rem;
   padding: 1.5rem;
-  background: #1a1a1a;
-  border-radius: 12px;
+  background: #2a2a2a;
+  border-radius: 15px;
   border-left: 4px solid var(--primary);
   transition: all 0.3s ease;
 }
@@ -166,7 +166,7 @@ const objetivosData = ref(objetivos)
   width: 45px;
   height: 45px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
-  color: #000;
+  color:#93dede;
   border-radius: 50%;
   font-weight: 800;
   font-size: 1.2rem;

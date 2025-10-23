@@ -55,8 +55,8 @@ const proyectosData = ref(proyectos)
 }
 
 .proyecto-card {
-  background: var(--bg-secondary);
-  border-radius: 15px;
+  background: #2a2a2a;
+  border-radius: 25px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;

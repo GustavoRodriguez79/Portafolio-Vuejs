@@ -84,9 +84,9 @@ const habilidadesData = ref(habilidades)
 }
 
 .categoria-card {
-  background: var(--bg-secondary);
+  background: #2a2a2a;
   padding: 2rem;
-  border-radius: 15px;
+  border-radius: 25px;
   border: 2px solid var(--primary);
   transition: all 0.3s ease;
 }
@@ -139,10 +139,10 @@ const habilidadesData = ref(habilidades)
 }
 
 .skill-level {
-  background: var(--primary-claro);
+  background: #93dede;
   color: #000;
-  padding: 0.25rem 0.75rem;
-  border-radius: 15px;
+  padding: 0.35rem 0.75rem;
+  border-radius: 45%;
   font-size: 0.75rem;
   font-weight: 700;
 }
@@ -156,8 +156,8 @@ const habilidadesData = ref(habilidades)
 
 .skill-progress {
   height: 100%;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-claro) 100%);
-  border-radius: 10px;
+  background: #00ffff;
+  border-radius: 25%;
   transition: width 0.8s ease;
   animation: expandWidth 1s ease-out;
   box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
@@ -172,7 +172,7 @@ const habilidadesData = ref(habilidades)
 .competencias-tabla {
   background: var(--bg-secondary);
   padding: 2.5rem;
-  border-radius: 15px;
+  border-radius: 25px;
   border: 2px solid var(--primary);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
