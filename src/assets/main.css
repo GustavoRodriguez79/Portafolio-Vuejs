@@ -1,53 +1,69 @@
-* ESTILOS GLOBALES - main.css */
-/* Paleta uniforme del Portafolio */
+/* ============================================================
+   ESTILOS GLOBALES - main.css
+   Autor: [Tu nombre o iniciales]
+   Descripción: Hoja de estilos base para todo el Portafolio.
+   Define la paleta de colores, tipografía, comportamiento de
+   elementos HTML y utilidades de diseño responsive.
+   ============================================================ */
 
+/* Reinicio básico de márgenes y paddings para evitar inconsistencias entre navegadores */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ------------------------------------------------------------
+   VARIABLES GLOBALES - Paleta uniforme del Portafolio
+   ------------------------------------------------------------ */
 :root {
-  /* COLORES PRINCIPALES - CYAN Y TURQUESA */
-  --primary: #00ffff;
-  --primary-dark: #00cccc;
-  --primary-light: #93dede;
-  --secondary: #00ffff;
-  --accent: #93dede;
-  
-  /* TEXTOS */
-  --text-primary: #ffffff;
-  --text-secondary: #cccccc;
-  
-  /* FONDOS */
-  --bg-light: #2a2a2a;
-  --bg-white: #1a1a1a;
-  --bg-primary: #111111;
-  --border: #333333;
-  
-  /* ESTADOS */
+  /* COLORES PRINCIPALES - Tonos de cian y turquesa */
+  --primary: #00ffff;         /* Color principal vibrante */
+  --primary-dark: #00cccc;    /* Versión oscura del color principal */
+  --primary-light: #93dede;   /* Versión clara para efectos hover */
+  --secondary: #00ffff;       /* Color secundario, igual que el primario */
+  --accent: #93dede;          /* Color de acento */
+
+  /* COLORES DE TEXTO */
+  --text-primary: #ffffff;    /* Texto principal blanco */
+  --text-secondary: #cccccc;  /* Texto secundario gris claro */
+
+  /* COLORES DE FONDO */
+  --bg-light: #2a2a2a;        /* Fondo gris oscuro */
+  --bg-white: #1a1a1a;        /* Fondo negro suave */
+  --bg-primary: #111111;      /* Fondo principal más oscuro */
+  --border: #333333;          /* Color de bordes */
+
+  /* COLORES PARA ESTADOS (éxito, advertencia, error) */
   --success: #00ff88;
   --warning: #f59e0b;
   --danger: #ef4444;
 }
 
+/* Comportamiento de scroll suave en toda la página */
 html {
   scroll-behavior: smooth;
 }
 
+/* ------------------------------------------------------------
+   ESTILOS BASE DEL BODY
+   ------------------------------------------------------------ */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--text-primary);
-  background-color: var(--bg-primary);
-  line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía moderna y legible */
+  color: var(--text-primary);      /* Texto principal blanco */
+  background-color: var(--bg-primary); /* Fondo oscuro uniforme */
+  line-height: 1.6;                /* Altura de línea cómoda para lectura */
 }
 
-/* Tipografía */
+/* ------------------------------------------------------------
+   TITULOS Y TIPOGRAFÍA
+   ------------------------------------------------------------ */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
+  font-weight: 700; /* Negrita para jerarquía visual */
+  line-height: 1.2; /* Espaciado compacto entre líneas */
 }
 
+/* Tamaños de fuente progresivos para jerarquía visual */
 h1 { font-size: 3rem; }
 h2 { font-size: 2.25rem; }
 h3 { font-size: 1.875rem; }
@@ -55,39 +71,47 @@ h4 { font-size: 1.5rem; }
 h5 { font-size: 1.25rem; }
 h6 { font-size: 1rem; }
 
-/* Enlaces */
+/* ------------------------------------------------------------
+   ENLACES
+   ------------------------------------------------------------ */
 a {
-  color: var(--primary);
-  text-decoration: none;
-  transition: color 0.3s ease;
+  color: var(--primary);                 /* Color cian por defecto */
+  text-decoration: none;                 /* Sin subrayado */
+  transition: color 0.3s ease;           /* Suavidad al cambiar color */
 }
 
 a:hover {
-  color: var(--primary-light);
+  color: var(--primary-light);           /* Efecto al pasar el mouse */
 }
 
-/* Listas */
+/* ------------------------------------------------------------
+   LISTAS
+   ------------------------------------------------------------ */
 li {
-  list-style: none;
+  list-style: none;                      /* Elimina los puntos de lista */
 }
 
 ul, ol {
-  list-style-position: inside;
+  list-style-position: inside;           /* Mantiene el sangrado interno */
 }
 
-/* Botones */
+/* ------------------------------------------------------------
+   BOTONES
+   ------------------------------------------------------------ */
 button, .btn, [role="button"] {
-  font-family: inherit;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  font-family: inherit;                  /* Hereda fuente del body */
+  cursor: pointer;                       /* Cambia cursor al estilo clicable */
+  transition: all 0.3s ease;             /* Animación suave */
 }
 
 button:disabled, .btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+  opacity: 0.6;                          /* Botón atenuado */
+  cursor: not-allowed;                   /* Cursor prohibido */
 }
 
-/* Inputs y Textareas */
+/* ------------------------------------------------------------
+   CAMPOS DE FORMULARIO (inputs, textarea, select)
+   ------------------------------------------------------------ */
 input, textarea, select {
   font-family: inherit;
   padding: 0.75rem;
@@ -96,16 +120,19 @@ input, textarea, select {
   transition: border-color 0.3s ease;
 }
 
+/* Efecto al enfocar los campos */
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
 }
 
-/* Tablas */
+/* ------------------------------------------------------------
+   TABLAS
+   ------------------------------------------------------------ */
 table {
-  width: 100%;
-  border-collapse: collapse;
+  width: 100%;                           /* Ocupa todo el ancho */
+  border-collapse: collapse;             /* Une los bordes */
 }
 
 th {
@@ -121,11 +148,14 @@ td {
   border-bottom: 1px solid var(--border);
 }
 
+/* Resalta filas al pasar el mouse */
 tr:hover {
   background-color: var(--bg-light);
 }
 
-/* Códigos */
+/* ------------------------------------------------------------
+   BLOQUES DE CÓDIGO
+   ------------------------------------------------------------ */
 code {
   background-color: var(--bg-light);
   color: var(--primary);
@@ -138,7 +168,7 @@ pre {
   background-color: var(--bg-light);
   padding: 1rem;
   border-radius: 8px;
-  overflow-x: auto;
+  overflow-x: auto;                      /* Permite desplazamiento horizontal */
   margin: 1rem 0;
 }
 
@@ -148,7 +178,10 @@ pre code {
   padding: 0;
 }
 
-/* Scrollbar personalizada */
+/* ------------------------------------------------------------
+   SCROLLBAR PERSONALIZADA
+   ------------------------------------------------------------ */
+/* Navegadores WebKit (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -173,7 +206,9 @@ pre code {
   scrollbar-width: thin;
 }
 
-/* Selección de texto */
+/* ------------------------------------------------------------
+   SELECCIÓN DE TEXTO
+   ------------------------------------------------------------ */
 ::selection {
   background-color: var(--primary);
   color: #000;
@@ -184,7 +219,9 @@ pre code {
   color: #000;
 }
 
-/* Utilidades de Display */
+/* ------------------------------------------------------------
+   UTILIDADES DE DISPLAY Y TEXTO
+   ------------------------------------------------------------ */
 .flex { display: flex; }
 .flex-col { display: flex; flex-direction: column; }
 .flex-center { display: flex; align-items: center; justify-content: center; }
@@ -201,7 +238,62 @@ pre code {
 .opacity-50 { opacity: 0.5; }
 .opacity-75 { opacity: 0.75; }
 
-/* Responsive Media Queries Base */
+ /* ============================================================
+   ESTILOS UNIFICADOS PARA TAGS, BADGES Y CHIPS
+   Descripción:
+   Define efectos hover consistentes para todas las etiquetas
+   interactivas del portafolio (habilidades, experiencia,
+   proyectos, educaciÃ³n e intereses).
+
+   Características:
+   - Transición suave de 0.3s
+   - Cambio de color a cian brillante (#00ffff)
+   - Efecto de sombra luminosa (glow)
+   - Elevación visual (translateY -2px)
+   - Cursor pointer para indicar interactividad
+
+   Clases aplicadas:
+   - .hab-tag (Habilidades y Educación)
+   - .tech-badge (Experiencia)
+   - .tech-chip (Proyectos)
+   - .tag (Intereses)
+
+   ============================================================ */
+
+/* Propiedades base para todas las etiquetas interactivas */
+.hab-tag,
+.tech-badge,
+.tech-chip,
+.tag {
+  transition: all 0.3s ease;        /* Transición suave de todas las propiedades */
+  cursor: pointer;                  /* Indica que el elemento es interactivo */
+  display: inline-block;            /* Permite transformaciones */
+}
+
+/* Efecto hover para etiquetas de habilidades, experiencia e intereses */
+.hab-tag:hover,
+.tech-badge:hover,
+.tag:hover {
+  background: var(--primary);       /* Cambio a color cian principal */
+  color: var(--text-primary);       /* Texto blanco para contraste */
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.5); /* Efecto de brillo cian */
+  transform: translateY(-2px);      /* Elevación suave */
+}
+
+/* Efecto hover específico para chips de proyectos (con borde) */
+.tech-chip:hover {
+  background: var(--primary);       /* Fondo cambia a cian */
+  color: #000000;                   /* Texto a negro para contraste */
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.5); /* Efecto de brillo */
+  border-color: var(--primary-light); /* Borde a color claro */
+  transform: translateY(-2px);      /* Elevación igual que otros */
+
+
+
+/* ------------------------------------------------------------
+   MEDIA QUERIES RESPONSIVE
+   Ajustan la tipografía y espaciados según el tamaño de pantalla
+   ------------------------------------------------------------ */
 @media (max-width: 1024px) {
   html { font-size: 16px; }
   h1 { font-size: 2.5rem; }
@@ -214,7 +306,7 @@ pre code {
   h1 { font-size: 2rem; }
   h2 { font-size: 1.5rem; }
   h3 { font-size: 1.25rem; }
-  
+
   body {
     padding: 0;
     margin: 0;
@@ -226,13 +318,15 @@ pre code {
   h1 { font-size: 1.5rem; }
   h2 { font-size: 1.25rem; }
   h3 { font-size: 1rem; }
-  
+
   input, textarea, select {
-    font-size: 16px; 
+    font-size: 16px; /* Tamaño legible en móviles */
   }
 }
 
-/* Espaciado */
+/* ------------------------------------------------------------
+   UTILIDADES DE ESPACIADO (márgenes y paddings)
+   ------------------------------------------------------------ */
 .mt-1 { margin-top: 0.5rem; }
 .mt-2 { margin-top: 1rem; }
 .mt-3 { margin-top: 1.5rem; }

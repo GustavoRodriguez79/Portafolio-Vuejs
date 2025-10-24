@@ -209,7 +209,7 @@ Si solo necesitas visualizar el portafolio sin servidor:
 
 ### 7. ✅ Documentación Completa
 - Comentarios detallados en español en todos los componentes
-- Explicación clara de cada cambio realizado
+- Explicación clara
 - Código legible incluso para principiantes
 
 ---

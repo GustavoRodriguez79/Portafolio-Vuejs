@@ -13,11 +13,11 @@ export const tematico = {
   primarioClaro: '#93dede',      // TURQUESA/CYAN claro - Color de acentos
   secundario: '#00ffff',
   acento: '#93dede',
-  
+
   // TEXTOS
   textoBase: '#ffffff',          // Blanco para fondo oscuro
   textoSecundario: '#cccccc',    // Gris claro
-  
+
   // FONDOS
   bgPrimario: '#111111',         // Fondo muy oscuro
   bgSecundario: '#1a1a1a',       // Fondo oscuro
@@ -34,7 +34,7 @@ export const datosPersonales = {
   email: 'garodrifornes79@gmail.com',
   telefono: '+54 9 2622655607',
   ubicacion: 'Tunuyán, Mendoza, Argentina',
-  foto: 'fotoGustavo.jpg',
+  foto: 'fotoGustavo.png',
   resumen: 'Soy Técnico Universitario en Programación, egresado de la Universidad Tecnológica Nacional (UTN) - FRSR, Argentina. Me apasiona programar y desarrollar soluciones de aplicaciones web originales y personalizadas.',
   estadisticas: [
     { numero: '2+', label: 'Años de experiencia' },
@@ -245,7 +245,7 @@ export const habilidades = {
       skills: [
         { id: 1, nombre: 'Vue.js', nivel: 'Intermedio', porcentaje: 75 },
         { id: 2, nombre: 'React', nivel: 'Básico', porcentaje: 45 },
-        { id: 3, nombre: 'Node.js', nivel: 'Básico', porcentaje: 50 }        
+        { id: 3, nombre: 'Node.js', nivel: 'Básico', porcentaje: 50 }
       ]
     },
     {
@@ -253,7 +253,7 @@ export const habilidades = {
       nombre: 'Bases de Datos',
       icon: '🗄️',
       skills: [
-        { id: 1, nombre: 'SQL', nivel: 'Básico', porcentaje: 15 },        
+        { id: 1, nombre: 'SQL', nivel: 'Básico', porcentaje: 15 },
         { id: 2, nombre: 'MySQL', nivel: 'Básico', porcentaje: 35 }
       ]
     },
@@ -269,11 +269,11 @@ export const habilidades = {
       ]
     }
   ],
-  
+
   competencias: [
     { id: 1, tecnologia: 'Python', icon: '🐍', nivel: 'Intermedio', experiencia: '1 años', proyectos: '2+' },
-    { id: 2, tecnologia: 'JavaScript', icon: '⚙️', nivel: 'Intermedio', experiencia: '2 años', proyectos: '3+' },
-    { id: 3, tecnologia: 'Vue.js', icon: '💚', nivel: 'Intermedio', experiencia: '1 año', proyectos: '1+' },
+    { id: 2, tecnologia: 'JavaScript', icon: '⚙️', nivel: 'Intermedio', experiencia: '2 años', proyectos: '5+' },
+    { id: 3, tecnologia: 'Vue.js', icon: '💚', nivel: 'Intermedio', experiencia: '1 año', proyectos: '3+' },
     { id: 4, tecnologia: 'MySQL', icon: '🗄️', nivel: 'Básico', experiencia: '1 años', proyectos: '1+' },
     { id: 5, tecnologia: 'Git', icon: '📦', nivel: 'Intermedio', experiencia: '2 años', proyectos: '10+' },
     { id: 6, tecnologia: 'HTML/CSS', icon: '🗳️', nivel: 'Intermedio', experiencia: '2+ años', proyectos: '8+' }
@@ -321,13 +321,9 @@ export const objetivos = [
     titulo: 'Especializarme en Vue.js y React',
     descripcion: 'Profundizar en los principales frameworks modernos de JavaScript para el desarrollo web.'
   },
+
   {
     id: 3,
-    titulo: 'Contribuir a Proyectos Open Source',
-    descripcion: 'Participar activamente en proyectos de código abierto y ayudar a la comunidad de desarrolladores.'
-  },
-  {
-    id: 4,
     titulo: 'Obtener Certificaciones Profesionales',
     descripcion: 'Completar certificaciones relevantes que validen mis habilidades técnicas en la industria.'
   }

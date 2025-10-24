@@ -1,28 +1,70 @@
+<!-- ============================================================
+  COMPONENTE: SobreMi.vue
+  Descripción:
+  Este componente muestra la sección "Sobre mí" del portafolio.
+  Incluye la foto de perfil, una breve descripción personal,
+  las tecnologías dominadas (con íconos SVG) y estadísticas visuales.
+
+  Autor: [Tu nombre o iniciales]
+  ============================================================ -->
+
 <template>
+  <!-- Sección principal identificada por el id "sobremi" -->
   <section id="sobremi" class="sobre-mi">
     <div class="contenedor">
+      
+      <!-- BLOQUE IZQUIERDO: Foto de perfil -->
       <div class="foto-container">
-        <img :src="`/src/assets/${datos.foto}`" :alt="datos.nombre" class="foto-perfil" />
+        <!-- Imagen dinámica obtenida desde los datos importados -->
+        <img 
+          :src="`/src/assets/${datos.foto}`" 
+          :alt="datos.nombre" 
+          class="foto-perfil" 
+        />
       </div>
+
+      <!-- BLOQUE DERECHO: Texto y contenido informativo -->
       <div class="texto-contenedor">
         <h2>Sobre mi</h2>
+        
+        <!-- Párrafo introductorio con resumen personal -->
         <p class="intro">
           {{ datos.resumen }}
         </p>
 
+        <!-- SECCIÓN DE TECNOLOGÍAS -->
         <div class="tecnologias">
           <h3>Tecnologias que manejo:</h3>
+          
+          <!-- Grid que recorre las tecnologías y muestra su ícono y nombre -->
           <div class="tech-grid">
-            <div class="tech-item" v-for="tech in tecnologiasConIconos" :key="tech.id">
-              <img :src="tech.iconUrl" :alt="tech.nombre" class="tech-icon-img" />
+            <div 
+              class="tech-item" 
+              v-for="tech in tecnologiasConIconos" 
+              :key="tech.id"
+            >
+              <!-- Ícono SVG dinámico -->
+              <img 
+                :src="tech.iconUrl" 
+                :alt="tech.nombre" 
+                class="tech-icon-img" 
+              />
+              <!-- Nombre de la tecnología -->
               <span class="tech-name">{{ tech.nombre }}</span>
             </div>
           </div>
         </div>
 
+        <!-- SECCIÓN DE ESTADÍSTICAS PERSONALES -->
         <div class="stats">
-          <div v-for="stat in datos.estadisticas" :key="stat.label" class="stat-item">
+          <div 
+            v-for="stat in datos.estadisticas" 
+            :key="stat.label" 
+            class="stat-item"
+          >
+            <!-- Número o valor estadístico -->
             <span class="stat-number">{{ stat.numero }}</span>
+            <!-- Etiqueta descriptiva -->
             <span class="stat-label">{{ stat.label }}</span>
           </div>
         </div>
@@ -32,14 +74,23 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { datosPersonales } from '@/data/datos'
+/* ============================================================
+   LÓGICA DEL COMPONENTE
+   Uso de la API de composición de Vue 3 (Composition API)
+   ============================================================ */
 
+import { ref, computed } from 'vue'           // Importa herramientas reactivas de Vue
+import { datosPersonales } from '@/data/datos' // Importa los datos del usuario desde un archivo externo
+
+// Se almacenan los datos personales en una referencia reactiva
 const datos = ref(datosPersonales)
 
-// Se utiliza CDN de devicons para obtener logos profesionales en formato SVG
-// Esto mantiene la consistencia visual con las tecnologías existentes
-// Todas las herramientas están ordenadas de forma coherente en el grid
+/* ------------------------------------------------------------
+   Computed property: tecnologiasConIconos
+   - Genera una lista de tecnologías con sus íconos SVG.
+   - Los íconos provienen del CDN oficial de Devicons.
+   - Se utiliza un "computed" para mantener reactividad y claridad.
+   ------------------------------------------------------------ */
 const tecnologiasConIconos = computed(() => [
   { id: 1, nombre: 'Python', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
   { id: 2, nombre: 'JavaScript', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
@@ -57,6 +108,11 @@ const tecnologiasConIconos = computed(() => [
 </script>
 
 <style scoped>
+/* ============================================================
+   ESTILOS LOCALES (aislados al componente)
+   Paleta basada en tonos cian y grises oscuros.
+   ============================================================ */
+
 :root {
   --primary: #00ffff;
   --primary-claro: #93dede;
@@ -67,11 +123,13 @@ const tecnologiasConIconos = computed(() => [
   --border: #333;
 }
 
+/* Contenedor principal de la sección */
 .sobre-mi {
   margin-top: 0;
   padding-top: 0;
 }
 
+/* GRID general de la sección (foto a la izquierda, texto a la derecha) */
 .contenedor {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -79,11 +137,13 @@ const tecnologiasConIconos = computed(() => [
   align-items: center;
 }
 
+/* CENTRA la imagen en su contenedor */
 .foto-container {
   display: flex;
   justify-content: center;
 }
 
+/* Imagen del perfil con efectos visuales */
 .foto-perfil {
   width: 280px;
   height: 280px;
@@ -94,11 +154,13 @@ const tecnologiasConIconos = computed(() => [
   transition: transform 0.3s ease;
 }
 
+/* Efecto hover sobre la foto */
 .foto-perfil:hover {
   transform: scale(1.05);
   box-shadow: 0 0 50px rgba(0, 255, 255, 0.5);
 }
 
+/* Título principal */
 .texto-contenedor h2 {
   font-size: 2.2rem;
   color: var(--primary);
@@ -106,6 +168,7 @@ const tecnologiasConIconos = computed(() => [
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
+/* Texto de introducción */
 .intro {
   font-size: 1.2rem;
   font-weight: 600;
@@ -114,6 +177,7 @@ const tecnologiasConIconos = computed(() => [
   line-height: 1.8;
 }
 
+/* SECCIÓN DE TECNOLOGÍAS */
 .tecnologias {
   margin: 2.5rem 0;
 }
@@ -125,12 +189,14 @@ const tecnologiasConIconos = computed(() => [
   text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
 }
 
+/* GRID para los íconos de tecnologías */
 .tech-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1rem;
 }
 
+/* Tarjeta individual de tecnología */
 .tech-item {
   display: flex;
   flex-direction: column;
@@ -144,12 +210,14 @@ const tecnologiasConIconos = computed(() => [
   cursor: pointer;
 }
 
+/* Efecto hover en cada tarjeta */
 .tech-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
   border-color: var(--primary-claro);
 }
 
+/* Ícono dentro de cada tarjeta */
 .tech-icon-img {
   width: 50px;
   height: 50px;
@@ -157,16 +225,21 @@ const tecnologiasConIconos = computed(() => [
   transition: transform 0.3s ease;
 }
 
+/* Aumenta el ícono al pasar el mouse */
 .tech-item:hover .tech-icon-img {
   transform: scale(1.1);
 }
 
+/* Nombre de la tecnología */
 .tech-name {
   font-weight: 600;
   color: var(--text-primary);
   font-size: 0.95rem;
 }
 
+/* ------------------------------------------------------------
+   SECCIÓN DE ESTADÍSTICAS
+   ------------------------------------------------------------ */
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -185,6 +258,7 @@ const tecnologiasConIconos = computed(() => [
   text-align: center;
 }
 
+/* Números destacados */
 .stat-number {
   font-size: 2.2rem;
   font-weight: 800;
@@ -192,15 +266,19 @@ const tecnologiasConIconos = computed(() => [
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
+/* Texto descriptivo de la estadística */
 .stat-label {
   color: var(--text-secondary);
   font-size: 0.95rem;
   margin-top: 0.5rem;
 }
 
+/* ------------------------------------------------------------
+   MEDIA QUERIES - Responsividad
+   ------------------------------------------------------------ */
 @media (max-width: 968px) {
   .contenedor {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Cambia a una sola columna */
   }
 
   .foto-perfil {
@@ -224,7 +302,7 @@ const tecnologiasConIconos = computed(() => [
   }
 
   .stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Coloca estadísticas en una sola columna */
     padding: 1.5rem;
   }
 

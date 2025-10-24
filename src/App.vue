@@ -1,11 +1,20 @@
 <template>
+  <!-- Contenedor raíz de la aplicación -->
   <div id="app">
+    
+    <!-- NAVBAR -->
     <NavBar />
+
+    <!-- CONTENIDO PRINCIPAL -->
     <main>
+
+      <!-- HERO / SECCIÓN PRINCIPAL -->
       <header class="hero">
         <div class="hero-content">
           <h1 class="titulo">Gustavo Ariel Rodriguez</h1>
-          <p class="subtitulo">Técnico en Programación | Apasionado por la programación y la creatividad digital</p>
+          <p class="subtitulo">
+            Técnico en Programación | Apasionado por la programación y la creatividad digital
+          </p>
           <a href="#sobremi" class="btn">Conóceme</a>
         </div>
       </header>
@@ -48,13 +57,19 @@
         <h2><i class="fas fa-heart"></i> Intereses</h2>
         <Intereses />
       </section>
+
     </main>
 
+    <!-- FOOTER -->
     <Footer />
   </div>
 </template>
 
 <script setup>
+/*
+  Importación de todos los componentes utilizados en App.vue.
+  Cada componente corresponde a una sección de la página.
+*/
 import NavBar from './components/NavBar.vue'
 import DatosPersonales from './components/DatosPersonales.vue'
 import Educacion from './components/Educacion.vue'
@@ -67,7 +82,12 @@ import Footer from './components/Footer.vue'
 </script>
 
 <style>
-/* VARIABLES DE TEMA - PALETA UNIFORME */
+/* ===============================
+   VARIABLES DE TEMA
+   ===============================
+   Definen colores base, secundarios y acentos para todo el portafolio.
+   Se usan en todos los componentes para mantener coherencia.
+*/
 :root {
   --bg-primary: #111111;
   --bg-secondary: #1a1a1a;
@@ -79,7 +99,11 @@ import Footer from './components/Footer.vue'
   --border-color: #333;
 }
 
-/* RESETEO BÁSICO */
+/* ===============================
+   RESETEO BÁSICO
+   ===============================
+   Quita márgenes y padding por defecto y aplica box-sizing
+*/
 * {
   margin: 0;
   padding: 0;
@@ -87,7 +111,7 @@ import Footer from './components/Footer.vue'
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Scroll suave para navegación interna */
 }
 
 body {
@@ -99,6 +123,11 @@ body {
   transition: all 0.3s ease;
 }
 
+/* ===============================
+   CONTENEDOR PRINCIPAL DE APP
+   ===============================
+   Aplica fondo degradado para todo el sitio.
+*/
 #app {
   min-height: 100vh;
   background: linear-gradient(135deg, #111111 0%, #2d2d2d 50%, #111111 100%);
@@ -110,7 +139,11 @@ main {
   padding: 2rem 1rem;
 }
 
-/* HERO SECTION */
+/* ===============================
+   HERO / SECCIÓN PRINCIPAL
+   ===============================
+   Fondo con imagen + overlay, centrado vertical y horizontal.
+*/
 .hero {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%),
     url('https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070') center/cover no-repeat;
@@ -122,7 +155,7 @@ main {
 }
 
 .hero-content {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6); /* Overlay oscuro */
   width: 100%;
   height: 100%;
   display: flex;
@@ -151,7 +184,11 @@ main {
   margin-inline: auto;
 }
 
-/* BOTONES */
+/* ===============================
+   BOTONES
+   ===============================
+   Botón principal con hover y efecto de elevación.
+*/
 .btn {
   background: var(--accent-primary);
   color: #000000;
@@ -175,7 +212,11 @@ main {
   transform: translateY(-2px);
 }
 
-/* SECCIONES */
+/* ===============================
+   SECCIONES
+   ===============================
+   Fondo, bordes, padding, y sombreado para cada sección.
+*/
 .seccion {
   background: var(--bg-secondary);
   margin: 2rem auto;
@@ -201,7 +242,10 @@ main {
   text-shadow: 0 2px 4px rgba(0, 255, 255, 0.5);
 }
 
-/* ANIMACIONES */
+/* ===============================
+   ANIMACIONES
+   ===============================
+*/
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -214,7 +258,11 @@ main {
   }
 }
 
-/* RESPONSIVE */
+/* ===============================
+   RESPONSIVE
+   ===============================
+   Ajustes para tablet y móvil
+*/
 @media (max-width: 768px) {
   .titulo {
     font-size: 2.5rem;
