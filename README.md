@@ -201,8 +201,7 @@ Si solo necesitas visualizar el portafolio sin servidor:
 - Destacando dedicación, aprendizaje y proactividad
 
 ### 6. ✅ Intereses Simplificados
-- Eliminada tarjeta "Comunidad Open Source"
-- Ahora solo 3 tarjetas de intereses principales:
+  - Ahora solo 3 tarjetas de intereses principales:
   - Desarrollo Web
   - Tecnología Emergente
   - Código Limpio
@@ -210,7 +209,7 @@ Si solo necesitas visualizar el portafolio sin servidor:
 ### 7. ✅ Documentación Completa
 - Comentarios detallados en español en todos los componentes
 - Explicación clara
-- Código legible incluso para principiantes
+- Código legible 
 
 ---
 
