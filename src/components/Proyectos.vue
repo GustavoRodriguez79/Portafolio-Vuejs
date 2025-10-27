@@ -17,31 +17,19 @@
           <!-- Overlay que aparece al hacer hover sobre la imagen -->
           <div class="overlay">
             <!-- Si el proyecto está completado y tiene un enlace válido, abre en nueva ventana -->
-            <a
-              v-if="proyecto.estado === 'Completado' && proyecto.enlace && proyecto.enlace !== '#'"
-              :href="proyecto.enlace"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-ver"
-            >
+            <a v-if="proyecto.estado === 'Completado' && proyecto.enlace && proyecto.enlace !== '#'"
+              :href="proyecto.enlace" target="_blank" rel="noopener noreferrer" class="btn-ver">
               Ver Proyecto
             </a>
 
             <!-- Si está completado pero el enlace no existe, muestra alerta -->
-            <a
-              v-else-if="proyecto.estado === 'Completado' && (!proyecto.enlace || proyecto.enlace === '#')"
-              @click.prevent="mostrarEnProgreso(proyecto.titulo)"
-              class="btn-ver"
-            >
+            <a v-else-if="proyecto.estado === 'Completado' && (!proyecto.enlace || proyecto.enlace === '#')"
+              @click.prevent="mostrarEnProgreso(proyecto.titulo)" class="btn-ver">
               Ver Proyecto
             </a>
 
             <!-- Si está en progreso, siempre muestra alerta -->
-            <a
-              v-else
-              @click.prevent="mostrarEnProgreso(proyecto.titulo)"
-              class="btn-ver"
-            >
+            <a v-else @click.prevent="mostrarEnProgreso(proyecto.titulo)" class="btn-ver">
               Ver Proyecto
             </a>
           </div>
@@ -61,7 +49,9 @@
 
           <!-- Estado y fecha -->
           <div class="proyecto-meta">
-            <span class="estado" :class="proyecto.estado.toLowerCase()">{{ proyecto.estado }}</span>
+            <span class="estado" :class="proyecto.estado.toLowerCase().replace(' ', '-')">
+              {{ proyecto.estado }}
+            </span>
             <span class="fecha">{{ proyecto.fecha }}</span>
           </div>
         </div>
@@ -88,13 +78,20 @@ const mostrarEnProgreso = (titulo) => {
    VARIABLES GLOBALES
    ============================== */
 :root {
-  --primary: #00ffff;           /* Color principal para bordes y botones */
-  --primary-claro: #93dede;    /* Color secundario para gradientes */
-  --text-primary: #ffffff;      /* Texto principal */
-  --text-secondary: #cccccc;    /* Texto secundario */
-  --bg-secondary: #2a2a2a;      /* Fondo de tarjetas y chips */
-  --border: #333;               /* Color de borde y separadores */
-  --success: #00ff88;           /* Color para estado completado */
+  --primary: #00ffff;
+  /* Color principal para bordes y botones */
+  --primary-claro: #93dede;
+  /* Color secundario para gradientes */
+  --text-primary: #ffffff;
+  /* Texto principal */
+  --text-secondary: #cccccc;
+  /* Texto secundario */
+  --bg-secondary: #2a2a2a;
+  /* Fondo de tarjetas y chips */
+  --border: #333;
+  /* Color de borde y separadores */
+  --success: #00ff88;
+  /* Color para estado completado */
 }
 
 /* ==============================
@@ -128,8 +125,10 @@ const mostrarEnProgreso = (titulo) => {
 
 /* Efecto hover en tarjeta */
 .proyecto-card:hover {
-  transform: translateY(-8px); /* Levanta la tarjeta */
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3); /* Luz alrededor */
+  transform: translateY(-8px);
+  /* Levanta la tarjeta */
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  /* Luz alrededor */
   border-color: var(--primary-claro);
 }
 
@@ -149,7 +148,8 @@ const mostrarEnProgreso = (titulo) => {
 /* Emoji flotante */
 .imagen-placeholder {
   font-size: 5rem;
-  animation: float 3s ease-in-out infinite; /* Animación de flotación */
+  animation: float 3s ease-in-out infinite;
+  /* Animación de flotación */
 }
 
 /* Overlay oscuro que aparece al hover */
@@ -168,7 +168,8 @@ const mostrarEnProgreso = (titulo) => {
 }
 
 .proyecto-card:hover .overlay {
-  opacity: 1; /* Aparece al hacer hover */
+  opacity: 1;
+  /* Aparece al hacer hover */
 }
 
 /* Botón para ver proyecto */
@@ -243,13 +244,19 @@ const mostrarEnProgreso = (titulo) => {
   cursor: pointer;
   display: inline-block;
 }
+
 /* Efecto hover en tags: cambio de color y brillo */
+
 .tech-chip:hover {
-  background: var(--primary); /* Fondo cambia a color principal */
-  color: #000000; /* Texto negro */
-  box-shadow: 0 0 12px rgba(0, 255, 255, 0.5); /* Luz sutil */
-  border-color: var(--primary-light);
-  transform: translateY(-2px);  /* Pequeña elevación */
+  background: var(--primary);
+  /* Fondo cambia a color principal */
+  color: #000000;
+  /* Texto negro */
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+  /* Luz sutil */
+  border-color: var(--primary-claro);
+  transform: translateY(-2px);
+  /* Pequeña elevación */
 }
 
 /* ==============================
@@ -277,7 +284,7 @@ const mostrarEnProgreso = (titulo) => {
 }
 
 /* Estado en progreso */
-.estado.en\ progreso {
+.estado.en-progreso {
   background: rgba(0, 255, 255, 0.2);
   color: var(--primary);
 }
@@ -293,9 +300,12 @@ const mostrarEnProgreso = (titulo) => {
    ANIMACIONES
    ============================== */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }

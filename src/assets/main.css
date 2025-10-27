@@ -287,7 +287,7 @@ pre code {
   box-shadow: 0 0 12px rgba(0, 255, 255, 0.5); /* Efecto de brillo */
   border-color: var(--primary-light); /* Borde a color claro */
   transform: translateY(-2px);      /* Elevación igual que otros */
-
+}
 
 
 /* ------------------------------------------------------------
