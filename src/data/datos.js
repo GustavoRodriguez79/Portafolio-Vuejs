@@ -147,7 +147,7 @@ export const proyectos = [
     descripcion: 'Sitio web responsive desarrollado con Vue.js, HTML y CSS para mostrar habilidades y proyectos. Diseño moderno con animaciones suaves y componentes reutilizables.',
     emoji: '🌐',
     tecnologias: ['HTML5', 'CSS3', 'Vue.js', 'JavaScript'],
-    enlace: 'http://localhost:5173',
+    enlace: 'https://gustavo-rodriguez-portafolio-vuejs.netlify.app/',
     estado: 'Completado',
     fecha: '2025',
     imagen: ''
