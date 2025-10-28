@@ -1,7 +1,7 @@
 <template>
   <!-- Contenedor raíz de la aplicación -->
   <div id="app">
-    
+
     <!-- NAVBAR -->
     <NavBar />
 
@@ -46,12 +46,6 @@
         <Habilidades />
       </section>
 
-      <!-- SECCIÓN TESTIMONIOS -->
-      <section id="testimonios" class="seccion">
-        <h2><i class="fas fa-quote-left"></i> Testimonios</h2>
-        <Testimonios />
-      </section>
-
       <!-- SECCIÓN INTERESES -->
       <section id="intereses" class="seccion">
         <h2><i class="fas fa-heart"></i> Intereses</h2>
@@ -76,7 +70,6 @@ import Educacion from './components/Educacion.vue'
 import Experiencia from './components/Experiencia.vue'
 import Proyectos from './components/Proyectos.vue'
 import Habilidades from './components/Habilidades.vue'
-import Testimonios from './components/Testimonios.vue'
 import Intereses from './components/Intereses.vue'
 import Footer from './components/Footer.vue'
 </script>
@@ -201,7 +194,7 @@ main {
   transition: 0.3s;
   display: inline-block;
   font-size: 1.5rem;
-  min-width: 90%;  
+  min-width: 90%;
   text-align: center;
 }
 

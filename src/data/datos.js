@@ -187,40 +187,6 @@ export const proyectos = [
   }
 ]
 
-// ================== TESTIMONIOS ==================
-// Testimonios de profesores y compañeros de estudio
-// Estructura: id, nombre, cargo, testimonio, imagen
-export const testimonios = [
-  {
-    id: 1,
-    nombre: 'Profesor Ariel Betancud',
-    cargo: 'Docente de Programación - UTN',
-    testimonio: 'Gustavo demostró excelentes habilidades de programación durante su formación. Su dedicación y capacidad para resolver problemas complejos lo destacan como un programador prometedor.',
-    imagen: ''
-  },
-  {
-    id: 2,
-    nombre: 'Gabriel Santarena',
-    cargo: 'Compañero de estudios - UTN',
-    testimonio: 'Trabajar en equipo con Gustavo fue una experiencia enriquecedora. Su conocimiento técnico y colaboración fueron fundamentales para el éxito de nuestros proyectos académicos.',
-    imagen: ''
-  },
-  {
-    id: 3,
-    nombre: 'Dante Nicolás Martinez',
-    cargo: 'Tutor portafolio - UTN',
-    testimonio: 'Su pasión por aprender nuevas tecnologías y su metodología de trabajo ordenada lo convierten en un desarrollador con gran potencial profesional.',
-    imagen: ''
-  },
-  {
-    id: 4,
-    nombre: 'Augusto Casado',
-    cargo: 'Tutor de Cátedra - UTN',
-    testimonio: 'Gustavo se destaca por su dedicación inquebrantable y su capacidad excepcional para aprender nuevas tecnologías rápidamente. Su actitud proactiva y su compromiso con la excelencia lo posicionan como un profesional de alto potencial en la industria del desarrollo web.',
-    imagen: ''
-  }
-]
-
 // ================== HABILIDADES ==================
 // Información detallada sobre competencias técnicas organizadas por categoría
 // Estructura por categoría: id, nombre, icon, skills (con nombre, nivel, porcentaje)

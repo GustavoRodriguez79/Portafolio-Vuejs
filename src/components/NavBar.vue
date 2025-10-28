@@ -4,7 +4,7 @@
        ========================== -->
   <nav class="navbar">
     <div class="navbar-container">
-      
+
       <!-- ==========================
            LOGO / MARCA
            ========================== -->
@@ -47,8 +47,7 @@ const navegacion = ref([
   { id: 2, nombre: 'Experiencia', enlace: '#experiencia' },
   { id: 3, nombre: 'Proyectos', enlace: '#proyectos' },
   { id: 4, nombre: 'Habilidades', enlace: '#habilidades' },
-  { id: 5, nombre: 'Testimonios', enlace: '#testimonios' },
-  { id: 6, nombre: 'Intereses', enlace: '#intereses' }
+  { id: 5, nombre: 'Intereses', enlace: '#intereses' }
 ])
 </script>
 

@@ -12,21 +12,21 @@
   <!-- Sección principal identificada por el id "sobremi" -->
   <section id="sobremi" class="sobre-mi">
     <div class="contenedor">
-      
+
       <!-- BLOQUE IZQUIERDO: Foto de perfil -->
       <div class="foto-container">
         <!-- Imagen dinámica obtenida desde los datos importados -->
-        <img 
-          :src="`/src/assets/${datos.foto}`" 
-          :alt="datos.nombre" 
-          class="foto-perfil" 
+        <img
+          :src="`/${datos.foto}`"
+          :alt="datos.nombre"
+          class="foto-perfil"
         />
       </div>
 
       <!-- BLOQUE DERECHO: Texto y contenido informativo -->
       <div class="texto-contenedor">
         <h2>Sobre mi</h2>
-        
+
         <!-- Párrafo introductorio con resumen personal -->
         <p class="intro">
           {{ datos.resumen }}
@@ -35,19 +35,19 @@
         <!-- SECCIÓN DE TECNOLOGÍAS -->
         <div class="tecnologias">
           <h3>Tecnologias que manejo:</h3>
-          
+
           <!-- Grid que recorre las tecnologías y muestra su ícono y nombre -->
           <div class="tech-grid">
-            <div 
-              class="tech-item" 
-              v-for="tech in tecnologiasConIconos" 
+            <div
+              class="tech-item"
+              v-for="tech in tecnologiasConIconos"
               :key="tech.id"
             >
               <!-- Ícono SVG dinámico -->
-              <img 
-                :src="tech.iconUrl" 
-                :alt="tech.nombre" 
-                class="tech-icon-img" 
+              <img
+                :src="tech.iconUrl"
+                :alt="tech.nombre"
+                class="tech-icon-img"
               />
               <!-- Nombre de la tecnología -->
               <span class="tech-name">{{ tech.nombre }}</span>
@@ -57,9 +57,9 @@
 
         <!-- SECCIÓN DE ESTADÍSTICAS PERSONALES -->
         <div class="stats">
-          <div 
-            v-for="stat in datos.estadisticas" 
-            :key="stat.label" 
+          <div
+            v-for="stat in datos.estadisticas"
+            :key="stat.label"
             class="stat-item"
           >
             <!-- Número o valor estadístico -->
