@@ -197,7 +197,7 @@ export const habilidades = {
       nombre: 'Lenguajes de Programación',
       icon: '💻',
       skills: [
-        { id: 1, nombre: 'Python', nivel: 'Intermedio', porcentaje: 65 },
+        { id: 1, nombre: 'Python', nivel: 'Intermedio', porcentaje: 60 },
         { id: 2, nombre: 'JavaScript', nivel: 'Intermedio', porcentaje: 75 },
         { id: 3, nombre: 'Java', nivel: 'Básico', porcentaje: 50 },
         { id: 4, nombre: 'HTML5', nivel: 'Intermedio', porcentaje: 70 },
@@ -229,7 +229,7 @@ export const habilidades = {
       icon: '⚙️',
       skills: [
         { id: 1, nombre: 'Git/GitHub', nivel: 'Intermedio', porcentaje: 65 },
-        { id: 2, nombre: 'VSCode', nivel: 'Intermedio', porcentaje: 70 },
+        { id: 2, nombre: 'VSCode', nivel: 'Intermedio', porcentaje: 65 },
         { id: 3, nombre: 'PyCharm', nivel: 'Intermedio', porcentaje: 55 },
         { id: 4, nombre: 'Apache NetBeans', nivel: 'Básico', porcentaje: 50 }
       ]
