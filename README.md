@@ -1,264 +1,222 @@
 # 🏷️ Portafolio Personal - Gustavo Ariel Rodriguez
 
-Sitio web profesional diseñado para mostrar habilidades, experiencia, educación y proyectos de desarrollo web. Un portafolio moderno, responsivo e interactivo desarrollado con tecnologías actuales de frontend.
+Portafolio web sobrio y minimalista para mostrar proyectos, formación y contacto. Desarrollado con Vue 3 y Vite, con **tema oscuro y claro**, una **presentación animada en formato de terminal** y descarga del CV.
+
+🌐 **Sitio en vivo:** [gustavo-rodriguez-portafolio-vuejs.netlify.app](https://gustavo-rodriguez-portafolio-vuejs.netlify.app/)
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## ✨ Qué incluye
 
-- **Frontend Framework**: Vue.js 3 (Composition API)
-- **Lenguajes**: JavaScript (ES6+), HTML5, CSS3
-- **Herramientas de Desarrollo**:
-  - Vite (Bundler y dev server)
-  - Node.js y npm (Gestor de dependencias)
-- **Diseño y Estilos**:
-  - CSS3 con variables CSS personalizadas
-  - Animaciones y transiciones suaves
-  - Paleta de colores CYAN (#00ffff) y TURQUESA (#93dede)
-- **Iconografía**:
-  - Font Awesome (iconos de redes sociales)
-  - Devicons (logos de tecnologías)
-- **Características**:
-  - Diseño Responsivo (Mobile First)
-  - Smooth Scrolling
-  - Efectos Hover dinámicos
-  - Modo oscuro (Dark Theme)
+- **Portada** con nombre, frase corta y botones de "Ver proyectos" y "Descargar CV".
+- **Presentación animada:** una terminal donde se escribe solo un código en JavaScript y, al "ejecutarlo", muestra la presentación como salida.
+- **Stack tecnológico** en una lista compacta con 20 tecnologías (incluye IntelliJ IDEA y Spring).
+- **Proyectos:** 4 destacados con enlaces a la demo y al código en GitHub, y un botón para ver los 8.
+- **Formación:** estudios y experiencia en una sola línea de tiempo.
+- **Contacto** con email, redes y descarga del CV.
+- **Tema claro y oscuro** con un botón en la barra de navegación; recuerda la elección de cada visitante.
+- **Accesible y responsivo:** contraste verificado, navegación con teclado y adaptación a celulares.
 
 ---
 
-## 📂 Estructura de Carpetas y Archivos
+## 🛠️ Tecnologías utilizadas
+
+- **Vue.js 3** (Composition API, `<script setup>`)
+- **Vite 7** (bundler y servidor de desarrollo)
+- **JavaScript (ES6+), HTML5 y CSS3** (variables CSS, sin librerías de estilos)
+- **ESLint 9** (con `eslint-plugin-vue`)
+- **Devicons** (logos de tecnologías, desde CDN)
+- **Deploy:** Netlify
+
+---
+
+## 📂 Estructura de carpetas
 
 ```
-portafolio-personal/
-│
-├── src/
-│   ├── assets/
-│   │   └── main.css          # Estilos globales principales
-│   │
-│   ├── components/           # Componentes Vue.js reutilizables
-│   │   ├── NavBar.vue        # Barra de navegación principal
-│   │   ├── DatosPersonales.vue   # Sección "Sobre mí"
-│   │   ├── Educacion.vue     # Sección de educación con timeline
-│   │   ├── Experiencia.vue   # Sección de experiencia laboral
-│   │   ├── Proyectos.vue     # Galería de proyectos
-│   │   ├── Habilidades.vue   # Matriz de competencias técnicas
-│   │   ├── Intereses.vue     # Intereses profesionales y objetivos
-│   │   └── Footer.vue        # Pie de página con enlaces
-│   │
-│   ├── data/
-│   │   └── datos.js          # Archivo centralizado de datos
-│   │                          # (educación, experiencia, proyectos, etc.)
-│   │
-│   ├── App.vue               # Componente principal raíz
-│   ├── main.js               # Punto de entrada de la aplicación
-│   └── main.css              # Estilos CSS globales
+Portafolio-Vuejs/
 │
 ├── public/
-│   ├── cv.pdf                # Currículum en PDF (descargable)
-│   └── fotoGustavo.png       # Imagen de perfil
+│   ├── cv.pdf                    # Currículum descargable
+│   └── fotoGustavo.png           # Foto de perfil
 │
-├── dist/                     # Build generado para producción (se crea con npm run build)
-│   ├── index.html            # HTML compilado
-│   ├── assets/               # Archivos CSS, JS compilados
-│   ├── cv.pdf                # Currículum (copiado)
-│   └── fotoGustavo.png       # Imagen de perfil (copiada)
+├── src/
+│   ├── components/
+│   │   ├── NavBar.vue            # Navegación, cambio de tema y botón de CV
+│   │   ├── DatosPersonales.vue   # Portada: nombre, terminal animada y stack
+│   │   ├── Proyectos.vue         # Lista de proyectos (destacados / todos)
+│   │   ├── Formacion.vue         # Estudios y experiencia
+│   │   └── Footer.vue            # Contacto y pie de página
+│   │
+│   ├── data/
+│   │   └── datos.js              # Todos los datos del portafolio
+│   │
+│   ├── App.vue                   # Componente raíz y variables de color (temas)
+│   └── main.js                   # Punto de entrada
 │
-├── node_modules/             # Dependencias del proyecto (se ignora en git)
-├── index.html                # Archivo HTML principal
-├── package.json              # Dependencias y scripts npm
-├── package-lock.json         # Lock file de dependencias
-├── vite.config.js            # Configuración de Vite
-├── jsconfig.json             # Configuración de rutas de importación
-├── .gitignore                # Archivos ignorados por git
-└── README.md                 # Este archivo (documentación)
+├── index.html
+├── package.json
+├── vite.config.js                # Alias "@" → src
+├── jsconfig.json
+├── eslint.config.js
+└── README.md
 ```
 
----
-
-## 🎯 Características Principales
-
-### 1. **Navegación Inteligente**
-- Barra de navegación fija (sticky) con enlaces ancla
-- Transiciones suaves entre secciones
-- Botón de descarga de CV en la navbar
-- Menú con 5 secciones principales: Educación, Experiencia, Proyectos, Habilidades e Intereses
-
-### 2. **Sección Hero (Portada)**
-- Imagen de fondo con overlay degradado
-- Título y subtítulo atractivos
-- Llamada a la acción (CTA) con botón "Conóceme"
-
-### 3. **Sobre Mí**
-- Foto de perfil con efecto hover
-- Resumen profesional
-- Grid de 12 tecnologías con logos profesionales
-- Estadísticas clave (años de experiencia, proyectos completados, etc.)
-
-### 4. **Educación**
-- Timeline visual de formación académica
-- Badges con habilidades por curso/carrera
-- Enlaces a instituciones
-- 3 formaciones académicas principales
-
-### 5. **Experiencia**
-- Tarjetas con descripción de experiencias
-- Lista de logros destacados
-- Tecnologías utilizadas en cada rol
-- 3 experiencias laborales/académicas
-
-### 6. **Proyectos**
-- Galería de proyectos con emojis representativos
-- Estados (Completado/En Progreso)
-- Lógica interactiva: proyectos en progreso muestran alertas personalizadas
-- Enlaces a proyectos completados
-- 4 proyectos showcaseados
-
-### 7. **Habilidades**
-- Tarjetas de categorías (Lenguajes, Frameworks, BD, DevOps)
-- Barras de progreso animadas
-- Matriz de competencias técnicas con tabla interactiva
-- Niveles visuales (Básico, Intermedio, Avanzado)
-- 4 categorías de habilidades con detalles completos
-
-### 8. **Intereses**
-- 3 tarjetas de intereses profesionales
-- Descripción detallada de cada interés
-- Tags asociados a cada área
-
-### 9. **Footer**
-- Enlaces de contacto (Email, LinkedIn, GitHub)
-- Iconos de redes sociales con colores distintivos
-- Enlaces rápidos a secciones principales
-- Año de copyright automático
+> `node_modules/` y `dist/` se generan localmente y no se versionan.
 
 ---
 
-## 💻 Instrucciones para Visualizar el Portafolio
+## 💻 Cómo ejecutarlo
 
-### Opción 1: Servidor de Desarrollo Local (Recomendado)
+### Requisitos
 
-1. **Requisitos previos**:
-   - Tener instalado Node.js (versión 14 o superior)
-   - npm (viene incluido con Node.js)
+- **Node.js** `^20.19.0` o `>=22.12.0` (lo exige Vite 7)
+- **npm**
 
-2. **Pasos para ejecutar**:
-   ```bash
-   # 1. Clonar o descargar el repositorio
-   git clone <url-del-repositorio>
-   cd portafolio-personal
-
-   # 2. Instalar dependencias
-   npm install
-
-   # 3. Iniciar el servidor de desarrollo
-   npm run dev
-
-   # 4. Abrir en el navegador
-   # El servidor local estará disponible en:
-   # http://localhost:5173 (o la URL que Vite proporcione)
-   ```
-
-### Opción 2: Compilar para Producción
+### Desarrollo local
 
 ```bash
-# Generar build optimizado para producción
-npm run build
-
-# Vista previa del build final
-npm run preview
+git clone https://github.com/GustavoRodriguez79/Portafolio-Vuejs.git
+cd Portafolio-Vuejs
+npm install
+npm run dev
+# Disponible en http://localhost:5173
 ```
 
-Los archivos compilados estarán en la carpeta `dist/`
+### Build de producción
 
-### Opción 3: Abrir Directamente en el Navegador
+```bash
+npm run build      # genera dist/
+npm run preview    # previsualiza el build
+```
 
-Si solo necesitas visualizar el portafolio sin servidor:
+> ⚠️ El proyecto **no se abre haciendo doble clic en `index.html`**: necesita el servidor de Vite.
 
-1. Descarga o clona el proyecto
-2. Abre el archivo `index.html` directamente en tu navegador
-3. La mayoría de características funcionarán, aunque algunas puede que requieran un servidor local
+### Deploy en Netlify
 
----
-
-## 🚀 Cambios Recientes (Versión 2.1)
-
-### ✅ Corrección de Ruta de Imagen de Perfil
-- Movida `fotoGustavo.png` a la carpeta `public/`
-- Actualizada ruta en `DatosPersonales.vue` para acceso correcto en producción
-- Cambio de ruta: `/src/assets/` → `/public/`
-
-### ✅ Optimización para Netlify
-- Estructura de archivos optimizada para deployment
-- Imagen de perfil correctamente ubicada en `public/`
-- Build process validado y funcional
-
----
-
-## 📋 Requisitos del Sistema
-
-- **Node.js**: v14.0.0 o superior
-- **npm**: v6.0.0 o superior
-- **Navegador moderno**: Chrome, Firefox, Safari, Edge (versiones recientes)
-- **Espacio en disco**: ~500MB (incluyendo node_modules)
+- **Build command:** `npm run build`
+- **Publish directory:** `dist`
 
 ---
 
 ## 🎨 Personalización
 
-### Cambiar Datos Personales
+Casi todo el contenido se edita en **`src/data/datos.js`**, sin tocar los componentes.
 
-Edita el archivo `src/data/datos.js`:
+### Presentación animada
+
+El código que se escribe en la terminal y su salida se generan desde este objeto. Cambiás un valor y se actualizan los dos:
 
 ```javascript
-export const datosPersonales = {
-  nombre: 'Tu Nombre',
-  titulo: 'Tu Título Profesional',
-  email: 'tu@email.com',
-  foto: 'tuFoto.png',  // Coloca tu foto en public/
-  // ... más datos
+export const presentacion = {
+  rol: "Estudiante del último semestre",
+  carrera: "Tecnicatura Universitaria en Programación",
+  universidad: "Universidad Tecnológica Nacional (UTN) - FRSR, Argentina",
+  stack: ["Vue.js", "React", "Node.js", "FastAPI"],
+  bases: ["SQL", "NoSQL"],
+  pasion: "crear soluciones originales y personalizadas",
+};
+```
+
+La velocidad se ajusta con `VELOCIDAD_CODIGO_MS` y `VELOCIDAD_SALIDA_MS` en `DatosPersonales.vue`.
+
+### Tecnologías del stack
+
+```javascript
+{ id: 21, nombre: "Nueva", iconUrl: `${DEVICON}/nueva/nueva-original.svg` }
+// invertir: true -> para íconos negros (como GitHub) que no se ven en el tema oscuro
+```
+
+### Proyectos
+
+```javascript
+{
+  id: 9,
+  titulo: "Nuevo Proyecto",
+  descripcion: "Qué hace y con qué está hecho.",
+  tecnologias: ["Vue.js", "Node.js"],
+  enlace: "https://...",        // demo en vivo (o el repo si no hay demo); "#" si no está publicado
+  repositorio: "https://github.com/...",
+  destacado: 5,                 // opcional: 1, 2, 3... aparece en la lista corta, en ese orden
+  estado: "Completado",         // "Completado" o "En Progreso"
+  fecha: "2026",
 }
 ```
 
-### Cambiar Paleta de Colores
+Los proyectos sin `destacado` aparecen al tocar **"Ver los N proyectos"**.
 
-En los archivos CSS, modifica las variables:
+### Frase de contacto y CV
+
+En `contacto` (dentro de `datos.js`):
+
+- `mensaje`: el texto grande de la sección de contacto.
+- `cvPDF`: nombre del archivo en `public/` (por defecto `cv.pdf`). Para actualizar el CV, reemplazá ese archivo y hacé push.
+
+### Colores y tema
+
+Los colores están en `src/App.vue`, como variables CSS. Hay un bloque para el tema oscuro y otro para el claro:
 
 ```css
 :root {
-  --primary: #00ffff;        /* Color principal */
-  --primary-claro: #93dede;  /* Color secundario */
-  --text-primary: #ffffff;   /* Texto principal */
+  --bg: #0c0f14; /* fondo */
+  --text: #e8edf3; /* texto */
+  --muted: #9aa6b2; /* texto secundario */
+  --accent: #22d3ee; /* único acento (cian) */
+}
+
+:root[data-theme="light"] {
+  --bg: #fbfcfd;
+  --text: #0f1720;
+  --muted: #4a5866;
+  --accent: #0e7490;
 }
 ```
 
-### Agregar Nuevas Secciones
+La terminal es siempre oscura, también en el tema claro.
 
-1. Crea un nuevo componente en `src/components/NuevaSeccion.vue`
-2. Importa el componente en `App.vue`
-3. Agrega los datos en `datos.js`
-4. Incluye el componente en el template de `App.vue`
-5. Actualiza la lista de navegación en `NavBar.vue`
+### Agregar una nueva sección
+
+1. Crear el componente en `src/components/NuevaSeccion.vue`.
+2. Importarlo y agregarlo en `App.vue`, dentro de un `<section id="..." class="seccion">`.
+3. Sumar el enlace en la lista `navegacion` de `NavBar.vue`.
 
 ---
 
 ## 📱 Responsividad
 
-El portafolio es completamente responsivo con breakpoints en:
-
-- **Desktop**: 1024px y superior
-- **Tablet**: 768px - 1023px
-- **Mobile**: 480px - 767px
-- **Mobile pequeño**: menos de 480px
+- **Escritorio:** columna central de 760 px, con mucho espacio.
+- **Celular** (menos de 640 px): los links de la barra pasan a una segunda fila, la terminal reduce el tamaño de letra y las filas de formación se apilan.
 
 ---
 
-## 🔗 Enlaces Útiles
+## 🚀 Historial de cambios
 
-- **Documentación Vue.js**: [vuejs.org](https://vuejs.org)
-- **Documentación Vite**: [vitejs.dev](https://vitejs.dev)
-- **Font Awesome**: [fontawesome.com](https://fontawesome.com)
-- **Devicons**: [devicons.dev](https://devicons.dev)
-- **Netlify**: [netlify.com](https://netlify.com)
+### Versión 4.0 — Octubre 2026 (rediseño)
+
+- **Diseño sobrio y minimalista:** una sola columna, tipografía grande, un único acento cian y sin bordes ni brillos.
+- **Tema claro y oscuro** con botón en la barra y memoria de la elección.
+- **Presentación en formato de terminal:** el código se escribe solo y muestra la salida.
+- **Proyectos:** 4 destacados y botón para ver los 8; enlaces a la demo y al repositorio.
+- **Formación:** Educación y Experiencia fusionadas en una sola sección.
+- **Botón de CV** en la barra, la portada y el contacto.
+- **Eliminado:** barras de progreso y matriz de competencias, intereses y objetivos, estadísticas, imagen de fondo de la portada y Font Awesome. Se borraron `Educacion.vue`, `Experiencia.vue`, `Habilidades.vue` e `Intereses.vue`.
+
+### Versión 3.0
+
+- Contenido actualizado al 4° semestre y proyectos reales (Finanzas Dashboard, Gestor de Gastos, Tienda de Libros, PERN Stack, entre otros).
+- Tecnologías centralizadas en `datos.js` e incorporación de IntelliJ IDEA y Spring.
+
+### Versión 2.1
+
+- Imagen de perfil movida a `public/` y estructura optimizada para Netlify.
+
+---
+
+## 🔗 Enlaces útiles
+
+- [Documentación Vue.js](https://vuejs.org)
+- [Documentación Vite](https://vitejs.dev)
+- [Devicons](https://devicon.dev)
+- [Netlify](https://netlify.com)
 
 ---
 
@@ -270,23 +228,12 @@ Este portafolio personal es de uso privado y personal de Gustavo Ariel Rodriguez
 
 ## ✉️ Contacto
 
-- **Email**: garodrifornes79@gmail.com
-- **LinkedIn**: [Gustavo Ariel Rodriguez](https://linkedin.com/in/gustavo-ariel-rodríguez-fornes)
-- **GitHub**: [@GustavoRodriguez79](https://github.com/GustavoRodriguez79)
-- **Instagram**: [@garodrifornes79](https://instagram.com/garodrifornes79)
-- **Portafolio Online**: Desplegado en Netlify
+- **Email:** garodrifornes79@gmail.com
+- **LinkedIn:** [Gustavo Ariel Rodriguez](https://www.linkedin.com/in/gustavo-ariel-rodr%C3%ADguez-fornes-36a899370/)
+- **GitHub:** [@GustavoRodriguez79](https://github.com/GustavoRodriguez79)
+- **Instagram:** [@garodrifornes79](https://instagram.com/garodrifornes79)
+- **Portafolio online:** [Netlify](https://gustavo-rodriguez-portafolio-vuejs.netlify.app/)
 
 ---
 
-## 📝 Notas de Desarrollo
-
-- El proyecto utiliza **Composition API** de Vue.js (más moderno que Options API)
-- Se recomienda usar **VS Code** como editor de código
-- Instala la extensión "Volar" para mejor soporte de Vue.js en VS Code
-- Usa `npm run dev` para desarrollo local
-- Usa `npm run build` para generar versión de producción
-
----
-
-**Última actualización**: Octubre 2025  
-**Versión**: 2.1 (Corrección de rutas y optimización para Netlify)
+**Última actualización:** Octubre 2026 · **Versión:** 4.0

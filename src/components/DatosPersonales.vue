@@ -1,74 +1,65 @@
 <!-- ============================================================
-  COMPONENTE: SobreMi.vue
-  Descripción:
-  Este componente muestra la sección "Sobre mí" del portafolio.
-  Incluye la foto de perfil, una breve descripción personal,
-  las tecnologías dominadas (con íconos SVG) y estadísticas visuales.
-
-  Autor: [Tu nombre o iniciales]
+  COMPONENTE: DatosPersonales.vue (portada + stack)
+  - Nombre y frase corta, con foto pequeña
+  - Presentación animada: se escribe un código JavaScript y debajo aparece su salida
+  - Stack tecnológico en una lista compacta
   ============================================================ -->
 
 <template>
-  <!-- Sección principal identificada por el id "sobremi" -->
-  <section id="sobremi" class="sobre-mi">
-    <div class="contenedor">
+  <section id="sobremi" class="portada">
+    <!-- Nombre -->
+    <div class="portada-top">
+      <img :src="`/${datos.foto}`" :alt="datos.nombre" class="avatar" />
+      <div>
+        <p class="saludo">Hola, soy</p>
+        <h1>{{ datos.nombre }}</h1>
+      </div>
+    </div>
 
-      <!-- BLOQUE IZQUIERDO: Foto de perfil -->
-      <div class="foto-container">
-        <!-- Imagen dinámica obtenida desde los datos importados -->
-        <img
-          :src="`/${datos.foto}`"
-          :alt="datos.nombre"
-          class="foto-perfil"
-        />
+    <p class="lead">{{ datos.lead }}</p>
+
+    <div class="acciones">
+      <a href="#proyectos" class="btn btn-primario">Ver proyectos</a>
+      <a :href="`/${cvPDF}`" class="btn btn-secundario" download="CV_GustavoRodriguez.pdf">Descargar CV</a>
+    </div>
+
+    <!-- Presentación animada. Cada bloque lleva un texto "fantasma" invisible que reserva el alto
+         (sin saltos de layout) y el texto real se superpone. El resumen completo queda en aria-label
+         para lectores de pantalla. -->
+    <div class="consola" ref="consolaRef" role="img" :aria-label="salidaCompleta">
+      <div class="consola-barra" aria-hidden="true">
+        <span class="punto rojo"></span><span class="punto amarillo"></span><span class="punto verde"></span>
+        <span class="consola-archivo">sobre-mi.js</span>
       </div>
 
-      <!-- BLOQUE DERECHO: Texto y contenido informativo -->
-      <div class="texto-contenedor">
-        <h2>Sobre mi</h2>
-
-        <!-- Párrafo introductorio con resumen personal -->
-        <p class="intro">
-          {{ datos.resumen }}
-        </p>
-
-        <!-- SECCIÓN DE TECNOLOGÍAS -->
-        <div class="tecnologias">
-          <h3>Tecnologias que manejo:</h3>
-
-          <!-- Grid que recorre las tecnologías y muestra su ícono y nombre -->
-          <div class="tech-grid">
-            <div
-              class="tech-item"
-              v-for="tech in tecnologiasConIconos"
-              :key="tech.id"
-            >
-              <!-- Ícono SVG dinámico -->
-              <img
-                :src="tech.iconUrl"
-                :alt="tech.nombre"
-                class="tech-icon-img"
-              />
-              <!-- Nombre de la tecnología -->
-              <span class="tech-name">{{ tech.nombre }}</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECCIÓN DE ESTADÍSTICAS PERSONALES -->
-        <div class="stats">
-          <div
-            v-for="stat in datos.estadisticas"
-            :key="stat.label"
-            class="stat-item"
-          >
-            <!-- Número o valor estadístico -->
-            <span class="stat-number">{{ stat.numero }}</span>
-            <!-- Etiqueta descriptiva -->
-            <span class="stat-label">{{ stat.label }}</span>
-          </div>
-        </div>
+      <div class="bloque" aria-hidden="true">
+        <pre class="fantasma">{{ codigoCompleto }}</pre>
+        <pre
+          class="escrito"><span v-html="codigoHtml"></span><span v-if="fase === 'codigo'" class="cursor"></span></pre>
       </div>
+
+      <div class="consola-salida-barra" aria-hidden="true">
+        <span>Salida · node sobre-mi.js</span>
+        <span>{{ estadoTexto }}</span>
+      </div>
+
+      <div class="bloque" aria-hidden="true">
+        <pre class="fantasma salida">&gt; {{ salidaCompleta }}</pre>
+        <pre
+          class="escrito salida"><span v-if="fase === 'salida' || fase === 'fin'" class="prompt">&gt; </span>{{ salidaEscrita }}<span v-if="fase === 'salida'" class="cursor"></span></pre>
+      </div>
+    </div>
+
+    <!-- Stack -->
+    <div class="stack">
+      <h2 class="etiqueta">Stack</h2>
+      <ul class="stack-lista">
+        <li v-for="tech in tecnologiasConIconos" :key="tech.id" class="stack-item">
+          <img :src="tech.iconUrl" alt="" class="stack-icono" :class="{ invertido: tech.invertir }" width="20"
+            height="20" loading="lazy" />
+          <span>{{ tech.nombre }}</span>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
@@ -79,240 +70,384 @@
    Uso de la API de composición de Vue 3 (Composition API)
    ============================================================ */
 
-import { ref, computed } from 'vue'           // Importa herramientas reactivas de Vue
-import { datosPersonales } from '@/data/datos' // Importa los datos del usuario desde un archivo externo
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'           // Importa herramientas reactivas de Vue
+import { datosPersonales, tecnologias, presentacion, contacto } from '@/data/datos' // Importa los datos del usuario desde un archivo externo
 
 // Se almacenan los datos personales en una referencia reactiva
 const datos = ref(datosPersonales)
+const cvPDF = contacto.cvPDF
 
 /* ------------------------------------------------------------
    Computed property: tecnologiasConIconos
-   - Genera una lista de tecnologías con sus íconos SVG.
-   - Los íconos provienen del CDN oficial de Devicons.
+   - Toma la lista de tecnologías (con sus íconos SVG de Devicons)
+     desde src/data/datos.js, así se edita en un solo lugar.
    - Se utiliza un "computed" para mantener reactividad y claridad.
    ------------------------------------------------------------ */
-const tecnologiasConIconos = computed(() => [
-  { id: 1, nombre: 'Python', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-  { id: 2, nombre: 'JavaScript', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  { id: 3, nombre: 'Java', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-  { id: 4, nombre: 'HTML5', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-  { id: 5, nombre: 'CSS3', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-  { id: 6, nombre: 'Git', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-  { id: 7, nombre: 'Vue.js', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
-  { id: 8, nombre: 'MySQL', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
-  { id: 9, nombre: 'VSCode', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
-  { id: 10, nombre: 'PyCharm', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg' },
-  { id: 11, nombre: 'Apache NetBeans', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg' },
-  { id: 12, nombre: 'GitHub', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' }
-])
+const tecnologiasConIconos = computed(() => tecnologias)
+
+/* ------------------------------------------------------------
+   PRESENTACIÓN ANIMADA ("Sobre mí" escrito como código JavaScript)
+   Fases: espera -> codigo (se escribe) -> ejecutando -> salida (se escribe) -> fin
+   - Empieza cuando la consola entra en pantalla (IntersectionObserver).
+   - Con "reducir movimiento" activado, muestra todo de una vez.
+   - Velocidades en milisegundos por letra (más bajo = más rápido).
+   ------------------------------------------------------------ */
+const VELOCIDAD_CODIGO_MS = 8
+const VELOCIDAD_SALIDA_MS = 16
+const PAUSA_EJECUCION_MS = 700
+
+// "a, b y c": igual que la función listar() del código que se muestra
+const listar = (xs) => xs.slice(0, -1).join(', ') + ' y ' + xs[xs.length - 1]
+const comillas = (t) => JSON.stringify(t)
+const lista = (xs) => '[' + xs.map(comillas).join(', ') + ']'
+
+// Texto del código que se escribe (se arma con los datos de datos.js)
+const codigoCompleto = computed(() => {
+  const d = presentacion
+  return [
+    'const gustavo = {',
+    `  rol: ${comillas(d.rol)},`,
+    `  carrera: ${comillas(d.carrera)},`,
+    `  universidad: ${comillas(d.universidad)},`,
+    `  stack: ${lista(d.stack)},`,
+    `  bases: ${lista(d.bases)},`,
+    `  pasion: ${comillas(d.pasion)},`,
+    '};',
+    '',
+    'const listar = (xs) => xs.slice(0, -1).join(", ") + " y " + xs.at(-1);',
+    '',
+    'const presentarse = (d) =>',
+    '  `${d.rol} de la ${d.carrera} en la ${d.universidad}. ` +',
+    '  `Desarrollo aplicaciones web full stack con ${listar(d.stack)} ` +',
+    '  `sobre bases de datos ${listar(d.bases)}, ` +',
+    '  `y me apasiona ${d.pasion} trabajando en equipo.`;',
+    '',
+    'console.log(presentarse(gustavo));'
+  ].join('\n')
+})
+
+// Resultado de ejecutar ese código
+const salidaCompleta = computed(() => {
+  const d = presentacion
+  return `${d.rol} de la ${d.carrera} en la ${d.universidad}. ` +
+    `Desarrollo aplicaciones web full stack con ${listar(d.stack)} ` +
+    `sobre bases de datos ${listar(d.bases)}, ` +
+    `y me apasiona ${d.pasion} trabajando en equipo.`
+})
+
+/* Resaltado de sintaxis simple: comentarios, textos, palabras clave, números y funciones */
+const escapar = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+const REGEX_TOKENS = /(\/\/[^\n]*)|(`[^`]*`|"[^"\n]*")|\b(const|let|await|async|function|return|new)\b|(\b\d+\b)|(\b[a-zA-Z_]\w*)(?=\()/g
+
+const resaltar = (texto) => {
+  let html = ''
+  let ultimo = 0
+  texto.replace(REGEX_TOKENS, (m, com, str, kw, num, fn, indice) => {
+    html += escapar(texto.slice(ultimo, indice))
+    const clase = com ? 'tk-com' : str ? 'tk-str' : kw ? 'tk-kw' : num ? 'tk-num' : 'tk-fn'
+    html += `<span class="${clase}">${escapar(m)}</span>`
+    ultimo = indice + m.length
+    return m
+  })
+  return html + escapar(texto.slice(ultimo))
+}
+
+const consolaRef = ref(null)
+const fase = ref('espera')
+const codigoEscrito = ref('')
+const salidaEscrita = ref('')
+const codigoHtml = computed(() => resaltar(codigoEscrito.value))
+const estadoTexto = computed(() => {
+  if (fase.value === 'ejecutando') return '● ejecutando…'
+  if (fase.value === 'salida' || fase.value === 'fin') return '✔ listo'
+  return ''
+})
+
+let temporizador = null
+let observador = null
+
+// Escribe "completo" letra por letra en la referencia "destino"
+const escribirTexto = (completo, destino, velocidad, alTerminar) => {
+  let i = 0
+  temporizador = setInterval(() => {
+    i++
+    destino.value = completo.slice(0, i)
+    if (i >= completo.length) {
+      clearInterval(temporizador)
+      alTerminar()
+    }
+  }, velocidad)
+}
+
+const iniciar = () => {
+  fase.value = 'codigo'
+  escribirTexto(codigoCompleto.value, codigoEscrito, VELOCIDAD_CODIGO_MS, () => {
+    fase.value = 'ejecutando'
+    temporizador = setTimeout(() => {
+      fase.value = 'salida'
+      escribirTexto(salidaCompleta.value, salidaEscrita, VELOCIDAD_SALIDA_MS, () => {
+        fase.value = 'fin'
+      })
+    }, PAUSA_EJECUCION_MS)
+  })
+}
+
+onMounted(() => {
+  const sinAnimacion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (sinAnimacion || !('IntersectionObserver' in window)) {
+    codigoEscrito.value = codigoCompleto.value
+    salidaEscrita.value = salidaCompleta.value
+    fase.value = 'fin'
+    return
+  }
+  observador = new IntersectionObserver(([entrada]) => {
+    if (entrada.isIntersecting) {
+      observador.disconnect()
+      iniciar()
+    }
+  }, { threshold: 0.3 })
+  observador.observe(consolaRef.value)
+})
+
+onBeforeUnmount(() => {
+  clearInterval(temporizador)
+  clearTimeout(temporizador)
+  if (observador) observador.disconnect()
+})
 </script>
 
 <style scoped>
-/* ============================================================
-   ESTILOS LOCALES (aislados al componente)
-   Paleta basada en tonos cian y grises oscuros.
-   ============================================================ */
-
-:root {
-  --primary: #00ffff;
-  --primary-claro: #93dede;
-  --text-primary: #ffffff;
-  --text-secondary: #cccccc;
-  --bg-secondary: #2a2a2a;
-  --bg-primary: #1a1a1a;
-  --border: #333;
+.portada {
+  padding: 5rem 0 4rem;
 }
 
-/* Contenedor principal de la sección */
-.sobre-mi {
-  margin-top: 0;
-  padding-top: 0;
-}
-
-/* GRID general de la sección (foto a la izquierda, texto a la derecha) */
-.contenedor {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-/* CENTRA la imagen en su contenedor */
-.foto-container {
+.portada-top {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Imagen del perfil con efectos visuales */
-.foto-perfil {
-  width: 280px;
-  height: 280px;
-  border-radius: 15px;
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
-  border: 4px solid var(--primary);
-  transition: transform 0.3s ease;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
-/* Efecto hover sobre la foto */
-.foto-perfil:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 50px rgba(0, 255, 255, 0.5);
+.saludo {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
 }
 
-/* Título principal */
-.texto-contenedor h2 {
-  font-size: 2.2rem;
-  color: var(--primary);
-  margin-bottom: 1.5rem;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-}
-
-/* Texto de introducción */
-.intro {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-  line-height: 1.8;
-}
-
-/* SECCIÓN DE TECNOLOGÍAS */
-.tecnologias {
-  margin: 2.5rem 0;
-}
-
-.tecnologias h3 {
-  color: var(--primary);
-  margin-bottom: 1.5rem;
-  font-size: 1.3rem;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
-}
-
-/* GRID para los íconos de tecnologías */
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1rem;
-}
-
-/* Tarjeta individual de tecnología */
-.tech-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  background: var(--bg-secondary);
-  border-radius: 12px;
-  border: 2px solid #00ffff;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-/* Efecto hover en cada tarjeta */
-.tech-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-  border-color: var(--primary-claro);
-}
-
-/* Ícono dentro de cada tarjeta */
-.tech-icon-img {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 0.5rem;
-  transition: transform 0.3s ease;
-}
-
-/* Aumenta el ícono al pasar el mouse */
-.tech-item:hover .tech-icon-img {
-  transform: scale(1.1);
-}
-
-/* Nombre de la tecnología */
-.tech-name {
-  font-weight: 600;
-  color: var(--text-primary);
-  font-size: 0.95rem;
-}
-
-/* ------------------------------------------------------------
-   SECCIÓN DE ESTADÍSTICAS
-   ------------------------------------------------------------ */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-  padding: 2rem;
-  background: var(--bg-secondary);
-  border-radius: 12px;
-  border: 2px solid var(--primary);
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* Números destacados */
-.stat-number {
-  font-size: 2.2rem;
+h1 {
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   font-weight: 800;
-  color: var(--primary);
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
-/* Texto descriptivo de la estadística */
-.stat-label {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  margin-top: 0.5rem;
+.lead {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 34rem;
+  margin-bottom: 2rem;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 3.5rem;
 }
 
 /* ------------------------------------------------------------
-   MEDIA QUERIES - Responsividad
+   CONSOLA ANIMADA (código + salida). Siempre oscura.
    ------------------------------------------------------------ */
-@media (max-width: 968px) {
-  .contenedor {
-    grid-template-columns: 1fr; /* Cambia a una sola columna */
-  }
+.consola {
+  background: var(--consola-bg);
+  border: 1px solid var(--consola-borde);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 4rem;
+  text-align: left;
+}
 
-  .foto-perfil {
-    width: 240px;
-    height: 240px;
-  }
+.consola-barra {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0.55rem 0.9rem;
+  background: var(--consola-barra);
+  border-bottom: 1px solid var(--consola-borde);
+}
 
-  .stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+.punto {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.punto.rojo {
+  background: #ff5f56;
+}
+
+.punto.amarillo {
+  background: #ffbd2e;
+}
+
+.punto.verde {
+  background: #27c93f;
+}
+
+.consola-archivo {
+  margin-left: 8px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: #9aa6b2;
+}
+
+.consola-salida-barra {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.45rem 0.9rem;
+  background: var(--consola-barra);
+  border-top: 1px solid var(--consola-borde);
+  border-bottom: 1px solid var(--consola-borde);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9aa6b2;
+}
+
+/* Cada bloque tiene un texto invisible (reserva el alto) y el texto real encima */
+.bloque {
+  position: relative;
+}
+
+.bloque pre {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  font: 0.78rem/1.55 var(--mono);
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--consola-texto);
+}
+
+.bloque .fantasma {
+  visibility: hidden;
+}
+
+.bloque .escrito {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.bloque .salida {
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+
+.prompt {
+  color: var(--consola-acento);
+}
+
+/* Colores del resaltado de sintaxis (v-html: se aplican con :deep) */
+.escrito :deep(.tk-kw) {
+  color: #ff79c6;
+}
+
+.escrito :deep(.tk-str) {
+  color: #f1fa8c;
+}
+
+.escrito :deep(.tk-com) {
+  color: #6a9955;
+  font-style: italic;
+}
+
+.escrito :deep(.tk-num) {
+  color: #bd93f9;
+}
+
+.escrito :deep(.tk-fn) {
+  color: #50fa7b;
+}
+
+/* Cursor parpadeante */
+.cursor {
+  display: inline-block;
+  width: 0.55ch;
+  height: 1.1em;
+  vertical-align: text-bottom;
+  background: var(--consola-acento);
+  margin-left: 1px;
+  animation: parpadeo 1s steps(1) infinite;
+}
+
+@keyframes parpadeo {
+  50% {
+    opacity: 0;
   }
 }
 
-@media (max-width: 768px) {
-  .tech-grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+/* ------------------------------------------------------------
+   STACK: lista plana y chica
+   ------------------------------------------------------------ */
+.stack-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.stack-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.8rem 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.stack-icono {
+  width: 20px;
+  height: 20px;
+}
+
+.stack-icono.invertido {
+  filter: var(--invert-icon);
+}
+
+@media (max-width: 640px) {
+  .portada {
+    padding: 3rem 0;
   }
 
-  .texto-contenedor h2 {
-    font-size: 1.8rem;
+  .avatar {
+    width: 56px;
+    height: 56px;
   }
 
-  .stats {
-    grid-template-columns: 1fr; /* Coloca estadísticas en una sola columna */
-    padding: 1.5rem;
+  .lead {
+    font-size: 1.05rem;
   }
 
-  .stat-number {
-    font-size: 1.8rem;
+  .bloque pre {
+    font-size: 0.68rem;
+    padding: 0.8rem;
   }
 
-  .tech-icon-img {
-    width: 40px;
-    height: 40px;
+  .bloque .salida {
+    font-size: 0.78rem;
   }
 }
 </style>

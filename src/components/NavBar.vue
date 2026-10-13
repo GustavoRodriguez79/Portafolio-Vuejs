@@ -1,198 +1,186 @@
 <template>
-  <!-- ==========================
-       BARRA DE NAVEGACIÓN
-       ========================== -->
-  <nav class="navbar">
-    <div class="navbar-container">
+  <header class="navbar">
+    <nav class="navbar-container" aria-label="Principal">
+      <!-- Marca -->
+      <a href="#sobremi" class="marca">Gustavo Rodriguez</a>
 
-      <!-- ==========================
-           LOGO / MARCA
-           ========================== -->
-      <div class="navbar-brand">
-        <h3>GAR Portafolio</h3>
-      </div>
+      <!-- Links a las secciones -->
+      <ul class="nav-list">
+        <li v-for="nav in navegacion" :key="nav.id">
+          <a :href="nav.enlace" class="nav-item">{{ nav.nombre }}</a>
+        </li>
+      </ul>
 
-      <!-- ==========================
-           MENÚ PRINCIPAL DE NAVEGACIÓN
-           ========================== -->
-      <div class="navbar-menu">
-        <ul class="nav-list">
-          <!-- Se recorre el array "navegacion" para generar los links -->
-          <li v-for="nav in navegacion" :key="nav.id">
-            <a :href="nav.enlace" class="nav-item">{{ nav.nombre }}</a>
-          </li>
-        </ul>
-      </div>
+      <div class="acciones">
+        <!-- Cambio de tema claro / oscuro -->
+        <button type="button" class="btn-tema" :aria-label="oscuro ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'"
+          :title="oscuro ? 'Tema claro' : 'Tema oscuro'" @click="alternarTema">
+          <!-- Sol (se muestra en tema oscuro) -->
+          <svg v-if="oscuro" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+          </svg>
+          <!-- Luna (se muestra en tema claro) -->
+          <svg v-else viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+          </svg>
+        </button>
 
-      <!-- ==========================
-           BOTÓN DE DESCARGA DEL CV
-           ========================== -->
-      <div class="navbar-actions">
-        <a href="cv.pdf" class="btn-cv" download="CV_GustavoRodriguez.pdf" title="Descargar CV">
-          <i class="fas fa-download"></i> CV
+        <!-- Descarga del CV -->
+        <a :href="`/${cvPDF}`" class="btn btn-secundario btn-cv" download="CV_GustavoRodriguez.pdf"
+          title="Descargar CV">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v12M7 11l5 5 5-5M5 21h14" />
+          </svg>
+          CV
         </a>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { contacto } from '@/data/datos'
 
-/* Array de navegación:
-   Contiene los enlaces y nombres para cada sección de la página
-   Se usa para renderizar dinámicamente el menú */
-const navegacion = ref([
-  { id: 1, nombre: 'Educación', enlace: '#educacion' },
-  { id: 2, nombre: 'Experiencia', enlace: '#experiencia' },
-  { id: 3, nombre: 'Proyectos', enlace: '#proyectos' },
-  { id: 4, nombre: 'Habilidades', enlace: '#habilidades' },
-  { id: 5, nombre: 'Intereses', enlace: '#intereses' }
-])
+const cvPDF = contacto.cvPDF
+
+const navegacion = [
+  { id: 1, nombre: 'Proyectos', enlace: '#proyectos' },
+  { id: 2, nombre: 'Formación', enlace: '#formacion' },
+  { id: 3, nombre: 'Contacto', enlace: '#contacto' }
+]
+
+/* ------------------------------------------------------------
+   TEMA CLARO / OSCURO
+   - Por defecto: oscuro.
+   - La elección se guarda en localStorage (con try/catch: puede estar bloqueado).
+   - Se aplica con el atributo data-theme en <html>; los colores salen de App.vue.
+   ------------------------------------------------------------ */
+const CLAVE = 'tema-portafolio'
+const oscuro = ref(true)
+
+const aplicar = (esOscuro) => {
+  oscuro.value = esOscuro
+  document.documentElement.setAttribute('data-theme', esOscuro ? 'dark' : 'light')
+}
+
+const alternarTema = () => {
+  aplicar(!oscuro.value)
+  try {
+    localStorage.setItem(CLAVE, oscuro.value ? 'dark' : 'light')
+  } catch (e) {
+    /* sin almacenamiento: el cambio vale solo para esta visita */
+  }
+}
+
+onMounted(() => {
+  let guardado = null
+  try {
+    guardado = localStorage.getItem(CLAVE)
+  } catch (e) {
+    guardado = null
+  }
+  aplicar(guardado !== 'light')
+})
 </script>
 
 <style scoped>
-/* ==============================
-   VARIABLES GLOBALES
-   ============================== */
-:root {
-  --primary: #00ffff;           /* Color principal de la marca y elementos activos */
-  --primary-claro: #93dede;    /* Color principal claro para hover o efectos */
-  --text-primary: #ffffff;      /* Texto principal */
-  --text-secondary: #cccccc;    /* Texto secundario */
-  --bg-secondary: #1a1a1a;      /* Fondo de la navbar */
-}
-
-/* ==============================
-   CONTENEDOR DE LA NAVBAR
-   ============================== */
 .navbar {
-  background: var(--bg-secondary);               /* Fondo oscuro */
-  box-shadow: 0 2px 10px rgba(0, 255, 255, 0.2); /* Sombra suave */
-  position: sticky;                               /* Se queda pegada al hacer scroll */
+  position: sticky;
   top: 0;
-  z-index: 100;                                   /* Prioridad de superposición */
-  border-bottom: 2px solid var(--primary);       /* Línea inferior decorativa */
+  z-index: 100;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
 }
 
-/* Contenedor interno de los elementos */
 .navbar-container {
-  max-width: 1200px;
+  max-width: 760px;
   margin: 0 auto;
-  padding: 1rem 2rem;
-  display: flex;                  /* Layout flexible */
-  justify-content: space-between; /* Distribuye espacio entre elementos */
-  align-items: center;            /* Alinea verticalmente */
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-/* ==============================
-   LOGO / MARCA
-   ============================== */
-.navbar-brand h3 {
-  color: var(--primary);
-  font-size: 1.5rem;
-  margin: 0;
-  font-weight: 800;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3); /* Resalta con sombra luminosa */
-}
-
-/* ==============================
-   MENÚ DE NAVEGACIÓN
-   ============================== */
-.navbar-menu {
-  flex: 1;             /* Ocupa todo el espacio disponible entre logo y acciones */
-  margin: 0 2rem;      /* Margen lateral */
+.marca {
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .nav-list {
-  display: flex;       /* Lista horizontal */
-  list-style: none;    /* Sin viñetas */
-  gap: 2rem;           /* Separación entre items */
-  margin: 0;
-  padding: 0;
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin-left: auto;
 }
 
 .nav-item {
-  color: var(--primary);
-  text-decoration: none;    /* Sin subrayado */
-  font-weight: 600;
-  transition: all 0.3s ease; /* Animaciones suaves en hover */
-  position: relative;        /* Necesario para pseudo-elementos */
-  padding-bottom: 5px;       /* Espacio para línea decorativa */
-  font-size: 1rem;
-}
-
-/* Línea decorativa debajo del link que se anima */
-.nav-item::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;                  /* Inicialmente no visible */
-  height: 2px;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-claro) 100%);
-  transition: width 0.3s ease;
-}
-
-/* Hover en link: cambio de color y efecto de luz */
-.nav-item:hover {
-  color: var(--primary-claro);
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
-}
-
-.nav-item:hover::after {
-  width: 100%; /* La línea decorativa se expande al ancho completo */
-}
-
-/* ==============================
-   BOTÓN DE DESCARGA DEL CV
-   ============================== */
-.btn-cv {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-claro) 100%);
-  color: var(--primary);
-  padding: 0.75rem 1.5rem;
-  border-radius: 25px;       /* Bordes redondeados */
+  color: var(--muted);
   text-decoration: none;
-  font-weight: 700;
-  transition: all 0.5s ease;
+  font-size: 0.92rem;
+  transition: color 0.2s ease;
+}
+
+.nav-item:hover {
+  color: var(--text);
+}
+
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.btn-tema {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); /* Efecto de luz */
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.btn-cv:hover {
-  transform: translateY(-2px);                 /* Leve elevación */
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5); /* Luz más intensa */
+.btn-tema:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
-/* ==============================
-   ESTILOS RESPONSIVOS
-   ============================== */
-@media (max-width: 768px) {
+.btn-cv {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.88rem;
+}
+
+/* Pantallas chicas: los links bajan a una segunda fila */
+@media (max-width: 640px) {
   .navbar-container {
-    flex-wrap: wrap;   /* Los elementos se acomodan en varias líneas */
-    padding: 1rem;
+    flex-wrap: wrap;
+    padding: 0.6rem 1.25rem;
+    gap: 0.5rem 1rem;
   }
 
-  .navbar-brand h3 {
-    font-size: 1.2rem;
-  }
-
-  .navbar-menu {
-    order: 3;          /* Aparece debajo del logo */
-    width: 100%;
-    margin: 1rem 0 0;
+  .acciones {
+    margin-left: auto;
   }
 
   .nav-list {
-    flex-direction: column; /* Lista vertical */
-    gap: 1rem;
-  }
-
-  .btn-cv {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    gap: 1.25rem;
   }
 }
 </style>
