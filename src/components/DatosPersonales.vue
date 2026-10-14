@@ -1,7 +1,7 @@
 <!-- ============================================================
   COMPONENTE: DatosPersonales.vue (portada + stack)
   - Nombre y frase corta, con foto pequeña
-  - Presentación animada: se escribe un código JavaScript y debajo aparece su salida
+  - Video de presentación (monitor con código JavaScript y su salida)
   - Stack tecnológico en una lista compacta
   ============================================================ -->
 
@@ -23,32 +23,13 @@
       <a :href="`/${cvPDF}`" class="btn btn-secundario" download="CV_GustavoRodriguez.pdf">Descargar CV</a>
     </div>
 
-    <!-- Presentación animada. Cada bloque lleva un texto "fantasma" invisible que reserva el alto
-         (sin saltos de layout) y el texto real se superpone. El resumen completo queda en aria-label
-         para lectores de pantalla. -->
-    <div class="consola" ref="consolaRef" role="img" :aria-label="salidaCompleta">
-      <div class="consola-barra" aria-hidden="true">
-        <span class="punto rojo"></span><span class="punto amarillo"></span><span class="punto verde"></span>
-        <span class="consola-archivo">sobre-mi.js</span>
-      </div>
+    <!-- Video de presentación (20 s, sin audio). Con "reducir movimiento" no se reproduce solo y muestra controles. -->
+    <video class="video-portada" src="/presentacion.mp4" poster="/poster.jpg" :autoplay="!reducirMovimiento"
+      :controls="reducirMovimiento" muted loop playsinline preload="none"
+      aria-label="Video de presentación de Gustavo Rodriguez: código JavaScript y su salida en un monitor"></video>
 
-      <div class="bloque" aria-hidden="true">
-        <pre class="fantasma">{{ codigoCompleto }}</pre>
-        <pre
-          class="escrito"><span v-html="codigoHtml"></span><span v-if="fase === 'codigo'" class="cursor"></span></pre>
-      </div>
-
-      <div class="consola-salida-barra" aria-hidden="true">
-        <span>Salida · node sobre-mi.js</span>
-        <span>{{ estadoTexto }}</span>
-      </div>
-
-      <div class="bloque" aria-hidden="true">
-        <pre class="fantasma salida">&gt; {{ salidaCompleta }}</pre>
-        <pre
-          class="escrito salida"><span v-if="fase === 'salida' || fase === 'fin'" class="prompt">&gt; </span>{{ salidaEscrita }}<span v-if="fase === 'salida'" class="cursor"></span></pre>
-      </div>
-    </div>
+    <!-- Texto de la presentación para lectores de pantalla y buscadores (el video no lo contiene como texto) -->
+    <p class="solo-lectores">{{ resumen }}</p>
 
     <!-- Stack -->
     <div class="stack">
@@ -70,12 +51,14 @@
    Uso de la API de composición de Vue 3 (Composition API)
    ============================================================ */
 
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'           // Importa herramientas reactivas de Vue
+import { ref, computed } from 'vue'           // Importa herramientas reactivas de Vue
 import { datosPersonales, tecnologias, presentacion, contacto } from '@/data/datos' // Importa los datos del usuario desde un archivo externo
 
 // Se almacenan los datos personales en una referencia reactiva
 const datos = ref(datosPersonales)
 const cvPDF = contacto.cvPDF
+// Si la persona pidió menos movimiento, el video no arranca solo
+const reducirMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 /* ------------------------------------------------------------
    Computed property: tecnologiasConIconos
@@ -86,133 +69,17 @@ const cvPDF = contacto.cvPDF
 const tecnologiasConIconos = computed(() => tecnologias)
 
 /* ------------------------------------------------------------
-   PRESENTACIÓN ANIMADA ("Sobre mí" escrito como código JavaScript)
-   Fases: espera -> codigo (se escribe) -> ejecutando -> salida (se escribe) -> fin
-   - Empieza cuando la consola entra en pantalla (IntersectionObserver).
-   - Con "reducir movimiento" activado, muestra todo de una vez.
-   - Velocidades en milisegundos por letra (más bajo = más rápido).
+   Texto de presentación (se arma con los datos de datos.js).
+   Es el mismo que muestra el video; acá sirve para lectores de pantalla.
    ------------------------------------------------------------ */
-const VELOCIDAD_CODIGO_MS = 8
-const VELOCIDAD_SALIDA_MS = 16
-const PAUSA_EJECUCION_MS = 700
-
-// "a, b y c": igual que la función listar() del código que se muestra
 const listar = (xs) => xs.slice(0, -1).join(', ') + ' y ' + xs[xs.length - 1]
-const comillas = (t) => JSON.stringify(t)
-const lista = (xs) => '[' + xs.map(comillas).join(', ') + ']'
 
-// Texto del código que se escribe (se arma con los datos de datos.js)
-const codigoCompleto = computed(() => {
-  const d = presentacion
-  return [
-    'const gustavo = {',
-    `  rol: ${comillas(d.rol)},`,
-    `  carrera: ${comillas(d.carrera)},`,
-    `  universidad: ${comillas(d.universidad)},`,
-    `  stack: ${lista(d.stack)},`,
-    `  bases: ${lista(d.bases)},`,
-    `  pasion: ${comillas(d.pasion)},`,
-    '};',
-    '',
-    'const listar = (xs) => xs.slice(0, -1).join(", ") + " y " + xs.at(-1);',
-    '',
-    'const presentarse = (d) =>',
-    '  `${d.rol} de la ${d.carrera} en la ${d.universidad}. ` +',
-    '  `Desarrollo aplicaciones web full stack con ${listar(d.stack)} ` +',
-    '  `sobre bases de datos ${listar(d.bases)}, ` +',
-    '  `y me apasiona ${d.pasion} trabajando en equipo.`;',
-    '',
-    'console.log(presentarse(gustavo));'
-  ].join('\n')
-})
-
-// Resultado de ejecutar ese código
-const salidaCompleta = computed(() => {
+const resumen = computed(() => {
   const d = presentacion
   return `${d.rol} de la ${d.carrera} en la ${d.universidad}. ` +
     `Desarrollo aplicaciones web full stack con ${listar(d.stack)} ` +
     `sobre bases de datos ${listar(d.bases)}, ` +
     `y me apasiona ${d.pasion} trabajando en equipo.`
-})
-
-/* Resaltado de sintaxis simple: comentarios, textos, palabras clave, números y funciones */
-const escapar = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;')
-const REGEX_TOKENS = /(\/\/[^\n]*)|(`[^`]*`|"[^"\n]*")|\b(const|let|await|async|function|return|new)\b|(\b\d+\b)|(\b[a-zA-Z_]\w*)(?=\()/g
-
-const resaltar = (texto) => {
-  let html = ''
-  let ultimo = 0
-  texto.replace(REGEX_TOKENS, (m, com, str, kw, num, fn, indice) => {
-    html += escapar(texto.slice(ultimo, indice))
-    const clase = com ? 'tk-com' : str ? 'tk-str' : kw ? 'tk-kw' : num ? 'tk-num' : 'tk-fn'
-    html += `<span class="${clase}">${escapar(m)}</span>`
-    ultimo = indice + m.length
-    return m
-  })
-  return html + escapar(texto.slice(ultimo))
-}
-
-const consolaRef = ref(null)
-const fase = ref('espera')
-const codigoEscrito = ref('')
-const salidaEscrita = ref('')
-const codigoHtml = computed(() => resaltar(codigoEscrito.value))
-const estadoTexto = computed(() => {
-  if (fase.value === 'ejecutando') return '● ejecutando…'
-  if (fase.value === 'salida' || fase.value === 'fin') return '✔ listo'
-  return ''
-})
-
-let temporizador = null
-let observador = null
-
-// Escribe "completo" letra por letra en la referencia "destino"
-const escribirTexto = (completo, destino, velocidad, alTerminar) => {
-  let i = 0
-  temporizador = setInterval(() => {
-    i++
-    destino.value = completo.slice(0, i)
-    if (i >= completo.length) {
-      clearInterval(temporizador)
-      alTerminar()
-    }
-  }, velocidad)
-}
-
-const iniciar = () => {
-  fase.value = 'codigo'
-  escribirTexto(codigoCompleto.value, codigoEscrito, VELOCIDAD_CODIGO_MS, () => {
-    fase.value = 'ejecutando'
-    temporizador = setTimeout(() => {
-      fase.value = 'salida'
-      escribirTexto(salidaCompleta.value, salidaEscrita, VELOCIDAD_SALIDA_MS, () => {
-        fase.value = 'fin'
-      })
-    }, PAUSA_EJECUCION_MS)
-  })
-}
-
-onMounted(() => {
-  const sinAnimacion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (sinAnimacion || !('IntersectionObserver' in window)) {
-    codigoEscrito.value = codigoCompleto.value
-    salidaEscrita.value = salidaCompleta.value
-    fase.value = 'fin'
-    return
-  }
-  observador = new IntersectionObserver(([entrada]) => {
-    if (entrada.isIntersecting) {
-      observador.disconnect()
-      iniciar()
-    }
-  }, { threshold: 0.3 })
-  observador.observe(consolaRef.value)
-})
-
-onBeforeUnmount(() => {
-  clearInterval(temporizador)
-  clearTimeout(temporizador)
-  if (observador) observador.disconnect()
 })
 </script>
 
@@ -261,140 +128,32 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2.5rem;
 }
 
-/* ------------------------------------------------------------
-   CONSOLA ANIMADA (código + salida). Siempre oscura.
-   ------------------------------------------------------------ */
-.consola {
+/* Video de presentación */
+.video-portada {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   background: var(--consola-bg);
-  border: 1px solid var(--consola-borde);
+  border: 1px solid var(--border);
   border-radius: 12px;
-  overflow: hidden;
   margin-bottom: 4rem;
-  text-align: left;
 }
 
-.consola-barra {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 0.55rem 0.9rem;
-  background: var(--consola-barra);
-  border-bottom: 1px solid var(--consola-borde);
-}
-
-.punto {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-}
-
-.punto.rojo {
-  background: #ff5f56;
-}
-
-.punto.amarillo {
-  background: #ffbd2e;
-}
-
-.punto.verde {
-  background: #27c93f;
-}
-
-.consola-archivo {
-  margin-left: 8px;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: #9aa6b2;
-}
-
-.consola-salida-barra {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.45rem 0.9rem;
-  background: var(--consola-barra);
-  border-top: 1px solid var(--consola-borde);
-  border-bottom: 1px solid var(--consola-borde);
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #9aa6b2;
-}
-
-/* Cada bloque tiene un texto invisible (reserva el alto) y el texto real encima */
-.bloque {
-  position: relative;
-}
-
-.bloque pre {
-  margin: 0;
-  padding: 1rem 1.1rem;
-  font: 0.78rem/1.55 var(--mono);
-  white-space: pre-wrap;
-  word-break: break-word;
-  color: var(--consola-texto);
-}
-
-.bloque .fantasma {
-  visibility: hidden;
-}
-
-.bloque .escrito {
+/* Texto solo para lectores de pantalla */
+.solo-lectores {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.bloque .salida {
-  color: #ffffff;
-  font-size: 0.85rem;
-}
-
-.prompt {
-  color: var(--consola-acento);
-}
-
-/* Colores del resaltado de sintaxis (v-html: se aplican con :deep) */
-.escrito :deep(.tk-kw) {
-  color: #ff79c6;
-}
-
-.escrito :deep(.tk-str) {
-  color: #f1fa8c;
-}
-
-.escrito :deep(.tk-com) {
-  color: #6a9955;
-  font-style: italic;
-}
-
-.escrito :deep(.tk-num) {
-  color: #bd93f9;
-}
-
-.escrito :deep(.tk-fn) {
-  color: #50fa7b;
-}
-
-/* Cursor parpadeante */
-.cursor {
-  display: inline-block;
-  width: 0.55ch;
-  height: 1.1em;
-  vertical-align: text-bottom;
-  background: var(--consola-acento);
-  margin-left: 1px;
-  animation: parpadeo 1s steps(1) infinite;
-}
-
-@keyframes parpadeo {
-  50% {
-    opacity: 0;
-  }
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ------------------------------------------------------------
@@ -439,15 +198,6 @@ h1 {
 
   .lead {
     font-size: 1.05rem;
-  }
-
-  .bloque pre {
-    font-size: 0.68rem;
-    padding: 0.8rem;
-  }
-
-  .bloque .salida {
-    font-size: 0.78rem;
   }
 }
 </style>
