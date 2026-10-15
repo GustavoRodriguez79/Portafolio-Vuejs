@@ -1,6 +1,20 @@
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1200&color=22D3EE&center=true&vCenter=true&width=640&height=45&lines=Portafolio+personal+%C2%B7+Gustavo+Rodriguez;Vue+3+%C2%B7+Vite+%C2%B7+JavaScript;Tema+oscuro+y+claro;Proyectos%2C+formaci%C3%B3n+y+CV+descargable;Publicado+en+Netlify" alt="Texto animado: Portafolio personal de Gustavo Rodriguez, Vue 3, Vite, JavaScript, tema oscuro y claro, publicado en Netlify" />
+</p>
+
 # 🏷️ Portafolio Personal - Gustavo Ariel Rodriguez
 
-Portafolio web sobrio y minimalista para mostrar proyectos, formación y contacto. Desarrollado con Vue 3 y Vite, con **tema oscuro y claro**, una **presentación animada en formato de terminal** y descarga del CV.
+![Vue](https://img.shields.io/badge/Vue-3-4FC08D?logo=vuedotjs&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-9-4B32C3?logo=eslint&logoColor=white)
+![Node](https://img.shields.io/badge/Node-%E2%89%A520.19-5FA04E?logo=nodedotjs&logoColor=white)
+![Netlify](https://img.shields.io/badge/Netlify-00C7B7?logo=netlify&logoColor=white)
+![Frontend](https://img.shields.io/badge/Frontend-Deployed-brightgreen)
+
+Portafolio web sobrio y minimalista para mostrar proyectos, formación y contacto. Desarrollado con Vue 3 y Vite, con **tema oscuro y claro**, un **video de presentación** en la portada y descarga del CV.
 
 🌐 **Sitio en vivo:** [gustavo-rodriguez-portafolio-vuejs.netlify.app](https://gustavo-rodriguez-portafolio-vuejs.netlify.app/)
 
@@ -9,13 +23,13 @@ Portafolio web sobrio y minimalista para mostrar proyectos, formación y contact
 ## ✨ Qué incluye
 
 - **Portada** con nombre, frase corta y botones de "Ver proyectos" y "Descargar CV".
-- **Presentación animada:** una terminal donde se escribe solo un código en JavaScript y, al "ejecutarlo", muestra la presentación como salida.
+- **Video de presentación** (20 segundos, sin audio): un monitor donde se escribe un código en JavaScript y, al "ejecutarlo", muestra la presentación como salida, con los logos del stack alrededor. Arranca solo, en bucle; con "reducir movimiento" activado no se reproduce solo y muestra controles.
 - **Stack tecnológico** en una lista compacta con 20 tecnologías (incluye IntelliJ IDEA y Spring).
 - **Proyectos:** 4 destacados con enlaces a la demo y al código en GitHub, y un botón para ver los 8.
-- **Formación:** estudios y experiencia en una sola línea de tiempo.
+- **Formación:** estudios y experiencia en una sola línea de tiempo, con enlaces a las instituciones (UTN FRSR y Escuelas Newton).
 - **Contacto** con email, redes y descarga del CV.
 - **Tema claro y oscuro** con un botón en la barra de navegación; recuerda la elección de cada visitante.
-- **Accesible y responsivo:** contraste verificado, navegación con teclado y adaptación a celulares.
+- **Accesible y responsivo:** contraste verificado, navegación con teclado, texto de la presentación disponible para lectores de pantalla y adaptación a celulares.
 
 ---
 
@@ -26,6 +40,7 @@ Portafolio web sobrio y minimalista para mostrar proyectos, formación y contact
 - **JavaScript (ES6+), HTML5 y CSS3** (variables CSS, sin librerías de estilos)
 - **ESLint 9** (con `eslint-plugin-vue`)
 - **Devicons** (logos de tecnologías, desde CDN)
+- **HyperFrames + GSAP** (solo para generar el video de presentación; no forman parte del sitio)
 - **Deploy:** Netlify
 
 ---
@@ -35,14 +50,19 @@ Portafolio web sobrio y minimalista para mostrar proyectos, formación y contact
 ```
 Portafolio-Vuejs/
 │
+├── docs/
+│   └── iconos/                   # Íconos de contacto de este README
+│
 ├── public/
 │   ├── cv.pdf                    # Currículum descargable
-│   └── fotoGustavo.png           # Foto de perfil
+│   ├── fotoGustavo.png           # Foto de perfil
+│   ├── presentacion.mp4          # Video de presentación de la portada
+│   └── poster.jpg                # Imagen que se ve mientras carga el video
 │
 ├── src/
 │   ├── components/
 │   │   ├── NavBar.vue            # Navegación, cambio de tema y botón de CV
-│   │   ├── DatosPersonales.vue   # Portada: nombre, terminal animada y stack
+│   │   ├── DatosPersonales.vue   # Portada: nombre, video y stack
 │   │   ├── Proyectos.vue         # Lista de proyectos (destacados / todos)
 │   │   ├── Formacion.vue         # Estudios y experiencia
 │   │   └── Footer.vue            # Contacto y pie de página
@@ -102,9 +122,25 @@ npm run preview    # previsualiza el build
 
 Casi todo el contenido se edita en **`src/data/datos.js`**, sin tocar los componentes.
 
-### Presentación animada
+### Video de presentación
 
-El código que se escribe en la terminal y su salida se generan desde este objeto. Cambiás un valor y se actualizan los dos:
+El video vive en `public/presentacion.mp4`, con su imagen de carga en `public/poster.jpg`. Se muestra en `DatosPersonales.vue`:
+
+```html
+<video
+  src="/presentacion.mp4"
+  poster="/poster.jpg"
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="none"
+></video>
+```
+
+- **Para cambiarlo:** reemplazá los dos archivos de `public/` por los nuevos, con los mismos nombres, y hacé push.
+- **Cómo se hizo:** es una composición de [HyperFrames](https://github.com/heygen-com/hyperframes) (HTML + GSAP renderizado a MP4, 1920×1080, 30 fps, unos 2 MB). Para modificarlo se edita el texto o los íconos del HTML de esa composición y se vuelve a renderizar con `npx hyperframes render` (requiere Node 22 o más y FFmpeg). Esa composición no está en este repositorio.
+- **Texto para lectores de pantalla:** el objeto `presentacion` de `datos.js` ya no dibuja nada en pantalla, pero arma el texto oculto de la presentación (accesibilidad y buscadores). Si cambiás el video, actualizalo también:
 
 ```javascript
 export const presentacion = {
@@ -116,8 +152,6 @@ export const presentacion = {
   pasion: "crear soluciones originales y personalizadas",
 };
 ```
-
-La velocidad se ajusta con `VELOCIDAD_CODIGO_MS` y `VELOCIDAD_SALIDA_MS` en `DatosPersonales.vue`.
 
 ### Tecnologías del stack
 
@@ -143,6 +177,20 @@ La velocidad se ajusta con `VELOCIDAD_CODIGO_MS` y `VELOCIDAD_SALIDA_MS` en `Dat
 ```
 
 Los proyectos sin `destacado` aparecen al tocar **"Ver los N proyectos"**.
+
+### Formación
+
+En `educacion` (dentro de `datos.js`), el campo `enlace` convierte el título en un enlace a la institución. Si queda vacío (`""`), se muestra como texto:
+
+```javascript
+{
+  id: 1,
+  fecha: "2012 - 2013",
+  titulo: "Mantenimiento y Reparación de Computadoras",
+  institucion: "Escuelas de Capacitación Newton",
+  enlace: "https://escuelasnewton.com.ar/",
+}
+```
 
 ### Frase de contacto y CV
 
@@ -171,7 +219,7 @@ Los colores están en `src/App.vue`, como variables CSS. Hay un bloque para el t
 }
 ```
 
-La terminal es siempre oscura, también en el tema claro.
+El video es siempre oscuro, también en el tema claro; por eso se muestra dentro de un recuadro con borde.
 
 ### Agregar una nueva sección
 
@@ -184,11 +232,18 @@ La terminal es siempre oscura, también en el tema claro.
 ## 📱 Responsividad
 
 - **Escritorio:** columna central de 760 px, con mucho espacio.
-- **Celular** (menos de 640 px): los links de la barra pasan a una segunda fila, la terminal reduce el tamaño de letra y las filas de formación se apilan.
+- **Celular** (menos de 640 px): los links de la barra pasan a una segunda fila, el video ocupa todo el ancho y las filas de formación se apilan.
 
 ---
 
 ## 🚀 Historial de cambios
+
+### Versión 4.1 — Octubre 2026
+
+- **Video de presentación** en la portada, en lugar de la terminal animada: un monitor con el código y su salida, y los logos del stack alrededor (20 s, sin audio, ~2 MB, carga diferida con imagen de portada).
+- **Eliminada** la terminal animada de `DatosPersonales.vue`; el texto de la presentación queda como texto oculto para lectores de pantalla.
+
+- **README:** texto animado superior, insignias de tecnologías e íconos de contacto.
 
 ### Versión 4.0 — Octubre 2026 (rediseño)
 
@@ -216,6 +271,7 @@ La terminal es siempre oscura, también en el tema claro.
 - [Documentación Vue.js](https://vuejs.org)
 - [Documentación Vite](https://vitejs.dev)
 - [Devicons](https://devicon.dev)
+- [HyperFrames](https://github.com/heygen-com/hyperframes)
 - [Netlify](https://netlify.com)
 
 ---
@@ -228,12 +284,18 @@ Este portafolio personal es de uso privado y personal de Gustavo Ariel Rodriguez
 
 ## ✉️ Contacto
 
-- **Email:** garodrifornes79@gmail.com
-- **LinkedIn:** [Gustavo Ariel Rodriguez](https://www.linkedin.com/in/gustavo-ariel-rodr%C3%ADguez-fornes-36a899370/)
-- **GitHub:** [@GustavoRodriguez79](https://github.com/GustavoRodriguez79)
-- **Instagram:** [@garodrifornes79](https://instagram.com/garodrifornes79)
-- **Portafolio online:** [Netlify](https://gustavo-rodriguez-portafolio-vuejs.netlify.app/)
+<p align="center">
+  <a href="mailto:garodrifornes79@gmail.com" title="Email"><img src="docs/iconos/email.svg" alt="Email" width="48" height="48" /></a>
+  &nbsp;
+  <a href="https://www.linkedin.com/in/gustavo-ariel-rodr%C3%ADguez-fornes-36a899370/" title="LinkedIn"><img src="docs/iconos/linkedin.svg" alt="LinkedIn" width="48" height="48" /></a>
+  &nbsp;
+  <a href="https://github.com/GustavoRodriguez79" title="GitHub"><img src="docs/iconos/github.svg" alt="GitHub" width="48" height="48" /></a>
+  &nbsp;
+  <a href="https://instagram.com/garodrifornes79" title="Instagram"><img src="docs/iconos/instagram.svg" alt="Instagram" width="48" height="48" /></a>
+  &nbsp;
+  <a href="https://gustavo-rodriguez-portafolio-vuejs.netlify.app/" title="Portafolio online"><img src="docs/iconos/portafolio.svg" alt="Portafolio online" width="48" height="48" /></a>
+</p>
 
 ---
 
-**Última actualización:** Octubre 2026 · **Versión:** 4.0
+**Última actualización:** Octubre 2026 · **Versión:** 4.1

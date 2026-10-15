@@ -105,7 +105,7 @@ export const educacion = [
     descripcion:
       "Capacitación de 288 horas reloj, donde adquirí habilidades prácticas enfocadas en diagnóstico y solución de fallas de hardware/software, ensamblaje y actualización de componentes.",
     habilidades: ["Hardware", "Software", "Diagnóstico"],
-    enlace: "",
+    enlace: "https://escuelasnewton.com.ar/",
   },
   {
     id: 2,
