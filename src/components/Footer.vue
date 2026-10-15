@@ -11,11 +11,25 @@
         <a :href="`/${contactoData.cvPDF}`" class="btn btn-primario" download="CV_GustavoRodriguez.pdf">Descargar CV</a>
       </div>
 
-      <!-- Redes -->
+      <!-- Redes: solo los logos (cada uno lleva su nombre para lectores de pantalla) -->
       <ul class="redes">
-        <li><a :href="contactoData.github" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
-        <li><a :href="contactoData.linkedin" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
-        <li><a :href="contactoData.instagram" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
+        <li>
+          <a :href="contactoData.github" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+            <img src="/iconos/github.svg" alt="" width="44" height="44" />
+          </a>
+        </li>
+        <li>
+          <a :href="contactoData.linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+            title="LinkedIn">
+            <img src="/iconos/linkedin.svg" alt="" width="44" height="44" />
+          </a>
+        </li>
+        <li>
+          <a :href="contactoData.instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+            title="Instagram">
+            <img src="/iconos/instagram.svg" alt="" width="44" height="44" />
+          </a>
+        </li>
       </ul>
     </div>
 
@@ -77,19 +91,30 @@ const anio = new Date().getFullYear()
 .redes {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 0.9rem;
   list-style: none;
 }
 
 .redes a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
+  display: block;
+  border-radius: 12px;
+  line-height: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.redes img {
+  display: block;
+  width: 44px;
+  height: 44px;
 }
 
 .redes a:hover {
-  color: var(--text);
+  transform: translateY(-3px);
+}
+
+.redes a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .pie {
