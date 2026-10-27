@@ -9,7 +9,7 @@
   <section id="sobremi" class="portada">
     <!-- Nombre -->
     <div class="portada-top">
-      <img :src="`/${datos.foto}`" :alt="datos.nombre" class="avatar" />
+      <img :src="`/${datos.foto}`" :alt="datos.nombre" class="avatar" width="72" height="72" />
       <div>
         <p class="saludo">Hola, soy</p>
         <h1>{{ datos.nombre }}</h1>

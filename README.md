@@ -55,7 +55,7 @@ Portafolio-Vuejs/
 │
 ├── public/
 │   ├── cv.pdf                    # Currículum descargable
-│   ├── fotoGustavo.png           # Foto de perfil
+│   ├── fotoGustavo.jpg           # Foto de perfil (256×256, liviana)
 │   ├── presentacion.mp4          # Video de presentación de la portada
 │   └── poster.jpg                # Imagen que se ve mientras carga el video
 │

@@ -1,29 +1,5 @@
-// src/data/datos.js
-// ARCHIVO CENTRAL DE DATOS DEL PORTAFOLIO
 // Este archivo contiene todos los datos que se muestran en el portafolio
 // Se utiliza en los componentes Vue.js mediante imports
-
-// ================== PALETA DE COLORES ==================
-// Define los colores principales del portafolio
-// Facilita el cambio uniforme de temas en toda la aplicación
-export const tematico = {
-  // COLORES PRINCIPALES
-  primario: "#00ffff", // CYAN brillante - Color principal del portafolio
-  primarioOscuro: "#00cccc", // CYAN más oscuro - Variación para hover
-  primarioClaro: "#93dede", // TURQUESA/CYAN claro - Color de acentos
-  secundario: "#00ffff",
-  acento: "#93dede",
-
-  // TEXTOS
-  textoBase: "#ffffff", // Blanco para fondo oscuro
-  textoSecundario: "#cccccc", // Gris claro
-
-  // FONDOS
-  bgPrimario: "#111111", // Fondo muy oscuro
-  bgSecundario: "#1a1a1a", // Fondo oscuro
-  bgTerciario: "#2a2a2a", // Fondo ligeramente más claro
-  borde: "#333333",
-};
 
 // ================== DATOS PERSONALES ==================
 // Información general del usuario del portafolio
@@ -34,16 +10,11 @@ export const datosPersonales = {
   email: "garodrifornes79@gmail.com",
   telefono: "+54 9 2622655607",
   ubicacion: "Tunuyán, Mendoza, Argentina",
-  foto: "fotoGustavo.png",
+  foto: "fotoGustavo.jpg",
   // Frase corta que se ve debajo del nombre en la portada
   lead: "Estudiante de Programación en la UTN San Rafael. Desarrollo web full stack.",
   resumen:
     "Estudiante del último semestre de la Tecnicatura Universitaria en Programación en la Universidad Tecnológica Nacional (UTN) - FRSR, Argentina. Desarrollo aplicaciones web full stack con Vue.js, React, Node.js y FastAPI sobre bases de datos SQL y NoSQL, y me apasiona crear soluciones originales y personalizadas trabajando en equipo.",
-  estadisticas: [
-    { numero: "2+", label: "Años de experiencia" },
-    { numero: "5+", label: "Proyectos completados" },
-    { numero: "15+", label: "Tecnologías utilizadas" },
-  ],
 };
 
 // ================== PRESENTACIÓN ANIMADA ("Sobre mí") ==================
@@ -142,7 +113,7 @@ export const experiencia = [
       "Desarrollo de múltiples aplicaciones como parte de la formación académica, desde interfaces web hasta backends con bases de datos, aplicando metodologías ágiles y buenas prácticas de programación.",
     logros: [
       "Aplicaciones web con HTML, CSS y JavaScript, y algoritmos en Python, JavaScript y Java",
-      "Backend con Node.js y Express para un e-commerce con Mercado Pago",
+      "Frontend en React de un e-commerce deportivo (Golden Point) integrado con una API en Spring Boot",
       "Persistencia de datos con MySQL, PostgreSQL y MongoDB",
       "Control de versiones con Git y GitHub en repositorios compartidos",
       "Aplicación de metodología Scrum en trabajo colaborativo",
@@ -256,14 +227,15 @@ export const proyectos = [
   },
   {
     id: 5,
-    titulo: "E-commerce de Repostería",
+    titulo: "Golden Point · Tienda de Indumentaria Deportiva",
     descripcion:
-      "Proyecto integrador del 4° semestre: tienda online de repostería artesanal con catálogo por categorías, carrito y pagos con Mercado Pago. Me encargo del backend.",
-    emoji: "🧁",
-    tecnologias: ["JavaScript", "Node.js", "Express", "Mercado Pago"],
-    enlace: "#",
-    repositorio: "",
-    estado: "En Progreso",
+      "Proyecto Final Integrador (grupo QWERTY123, 10 integrantes): e-commerce deportivo con catálogo, carrito con cotización, personalización de camisetas, pedidos con Mercado Pago y panel de administración. Backend en Spring Boot con JWT y MySQL; frontend en React. Mi parte: frontend del catálogo, carrito y personalización.",
+    emoji: "⚽",
+    tecnologias: ["React", "Vite", "Java", "Spring Boot", "MySQL", "JWT", "Mercado Pago"],
+    enlace: "https://github.com/HotCode2025/Qwerty123-ProyectoIntegrador-Ecommerce-CuartoSemestre",
+    repositorio:
+      "https://github.com/HotCode2025/Qwerty123-ProyectoIntegrador-Ecommerce-CuartoSemestre",
+    estado: "Completado",
     fecha: "2026",
     imagen: "",
   },
@@ -296,210 +268,16 @@ export const proyectos = [
   },
   {
     id: 8,
-    titulo: "PERN Stack",
+    titulo: "PERN Tasks",
     descripcion:
-      "Práctica del stack PERN (PostgreSQL, Express, React y Node.js): backend con API REST en Node/Express y base de datos PostgreSQL; el frontend en React está en desarrollo.",
-    emoji: "⚛️",
-    tecnologias: ["PostgreSQL", "Express", "React", "Node.js"],
-    enlace: "https://github.com/GustavoRodriguez79/pern-stack",
-    repositorio: "https://github.com/GustavoRodriguez79/pern-stack",
-    estado: "En Progreso",
+      "Gestor de tareas full stack con el stack PERN: registro e inicio de sesión con JWT en cookie httpOnly, CRUD de tareas por usuario y validación con Zod. Frontend en React (Vite) con Tailwind CSS y API REST en Node/Express sobre PostgreSQL.",
+    emoji: "✅",
+    tecnologias: ["PostgreSQL", "Express", "React", "Node.js", "JWT", "Tailwind CSS"],
+    enlace: "https://github.com/GustavoRodriguez79/pern-tasks",
+    repositorio: "https://github.com/GustavoRodriguez79/pern-tasks",
+    estado: "Completado",
     fecha: "2026",
     imagen: "",
-  },
-];
-
-// ================== HABILIDADES ==================
-// Información detallada sobre competencias técnicas organizadas por categoría
-// Estructura por categoría: id, nombre, icon, skills (con nombre, nivel, porcentaje)
-// 'nivel' debe ser 'Básico', 'Intermedio' o 'Avanzado'
-export const habilidades = {
-  categorias: [
-    {
-      id: 1,
-      nombre: "Lenguajes de Programación",
-      icon: "💻",
-      skills: [
-        { id: 1, nombre: "Python", nivel: "Intermedio", porcentaje: 60 },
-        { id: 2, nombre: "JavaScript", nivel: "Intermedio", porcentaje: 75 },
-        { id: 3, nombre: "Java", nivel: "Básico", porcentaje: 50 },
-        { id: 4, nombre: "HTML5", nivel: "Intermedio", porcentaje: 70 },
-        { id: 5, nombre: "CSS3", nivel: "Intermedio", porcentaje: 75 },
-      ],
-    },
-    {
-      id: 2,
-      nombre: "Frameworks & Librerías",
-      icon: "🚀",
-      skills: [
-        { id: 1, nombre: "Vue.js", nivel: "Intermedio", porcentaje: 75 },
-        { id: 2, nombre: "React", nivel: "Básico", porcentaje: 45 },
-        { id: 3, nombre: "Node.js", nivel: "Básico", porcentaje: 50 },
-        { id: 4, nombre: "Express", nivel: "Básico", porcentaje: 45 },
-        { id: 5, nombre: "FastAPI", nivel: "Básico", porcentaje: 45 },
-        { id: 6, nombre: "Spring Boot", nivel: "Básico", porcentaje: 30 },
-      ],
-    },
-    {
-      id: 3,
-      nombre: "Bases de Datos",
-      icon: "🗄️",
-      skills: [
-        { id: 1, nombre: "SQL", nivel: "Básico", porcentaje: 40 },
-        { id: 2, nombre: "MySQL", nivel: "Básico", porcentaje: 45 },
-        { id: 3, nombre: "PostgreSQL", nivel: "Básico", porcentaje: 50 },
-        { id: 4, nombre: "MongoDB", nivel: "Básico", porcentaje: 30 },
-      ],
-    },
-    {
-      id: 4,
-      nombre: "Herramientas & DevOps",
-      icon: "⚙️",
-      skills: [
-        { id: 1, nombre: "Git/GitHub", nivel: "Intermedio", porcentaje: 65 },
-        { id: 2, nombre: "VSCode", nivel: "Intermedio", porcentaje: 65 },
-        { id: 3, nombre: "PyCharm", nivel: "Intermedio", porcentaje: 55 },
-        { id: 4, nombre: "IntelliJ IDEA", nivel: "Básico", porcentaje: 45 },
-        { id: 5, nombre: "Apache NetBeans", nivel: "Básico", porcentaje: 50 },
-        { id: 6, nombre: "Docker", nivel: "Básico", porcentaje: 35 },
-        { id: 7, nombre: "Postman", nivel: "Básico", porcentaje: 40 },
-      ],
-    },
-  ],
-
-  competencias: [
-    {
-      id: 1,
-      tecnologia: "Python",
-      icon: "🐍",
-      nivel: "Intermedio",
-      experiencia: "1 año",
-      proyectos: "4+",
-    },
-    {
-      id: 2,
-      tecnologia: "JavaScript",
-      icon: "⚙️",
-      nivel: "Intermedio",
-      experiencia: "2 años",
-      proyectos: "5+",
-    },
-    {
-      id: 3,
-      tecnologia: "Vue.js",
-      icon: "💚",
-      nivel: "Intermedio",
-      experiencia: "1 año",
-      proyectos: "3+",
-    },
-    {
-      id: 4,
-      tecnologia: "Node.js / Express",
-      icon: "🟢",
-      nivel: "Básico",
-      experiencia: "< 1 año",
-      proyectos: "2+",
-    },
-    {
-      id: 5,
-      tecnologia: "PostgreSQL",
-      icon: "🐘",
-      nivel: "Básico",
-      experiencia: "1 año",
-      proyectos: "4+",
-    },
-    {
-      id: 6,
-      tecnologia: "MySQL",
-      icon: "🗄️",
-      nivel: "Básico",
-      experiencia: "1 año",
-      proyectos: "2+",
-    },
-    {
-      id: 7,
-      tecnologia: "MongoDB",
-      icon: "🍃",
-      nivel: "Básico",
-      experiencia: "< 1 año",
-      proyectos: "1+",
-    },
-    {
-      id: 8,
-      tecnologia: "Git",
-      icon: "📦",
-      nivel: "Intermedio",
-      experiencia: "2 años",
-      proyectos: "10+",
-    },
-    {
-      id: 9,
-      tecnologia: "HTML/CSS",
-      icon: "🗳️",
-      nivel: "Intermedio",
-      experiencia: "2+ años",
-      proyectos: "8+",
-    },
-  ],
-};
-
-// ================== INTERESES ==================
-// Intereses profesionales y áreas de enfoque
-// Estructura: id, título, icon, descripción, tags
-export const intereses = [
-  {
-    id: 1,
-    titulo: "Desarrollo Web",
-    icon: "🌐",
-    descripcion:
-      "Apasionado por crear experiencias web interactivas y responsivas que brinden valor a los usuarios.",
-    tags: ["Frontend", "Backend", "Full Stack"],
-  },
-  {
-    id: 2,
-    titulo: "Tecnología Emergente",
-    icon: "🚀",
-    descripcion:
-      "Interés constante en explorar nuevas tecnologías y frameworks para mejorar mis habilidades.",
-    tags: ["AI", "Machine Learning", "Blockchain"],
-  },
-  {
-    id: 3,
-    titulo: "Código Limpio",
-    icon: "✨",
-    descripcion:
-      "Defensor de las buenas prácticas de programación, testing y mantenibilidad del código.",
-    tags: ["Testing", "Clean Code", "Refactoring"],
-  },
-];
-
-// ================== OBJETIVOS PROFESIONALES ==================
-// Objetivos a corto, mediano y largo plazo
-// Estructura: id, título, descripción
-export const objetivos = [
-  {
-    id: 1,
-    titulo: "Consolidarme como Full Stack Developer",
-    descripcion:
-      "Seguir profundizando en frontend y backend para crear soluciones completas y robustas, llevando mis proyectos a producción.",
-  },
-  {
-    id: 2,
-    titulo: "Especializarme en Vue.js y React",
-    descripcion:
-      "Profundizar en los principales frameworks modernos de JavaScript para el desarrollo web.",
-  },
-  {
-    id: 3,
-    titulo: "Sumar experiencia en equipos reales",
-    descripcion:
-      "Completar mi práctica profesional y dar mis primeros pasos en la industria, aprendiendo de equipos de desarrollo en producción.",
-  },
-  {
-    id: 4,
-    titulo: "Obtener Certificaciones Profesionales",
-    descripcion:
-      "Completar certificaciones relevantes que validen mis habilidades técnicas en la industria.",
   },
 ];
 
