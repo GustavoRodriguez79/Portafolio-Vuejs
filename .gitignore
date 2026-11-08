@@ -29,3 +29,10 @@ coverage
 
 *.tsbuildinfo
 src_backup/
+
+# Documentación interna del agente — no subir a GitHub
+docs/PLAN-DEMOS.md
+
+# VS Code
+.vscode/
+.claude/
