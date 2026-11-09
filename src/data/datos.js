@@ -232,7 +232,7 @@ export const proyectos = [
       "Proyecto Final Integrador (grupo QWERTY123, 10 integrantes): e-commerce deportivo con catálogo, carrito con cotización, personalización de camisetas, pedidos con Mercado Pago y panel de administración. Backend en Spring Boot con JWT y MySQL; frontend en React. Mi parte: frontend del catálogo, carrito y personalización.",
     emoji: "⚽",
     tecnologias: ["React", "Vite", "Java", "Spring Boot", "MySQL", "JWT", "Mercado Pago"],
-    enlace: "https://github.com/HotCode2025/Qwerty123-ProyectoIntegrador-Ecommerce-CuartoSemestre",
+    enlace: "https://golden-point-kappa.vercel.app/",
     repositorio:
       "https://github.com/HotCode2025/Qwerty123-ProyectoIntegrador-Ecommerce-CuartoSemestre",
     estado: "Completado",
