@@ -293,9 +293,11 @@ Este portafolio personal es de uso privado y personal de Gustavo Ariel Rodriguez
   &nbsp;
   <a href="https://instagram.com/garodrifornes79" title="Instagram"><img src="docs/iconos/instagram.svg" alt="Instagram" width="48" height="48" /></a>
   &nbsp;
+  <a href="https://www.threads.com/@garodrifornes79" title="Threads"><img src="docs/iconos/threads.svg" alt="Threads" width="48" height="48" /></a>
+  &nbsp;
   <a href="https://gustavo-rodriguez-portafolio-vuejs.netlify.app/" title="Portafolio online"><img src="docs/iconos/portafolio.svg" alt="Portafolio online" width="48" height="48" /></a>
 </p>
 
 ---
 
-**Última actualización:** Octubre 2026 · **Versión:** 4.1
+**Última actualización:** Noviembre 2026 · **Versión:** 4.1

@@ -30,6 +30,12 @@
             <img src="/iconos/instagram.svg" alt="" width="44" height="44" />
           </a>
         </li>
+        <li>
+          <a :href="contactoData.threads" target="_blank" rel="noopener noreferrer" aria-label="Threads"
+            title="Threads">
+            <img src="/iconos/threads.svg" alt="" width="44" height="44" />
+          </a>
+        </li>
       </ul>
     </div>
 

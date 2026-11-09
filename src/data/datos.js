@@ -283,12 +283,13 @@ export const proyectos = [
 
 // ================== INFORMACIÓN DE CONTACTO ==================
 // Enlaces y datos de contacto para redes sociales y comunicación
-// Estructura: email, linkedin, github, instagram, facebook, cvPDF
+// Estructura: email, linkedin, github, instagram, threads, facebook, cvPDF
 export const contacto = {
   email: "garodrifornes79@gmail.com",
   linkedin: "https://www.linkedin.com/in/gustavo-ariel-rodr%C3%ADguez-fornes-36a899370/",
   github: "https://github.com/GustavoRodriguez79",
   instagram: "https://instagram.com/garodrifornes79",
+  threads: "https://www.threads.com/@garodrifornes79",
   facebook: "https://facebook.com/profile.php?id=61577538662727",
   cvPDF: "cv.pdf",
   // Texto de la sección Contacto
