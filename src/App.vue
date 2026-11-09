@@ -103,6 +103,24 @@ import Footer from './components/Footer.vue'
 
 html {
   scroll-behavior: smooth;
+  /* Barra de desplazamiento fina, con los colores del tema activo */
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) var(--bg);
+}
+
+/* Interlineado compacto en títulos: si se parten en dos líneas no quedan sueltos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
 body {
