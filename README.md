@@ -284,7 +284,7 @@ Este portafolio personal es de uso privado y personal de Gustavo Ariel Rodriguez
 
 ## ✉️ Contacto
 
-<p align="center">
+<p align="left">
   <a href="mailto:garodrifornes79@gmail.com" title="Email"><img src="docs/iconos/email.svg" alt="Email" width="48" height="48" /></a>
   &nbsp;
   <a href="https://www.linkedin.com/in/gustavo-ariel-rodr%C3%ADguez-fornes-36a899370/" title="LinkedIn"><img src="docs/iconos/linkedin.svg" alt="LinkedIn" width="48" height="48" /></a>
